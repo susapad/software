@@ -5,7 +5,7 @@ class SusaPadLogo(QtWidgets.QLabel):
 
     def __init__(self):
         super().__init__()
-        self.setPixmap(QtGui.QPixmap("src/media/logo.png"))
+        self.setPixmap(QtGui.QPixmap("susapad/media/logo.png"))
 
 
 

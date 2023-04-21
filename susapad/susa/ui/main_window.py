@@ -5,8 +5,8 @@ from PySide6 import QtWidgets, QtCore, QtGui
 from PySide6.QtCore import Qt
 
 
-from susa.ui.widgets import main
-from susa.model.connection import ConnectionStatus
+from susapad.susa.ui.widgets import main_window
+from susapad.susa.model.connection import ConnectionStatus
 
 
 @ds.dataclass
@@ -28,7 +28,7 @@ class MainWindow(QtWidgets.QWidget):
         self.setAttribute(Qt.WA_TranslucentBackground)
         self._configure_shadows()
 
-        self.background_layer = main.WindowLayout(self)
+        self.background_layer = main_window.WindowLayout(self)
 
         self.layout = QtWidgets.QVBoxLayout(self)
         self.layout.addWidget(self.background_layer)

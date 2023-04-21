@@ -1,8 +1,7 @@
 from PySide6 import QtWidgets, QtCore, QtGui
 from PySide6.QtCore import Qt
 
-from susa.ui.widgets._main import buttons as btn
-from susa.ui.widgets._main import header
+from susapad.susa.ui.widgets.main_window import buttons, header
 
 
 class WindowLayout(QtWidgets.QFrame):
@@ -17,9 +16,9 @@ class WindowLayout(QtWidgets.QFrame):
         # Elements
         self.logo            = header.SusaPadLogo()
         self.title           = header.SusaPadTitle()
-        self.connect_button  = btn.ConnectButton(self)
-        self.settings_button = btn.SettingsButton(self)
-        self.close_button    = btn.CloseButton(self)
+        self.connect_button  = buttons.ConnectButton(self)
+        self.settings_button = buttons.SettingsButton(self)
+        self.close_button    = buttons.CloseButton(self)
 
         self.layout = QtWidgets.QVBoxLayout(self)
         self.layout.addWidget(self.logo, 
