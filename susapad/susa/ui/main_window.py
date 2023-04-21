@@ -5,8 +5,8 @@ from PySide6 import QtWidgets, QtCore, QtGui
 from PySide6.QtCore import Qt
 
 
-from susapad.susa.ui.widgets import main_window
 from susapad.susa.model.connection import ConnectionStatus
+from .widgets import main_window
 
 
 @ds.dataclass

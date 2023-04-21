@@ -1,7 +1,7 @@
 from PySide6 import QtWidgets, QtCore, QtGui
 from PySide6.QtCore import Qt
 
-from susapad.susa.ui.widgets.main_window import buttons, header
+from . import buttons, header
 
 
 class WindowLayout(QtWidgets.QFrame):
