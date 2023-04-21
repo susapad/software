@@ -23,8 +23,12 @@ class BaseButton(QtWidgets.QPushButton):
         )
 
     def change_background(self, color: str):
-        self.setStyleSheet(f"background-color: {color};")
-
+        result = self.styleSheet().replace(
+            "background-color: #0e639e", 
+            f"background-color: {color}", 
+            1
+        )
+        self.setStyleSheet(result)
 
 
 class ConnectButton(BaseButton):
