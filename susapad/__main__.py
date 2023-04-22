@@ -12,7 +12,6 @@ def run():
 
     susa_app = QtWidgets.QApplication([])
     susa_window = main_window.MainWindow()
-    susa_window.resize(300, 500)
     susa_window.show()
     sys.exit(susa_app.exec())
 

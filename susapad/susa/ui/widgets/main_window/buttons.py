@@ -4,10 +4,11 @@ from PySide6.QtCore import Qt
 
 class BaseButton(QtWidgets.QPushButton):
 
-    def __init__(self, text: str, shortcut: str):
+    def __init__(self, text: str, shortcut: [str | None]):
         super().__init__(text)
-        self.setShortcut(shortcut)
         self._init_style()
+        if shortcut:
+            self.setShortcut(shortcut)
 
     def _init_style(self):
         self.setFixedSize(100, 40)
@@ -31,36 +32,27 @@ class BaseButton(QtWidgets.QPushButton):
         self.setStyleSheet(result)
 
 
-class ConnectButton(BaseButton):
+class ActionButton(BaseButton):
 
     def __init__(self, window):
         super().__init__("Conectar", "Enter")
-        self.clicked.connect(self.connect_to_susapad)
+        self.set_found(window.susapad.serial)
+        self.clicked.connect(window.connect_to_susapad)
 
-    @QtCore.Slot()
-    def connect_to_susapad(self, window):
-        pass
-
-
-class SettingsButton(BaseButton):
-
-    def __init__(self, window):
-        super().__init__("Configurar", "Ctrl + P")
-        self.clicked.connect(self.open_settings)
-
-    @QtCore.Slot()
-    def open_settings(self, window):
-        pass
-
+    def set_found(self, found: bool = True):
+        if found:
+            self.setText("Configurar")
+        else:
+            self.setText("Tentar novamente!")
 
 
 class CloseButton(BaseButton):
 
-    def __init__(self, window):
+    def __init__(self):
         super().__init__("Fechar", "Escape")
-        self.clicked.connect(self.close_application)
         self.change_background("#b71970")
+        self.clicked.connect(self.close_application)
 
     @QtCore.Slot()
-    def close_application(self, window):
+    def close_application(self):
         QtCore.QCoreApplication.instance().quit()
