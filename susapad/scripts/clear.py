@@ -30,16 +30,14 @@ class PyCache:
             self._delete_pyc_files(directory)
             directory.rmdir()
 
-
 # == Callable ==
 
 def run():
     """"Starts the script 
     - use your Current Working Directory as root path
     """
-    print("Clearing __pycache__...")
+    print("Cleaning __pycache__...")
     PyCache(".").clear_pycache()
-
 
 if __name__ == "__main__":
     run()
