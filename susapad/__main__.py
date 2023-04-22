@@ -1,6 +1,13 @@
 """SusaPad's main file"""
 
-import sys
+import os, sys, pathlib
+
+sys.path.append(
+    os.path.dirname(
+        pathlib.Path(os.path.realpath(__file__))\
+        .parent.absolute()
+    )
+)
 
 from PySide6 import QtWidgets
 
