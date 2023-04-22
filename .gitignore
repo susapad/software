@@ -1,3 +1,5 @@
 exp*.py
 .vscode/
 **/__pycache__/
+build/
+susapad.*/
