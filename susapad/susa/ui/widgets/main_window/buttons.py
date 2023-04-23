@@ -12,24 +12,6 @@ class BaseButton(QtWidgets.QPushButton):
 
     def _init_style(self):
         self.setFixedSize(100, 40)
-        self.setStyleSheet(
-            """
-                background-color: #0e639e;
-                border-radius: 15px;
-                min-width: 10em;
-                padding: 6px;
-                font: bold;
-                color: white;
-            """
-        )
-
-    def change_background(self, color: str):
-        result = self.styleSheet().replace(
-            "background-color: #0e639e", 
-            f"background-color: {color}", 
-            1
-        )
-        self.setStyleSheet(result)
 
 
 class ActionButton(BaseButton):
@@ -50,7 +32,7 @@ class CloseButton(BaseButton):
 
     def __init__(self):
         super().__init__("Fechar", "Escape")
-        self.change_background("#b71970")
+        self.setAccessibleName("secondary")
         self.clicked.connect(self.close_application)
 
     @QtCore.Slot()
