@@ -9,6 +9,7 @@ class BaseButton(QtWidgets.QPushButton):
         self._init_style()
         if shortcut:
             self.setShortcut(shortcut)
+            self.setCursor(Qt.PointingHandCursor)
 
     def _init_style(self):
         self.setFixedSize(100, 40)
