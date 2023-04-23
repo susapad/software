@@ -31,6 +31,7 @@ class MainWindow(QtWidgets.QWidget):
         self.setLayout(self.layout)
 
         ## Startup
+        self.connect_to_susapad()
 
     
     @QtCore.Slot()
