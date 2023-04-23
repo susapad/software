@@ -21,6 +21,7 @@ class MainWindow(QtWidgets.QWidget):
         self.resize(500, 200)
 
         ## Attribute
+        self.oldPos = None
         self.susapad = susapad.SusaPad()
 
         ## Configure Layout
