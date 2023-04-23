@@ -25,9 +25,9 @@ class MainWindow(QtWidgets.QWidget):
         self.susapad = susapad.SusaPad()
 
         ## Configure Layout
-        self.background_layer = main_window.WindowLayout(self)
+        self.main_widget = main_window.WindowLayout(self)
         self.layout = QtWidgets.QVBoxLayout(self)
-        self.layout.addWidget(self.background_layer)
+        self.layout.addWidget(self.main_widget)
         self.setLayout(self.layout)
 
         ## Startup
