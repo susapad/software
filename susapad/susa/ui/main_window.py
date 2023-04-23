@@ -35,7 +35,13 @@ class MainWindow(QtWidgets.QWidget):
     
     @QtCore.Slot()
     def connect_to_susapad(self):
-        pass
+        port = self.susapad.find()
+        if "" == port:
+            self.main_widget.group_button.main.set_found(False)
+            self.main_widget.group_header.status.setText("SusaPad não encontrado!")
+        else:
+            self.main_widget.group_button.main.set_found(True)
+            self.main_widget.group_header.status.setText(f"SusaPad encontrado na porta {port}")
 
 
     ## Style Configuration
