@@ -19,14 +19,25 @@ class ActionButton(BaseButton):
 
     def __init__(self, window):
         super().__init__("Conectar", "Enter")
+        self.window = window
+        self.found: bool = False
         self.set_found(window.susapad.serial)
-        self.clicked.connect(window.connect_to_susapad)
+        self.clicked.connect(self.action)
 
     def set_found(self, found: bool = True):
         if found:
+            self.found = True
             self.setText("Configurar")
         else:
+            self.found = False
             self.setText("Tentar novamente!")
+
+    @QtCore.Slot()
+    def action(self):
+        if self.found:
+            self.window.open_settings_window()
+        else:
+            self.window.connect_to_susapad()
 
 
 class CloseButton(BaseButton):
