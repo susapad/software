@@ -40,6 +40,25 @@ class MainWindow(QtWidgets.QWidget):
         if "" == port:
             self.main_widget.group_button.main.set_found(False)
             self.main_widget.group_header.status.setText("SusaPad não encontrado!")
+            
+            alert = QtWidgets.QDialog(self)
+
+            alert.setWindowTitle("Notificação")
+            alert.buttonBox = QtWidgets.QDialogButtonBox(
+                    QtWidgets.QDialogButtonBox.Ok)
+            alert.buttonBox.accepted.connect(alert.accept)
+
+            QtWidgets.QVBoxLayout(alert).addWidget(
+                QtWidgets.QLabel(
+                    """
+                    SusaPad não encontrado. 
+                    Certifique-se que ele está conectado corretamente
+                    """
+                )
+            )
+
+            alert.show()
+
         else:
             self.main_widget.group_button.main.set_found(True)
             self.main_widget.group_header.status.setText(f"SusaPad encontrado na porta {port}")
