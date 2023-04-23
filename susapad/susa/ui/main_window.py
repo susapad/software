@@ -43,6 +43,9 @@ class MainWindow(QtWidgets.QWidget):
             self.main_widget.group_button.main.set_found(True)
             self.main_widget.group_header.status.setText(f"SusaPad encontrado na porta {port}")
 
+    @QtCore.Slot()
+    def open_settings_window(self):
+        pass
 
     ## Style Configuration
 
