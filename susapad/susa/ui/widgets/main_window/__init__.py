@@ -42,10 +42,13 @@ class WindowLayout(QtWidgets.QFrame):
         self.setObjectName("background-frame")
         self.__init_style()
 
+        self.group_header = HeaderGroup(window)
+        self.group_button = ButtonGroup(window)
+
         self.layout = QtWidgets.QVBoxLayout(self)
-        self.layout.addWidget(HeaderGroup(window), 
+        self.layout.addWidget(self.group_header, 
                 alignment = Qt.AlignCenter | Qt.AlignTop)
-        self.layout.addWidget(ButtonGroup(window), 
+        self.layout.addWidget(self.group_button, 
                 alignment = Qt.AlignCenter | Qt.AlignBottom)
 
     def __init_style(self):
