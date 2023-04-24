@@ -17,13 +17,12 @@ class SusaPad:
     
     def find(self) -> str:
         """Looks for connected SusaPad device's port"""
-        try:
-            ports = serial.tools.list_ports.comports()
-            for port, _, hwid in sorted(ports):
-                if "VID:PID=0727:0727" in hwid: 
-                    return port 
-        except:
-            return ""
+        ports = serial.tools.list_ports.comports()
+        for port, desc, hwid in sorted(ports):
+            if "VID:PID=0727:0727" in hwid:
+                print("Susapad encontrado!")
+                print("{}: {} [{}]".format(port, desc, hwid))
+                return port 
         return ""
 
 
