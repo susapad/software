@@ -26,9 +26,7 @@ class MainWindow(QtWidgets.QWidget):
 
         ## Configure Layout
         self.main_widget = main_window.WindowLayout(self)
-        self.layout = QtWidgets.QVBoxLayout(self)
-        self.layout.addWidget(self.main_widget)
-        self.setLayout(self.layout)
+        QtWidgets.QVBoxLayout(self).addWidget(self.main_widget)
 
         ## Startup
         self.connect_to_susapad()
