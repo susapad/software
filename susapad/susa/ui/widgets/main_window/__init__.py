@@ -6,12 +6,12 @@ from . import buttons, header
 
 class HeaderGroup(QtWidgets.QWidget):
 
-    def __init__(self, window):
+    def __init__(self, main_window):
         super().__init__()
 
         self.logo   = header.SusaPadLogo()
         self.title  = header.SusaPadTitle()
-        self.status = header.StatusLabel(window)
+        self.status = header.StatusLabel(main_window)
 
         self.layout = QtWidgets.QVBoxLayout(self)
         self.layout.addWidget(self.logo,
@@ -23,9 +23,9 @@ class HeaderGroup(QtWidgets.QWidget):
 
 
 class ButtonGroup(QtWidgets.QWidget):
-    def __init__(self, window):
+    def __init__(self, main_window):
         super().__init__()
-        self.main  = buttons.ActionButton(window)
+        self.main  = buttons.ActionButton(main_window)
         self.close = buttons.CloseButton()
 
         self.layout = QtWidgets.QHBoxLayout(self)
@@ -35,15 +35,15 @@ class ButtonGroup(QtWidgets.QWidget):
 
 class WindowLayout(QtWidgets.QFrame):
 
-    def __init__(self, window):
+    def __init__(self, main_window):
         super().__init__()
 
         # Configuration
         self.setObjectName("background-frame")
         self.__init_style()
 
-        self.group_header = HeaderGroup(window)
-        self.group_button = ButtonGroup(window)
+        self.group_header = HeaderGroup(main_window)
+        self.group_button = ButtonGroup(main_window)
 
         self.layout = QtWidgets.QVBoxLayout(self)
         self.layout.addWidget(self.group_header, 
