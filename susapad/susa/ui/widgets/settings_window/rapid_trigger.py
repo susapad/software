@@ -21,8 +21,8 @@ class RapidTriggerButton(QtWidgets.QPushButton):
     def __turn_on(self):
         try:
             # TODO: enable this for production
-            #self.susapad.serial.write('rt 1'.encode())
-            #self.susapad.serial.flush()
+            self.susapad.serial.write('rt 1'.encode())
+            self.susapad.serial.flush()
             self.on = True
             self.accessibleName = "on"
             self.setText("Desligar")
@@ -44,8 +44,8 @@ class RapidTriggerButton(QtWidgets.QPushButton):
     def __turn_off(self):
         try:
             # TODO: enable this for production
-            #self.susapad.serial.write('rt 0'.encode())
-            #self.susapad.serial.flush()
+            self.susapad.serial.write('rt 0'.encode())
+            self.susapad.serial.flush()
             self.on = False
             self.accessibleName = "off"
             self.setText("Ligar")
