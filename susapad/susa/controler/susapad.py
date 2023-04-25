@@ -1,6 +1,5 @@
 """Module to manage SusaPad's configuration and connection"""
 
-
 import time
 
 import serial.tools.list_ports
@@ -25,7 +24,6 @@ class SusaPad:
                 return port 
         return ""
 
-
     def connect(self, port) -> bool:
         """Connect to SusaPad given a port"""
         try:
@@ -33,7 +31,6 @@ class SusaPad:
             return True
         except:
             return False
-
 
     def disconnect(self):
         """Set `self.susapad_port` as None, virtually closing the connection"""
