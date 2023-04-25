@@ -59,11 +59,11 @@ class SusaPad:
 
     def set_actuation_point_lower(self, value: int) -> bool:
         """Set Key's Actuation ponit"""
-        return self.__configure_susapad("lh", lower)
+        return self.__configure_susapad("lh", value)
 
     def set_actuation_point_upper(self, value: int) -> bool:
         """Set Key's Actuation ponit"""
-        return self.__configure_susapad("uh", upper)
+        return self.__configure_susapad("uh", value)
 
 
     # Internal functions
