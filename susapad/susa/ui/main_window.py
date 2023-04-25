@@ -44,25 +44,3 @@ class MainWindow(window.BaseWindow):
     @QtCore.Slot()
     def open_settings_window(self):
         pass
-
-    ## Style Configuration
-
-    def _configure_shadows(self):
-        shadow = QtWidgets.QGraphicsDropShadowEffect(self)
-        shadow.setOffset(QtCore.QPoint(0,0))
-        shadow.setBlurRadius(30)
-        shadow.setColor(QtGui.QColor(0,0,0))
-        self.setGraphicsEffect(shadow)
-
-    def mousePressEvent(self, event):
-        if event.button() == Qt.MouseButton.LeftButton:
-            self.oldPos = event.globalPos()
-
-    def mouseMoveEvent(self, event):
-        if self.oldPos is not None:
-            delta = event.globalPos() - self.oldPos
-            self.move(self.pos() + delta)
-            self.oldPos = event.globalPos()
-
-    def mouseReleaseEvent(self, event):
-        self.oldPos = None
