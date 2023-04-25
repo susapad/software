@@ -12,6 +12,7 @@ class BaseWindow(QtWidgets.QWidget):
         self._configure_shadows()
         self.resize(500, 200)
 
+        self.parent = parent
         self.susapad = susapad
         self.oldPos = None
 
