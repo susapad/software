@@ -57,7 +57,7 @@ class SusaPad:
         """"Set the Rapid Trigger's sensibility"""
         return self.__configure_susapad("rtds", value)
 
-    def set_action_point(self, lower: int, upper: int) -> bool:
+    def set_actuation_point(self, lower: int, upper: int) -> bool:
         """Set Key's Action ponit"""
         r1 = self.__configure_susapad("lh", lower)
         r2 = self.__configure_susapad("uh", upper)
