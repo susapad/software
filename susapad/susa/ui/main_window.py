@@ -2,13 +2,13 @@
 import dataclasses as ds
 import time
 
-from PySide6 import QtWidgets, QtCore, QtGui
+from PySide6 import QtCore, QtGui, QtWidgets
 from PySide6.QtCore import Qt
 
 from susapad.susa.controler import susapad
-from . import settings_window, alert_dialog
-from .widgets.common import window
-from .widgets import main_window
+from susapad.susa.ui import alert_dialog, settings_window
+from susapad.susa.ui.widgets import main_window
+from susapad.susa.ui.widgets.common import window
 
 
 class MainWindow(window.BaseWindow):
