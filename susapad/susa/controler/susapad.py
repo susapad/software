@@ -40,29 +40,41 @@ class SusaPad:
         self.serial = None
 
 
+    # Settings functions
+
     def set_rappid_trigger(self, on: True) -> bool:
         """Set if SusaPad is **on** or **off**"""
-        n = "1" if on else "0"
-        try:
-            self.serial.write(f"rt {n}".encode())
-            self.serial.flush()
-            self.rapid_trigger = True
-            time.sleep(0.5)
-            return True
-        except:
-            return False
+        n = 1 if on else 0
+        return self.__configure_susapad("rt", n)
 
-    def set_sensibility(self, n: int):
+    def set_continuous_rappid_trigger(self, on: True) -> bool:
+        """Set if SusaPad is **on** or **off**"""
+        n = 1 if on else 0
+        return self.__configure_susapad("crt", n)
+
+    def set_sensibility(self, value: int) -> bool:
         """"Set the Rapid Trigger's sensibility"""
+        return self.__configure_susapad("rtus", value)
 
-        if 7 > n or 401 < n: 
-            return False
+    def set_action_point(self, lower: int, upper: int) -> bool:
+        """Set Key's Action ponit"""
+        r1 = self.__configure_susapad("lh", lower)
+        r2 = self.__configure_susapad("uh", upper)
+        return r1 and r2
 
+
+    # Internal functions
+
+    def __configure_susapad_key(self, key: int command: str, value: int) -> bool:
         try:
-            self.serial.write(f"rts {n}".encode())
+            self.serial.write(f"key{key}.{command} {value}".encode())
             self.serial.flush()
-            self.sensibility = n
             time.sleep(0.5)
             return True
         except:
             return False
+
+    def __configure_susapad(self, command: str, value: int) -> bool:
+        k1 = self.__configure_susapad_key(1, command, value)
+        k2 = self.__configure_susapad_key(2, command, value)
+        return k1 and k2
