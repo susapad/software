@@ -12,9 +12,9 @@ class RapidTriggerButton(QtWidgets.QPushButton):
         self.susapad = susapad
         self.on = True
 
-        self.__turn_on()
         self.clicked.connect(self.rapid_trigger)
         self.setCursor(Qt.PointingHandCursor)
+        self.__turn_on()
 
 
     def __turn_on(self):
