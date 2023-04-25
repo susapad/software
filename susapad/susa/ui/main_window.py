@@ -43,4 +43,5 @@ class MainWindow(window.BaseWindow):
 
     @QtCore.Slot()
     def open_settings_window(self):
-        pass
+        self.settings_window = settings_window.SettingsWindow(self)
+        self.settings_window.show()
