@@ -49,9 +49,13 @@ class SusaPad:
         n = 1 if on else 0
         return self.__configure_susapad("crt", n)
 
-    def set_sensibility(self, value: int) -> bool:
+    def set_release_sensibility(self, value: int) -> bool:
         """"Set the Rapid Trigger's sensibility"""
         return self.__configure_susapad("rtus", value)
+
+    def set_press_sensibility(self, value: int) -> bool:
+        """"Set the Rapid Trigger's sensibility"""
+        return self.__configure_susapad("rtds", value)
 
     def set_action_point(self, lower: int, upper: int) -> bool:
         """Set Key's Action ponit"""
