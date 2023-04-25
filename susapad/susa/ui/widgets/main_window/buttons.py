@@ -1,7 +1,7 @@
 from PySide6 import QtWidgets, QtCore
 from PySide6.QtCore import Qt
 
-from susapad.susa.ui.widgets.commons import button
+from susapad.susa.ui.widgets.common import button
 
 
 class ActionButton(button.BaseButton):
