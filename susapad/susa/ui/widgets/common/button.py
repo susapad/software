@@ -2,6 +2,7 @@
 from PySide6 import QtWidgets
 from PySide6.QtCore import Qt
 
+
 class BaseButton(QtWidgets.QPushButton):
 
     def __init__(self, text: str, shortcut: [str | None]):

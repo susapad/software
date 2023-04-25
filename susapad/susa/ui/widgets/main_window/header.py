@@ -1,6 +1,6 @@
 """Common Widgets used by `MainWindow`"""
 
-from PySide6 import QtWidgets, QtGui, QtCore
+from PySide6 import QtCore, QtGui, QtWidgets
 
 
 class SusaPadLogo(QtWidgets.QLabel):
