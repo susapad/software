@@ -18,6 +18,12 @@ class RapidTriggerButton(QtWidgets.QPushButton):
         self.__turn_on()
 
 
+    def __raise_alert(self):
+        alert = alert_dialog.AlertDialog(self.window)
+        alert.show()
+        self.window.close()
+
+
     def __turn_on(self):
         try:
             # TODO: enable this for production
