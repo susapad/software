@@ -66,7 +66,7 @@ class SusaPad:
 
     # Internal functions
 
-    def __configure_susapad_key(self, key: int command: str, value: int) -> bool:
+    def __configure_susapad_key(self, key: int, command: str, value: int) -> bool:
         try:
             self.serial.write(f"key{key}.{command} {value}".encode())
             self.serial.flush()
