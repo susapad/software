@@ -2,6 +2,8 @@
 from PySide6 import QtWidgets, QtCore
 from PySide6.QtCore import Qt 
 
+from susapad.susa.ui import alert_dialog
+
 
 class RapidTriggerButton(QtWidgets.QPushButton):
 
@@ -45,6 +47,7 @@ class RapidTriggerButton(QtWidgets.QPushButton):
             )
         except:
             print("Algum problema ocorreu. Certifique-se que seu Susapad está conectado.")
+            self.__raise_alert()
 
 
     def __turn_off(self):
@@ -68,6 +71,7 @@ class RapidTriggerButton(QtWidgets.QPushButton):
             )
         except:
             print("Algum problema ocorreu. Certifique-se que seu Susapad está conectado.")
+            self.__raise_alert()
     
 
     @QtCore.Slot()
