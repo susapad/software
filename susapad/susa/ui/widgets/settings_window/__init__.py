@@ -6,10 +6,11 @@ from . import rapid_trigger
 
 class FormsGroup(QtWidgets.QWidget):
 
-    def __init__(self, susapad):
+    def __init__(self, window, susapad):
         super().__init__()
 
-        self.activate_toggle = rapid_trigger.RapidTriggerButton(susapad)
+        self.activate_toggle = rapid_trigger\
+            .RapidTriggerButton(window, susapad)
 
         self.layout = QtWidgets.QVBoxLayout(self)
         self.layout.addWidget(self.activate_toggle)
@@ -18,13 +19,13 @@ class FormsGroup(QtWidgets.QWidget):
 
 class WindowLayout(QtWidgets.QFrame):
 
-    def __init__(self, susapad):
+    def __init__(self, window, susapad):
         super().__init__()
 
         self.setObjectName("background-frame")
         self.__init_style()
 
-        self.forms = FormsGroup(susapad)
+        self.forms = FormsGroup(window, susapad)
         
         self.layout = QtWidgets.QVBoxLayout(self)
         self.layout.addWidget(self.forms)

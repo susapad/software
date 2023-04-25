@@ -5,11 +5,12 @@ from PySide6.QtCore import Qt
 
 class RapidTriggerButton(QtWidgets.QPushButton):
 
-    def __init__(self, susapad):
+    def __init__(self, window, susapad):
         super().__init__("Desativar", None)
         self.setFixedSize(100, 40)
 
         self.susapad = susapad
+        self.window = window
         self.on = True
 
         self.clicked.connect(self.rapid_trigger)

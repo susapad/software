@@ -17,7 +17,7 @@ class SettingsWindow(window.BaseWindow):
         self.is_on: bool = True
         self.rts: int = 200
 
-        self.settings_widget = settings_window.WindowLayout(self.susapad)
+        self.settings_widget = settings_window.WindowLayout(self, self.susapad)
         self.layout.addWidget(self.settings_widget)
         
 
