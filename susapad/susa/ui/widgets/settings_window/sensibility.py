@@ -10,9 +10,10 @@ class PressSensibilitySlider(QtWidgets.QSlider):
 
         self.susapad = susapad
 
+        self.setMinimumWidth(400)
         self.setMinimum(10)
         self.setMaximum(400)
-        self.setOrientation = Qt.Horizontal
+        self.setOrientation(Qt.Horizontal)
 
         self.sliderReleased.connect(self.action)
 
@@ -28,9 +29,10 @@ class ReleaseSensibilitySlider(QtWidgets.QSlider):
 
         self.susapad = susapad
 
+        self.setMinimumWidth(400)
         self.setMinimum(10)
         self.setMaximum(400)
-        self.setOrientation = Qt.Horizontal
+        self.setOrientation(Qt.Horizontal)
 
         self.sliderReleased.connect(self.action)
 
