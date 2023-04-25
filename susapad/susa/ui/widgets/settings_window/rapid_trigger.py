@@ -29,13 +29,7 @@ class RapidTriggerButton(QtWidgets.QPushButton):
 
 
     def __turn_on(self):
-        try:
-            # TODO: enable this for production
-            self.susapad.serial.write('key1.rt 1'.encode())
-            self.susapad.serial.flush()
-            time.sleep(0.5)
-            self.susapad.serial.write('key3.rt 1'.encode())
-            self.susapad.serial.flush()
+        if self.susapad.set_rappid_trigger(True):
             self.on = True
             self.accessibleName = "on"
             self.setText("Desligar")
@@ -50,19 +44,13 @@ class RapidTriggerButton(QtWidgets.QPushButton):
                 }
                 """
             )
-        except:
+        else:
             print("Algum problema ocorreu. Certifique-se que seu Susapad está conectado.")
             self.__raise_alert()
 
 
     def __turn_off(self):
-        try:
-            # TODO: enable this for production
-            self.susapad.serial.write('key1.rt 0'.encode())
-            self.susapad.serial.flush()
-            time.sleep(0.5)
-            self.susapad.serial.write('key3.rt 0'.encode())
-            self.susapad.serial.flush()
+        if self.susapad.set_rappid_trigger(False)
             self.on = False
             self.accessibleName = "off"
             self.setText("Ligar")
@@ -77,7 +65,7 @@ class RapidTriggerButton(QtWidgets.QPushButton):
                 }
                 """
             )
-        except:
+        else:
             print("Algum problema ocorreu. Certifique-se que seu Susapad está conectado.")
             self.__raise_alert()
     
