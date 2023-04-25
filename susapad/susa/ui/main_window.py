@@ -30,6 +30,7 @@ class MainWindow(window.BaseWindow):
     def connect_to_susapad(self):
         port = self.susapad.find()
         if "" == port:
+            # Todo: set it as false for production
             self.main_widget.group_button.main.set_found(True)
             self.main_widget.group_header.status.setText("SusaPad não encontrado!")
             
