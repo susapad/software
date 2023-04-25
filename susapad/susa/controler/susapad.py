@@ -39,7 +39,7 @@ class SusaPad:
 
     # Settings functions
 
-    def set_rappid_trigger(self, on: True) -> bool:
+    def set_rapid_trigger(self, on: True) -> bool:
         """Set if SusaPad is **on** or **off**"""
         n = 1 if on else 0
         return self.__configure_susapad("rt", n)

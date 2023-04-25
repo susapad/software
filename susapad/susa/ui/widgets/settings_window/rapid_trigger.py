@@ -29,7 +29,7 @@ class RapidTriggerButton(QtWidgets.QPushButton):
 
 
     def __turn_on(self):
-        if self.susapad.set_rappid_trigger(True):
+        if self.susapad.set_rapid_trigger(True):
             self.on = True
             self.accessibleName = "on"
             self.setText("Desligar")
@@ -50,7 +50,7 @@ class RapidTriggerButton(QtWidgets.QPushButton):
 
 
     def __turn_off(self):
-        if self.susapad.set_rappid_trigger(False)
+        if self.susapad.set_rapid_trigger(False)
             self.on = False
             self.accessibleName = "off"
             self.setText("Ligar")
