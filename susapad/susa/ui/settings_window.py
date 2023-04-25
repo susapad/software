@@ -1,11 +1,10 @@
 
-from PySide6 import QtWidgets, QtCore, QtGui
+import serial
+from PySide6 import QtGui, QtWidgets
 from PySide6.QtCore import Qt
 
-import serial
-
-from .widgets import settings_window
-from .widgets.common import window
+from susapad.susa.ui.widgets import settings_window
+from susapad.susa.ui.widgets.common import window
 
 
 class SettingsWindow(window.BaseWindow):
@@ -19,11 +18,6 @@ class SettingsWindow(window.BaseWindow):
 
         self.settings_widget = settings_window.WindowLayout(self, self.susapad)
         self.layout.addWidget(self.settings_widget)
-        
-
-    @QtCore.Slot()
-    def rapid_trigger_sensibility(self, sensibility: int):
-        pass
 
     @QtCore.Slot()
     def save_settings(self):
