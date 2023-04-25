@@ -58,7 +58,7 @@ class SusaPad:
         return self.__configure_susapad("rtds", value)
 
     def set_actuation_point(self, lower: int, upper: int) -> bool:
-        """Set Key's Action ponit"""
+        """Set Key's Actuation ponit"""
         r1 = self.__configure_susapad("lh", lower)
         r2 = self.__configure_susapad("uh", upper)
         return r1 and r2
