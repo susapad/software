@@ -6,27 +6,20 @@ from PySide6 import QtWidgets, QtCore, QtGui
 from PySide6.QtCore import Qt
 
 from susapad.susa.controler import susapad
+from .widgets.common import window
 from .widgets import main_window
 
 
-class MainWindow(QtWidgets.QWidget):
+class MainWindow(window.BaseWindow):
 
-    def __init__(self):
+    def __init__(self, susapad):
 
         ## Configuration
-        super().__init__()
-        self.setWindowFlags(Qt.FramelessWindowHint)
-        self.setAttribute(Qt.WA_TranslucentBackground)
-        self._configure_shadows()
-        self.resize(500, 200)
-
-        ## Attribute
-        self.oldPos = None
-        self.susapad = susapad.SusaPad()
+        super().__init__(susapad)
 
         ## Configure Layout
         self.main_widget = main_window.WindowLayout(self)
-        QtWidgets.QVBoxLayout(self).addWidget(self.main_widget)
+        self.layout.addWidget(self.main_widget)
 
         ## Startup
         self.connect_to_susapad()
@@ -36,7 +29,7 @@ class MainWindow(QtWidgets.QWidget):
     def connect_to_susapad(self):
         port = self.susapad.find()
         if "" == port:
-            self.main_widget.group_button.main.set_found(False)
+            self.main_widget.group_button.main.set_found(True)
             self.main_widget.group_header.status.setText("SusaPad não encontrado!")
             
             alert = QtWidgets.QDialog(self)
