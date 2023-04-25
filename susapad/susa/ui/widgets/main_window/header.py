@@ -24,11 +24,11 @@ class SusaPadTitle(QtWidgets.QLabel):
 
 class StatusLabel(QtWidgets.QLabel):
 
-    def __init__(self, window):
+    def __init__(self, main_window):
         super().__init__()
         self.__init_style()
         
-        self.set_found(window.susapad.serial)
+        self.set_found(main_window.susapad.serial)
 
 
     def set_found(self, found: bool = True):
