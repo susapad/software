@@ -18,7 +18,3 @@ class SettingsWindow(window.BaseWindow):
 
         self.settings_widget = settings_window.WindowLayout(self, self.susapad)
         self.layout.addWidget(self.settings_widget)
-
-    @QtCore.Slot()
-    def save_settings(self):
-        pass
