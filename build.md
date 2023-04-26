@@ -11,5 +11,5 @@ Then add media
 ```
 mkdir susapad.dist/susapad
 mkdir susapad.dist/susapad/media
-cp susapad/susa/media/** susapad.dist/susapad/media/
+cp susapad/media/** susapad.dist/susapad/media/
 ```
