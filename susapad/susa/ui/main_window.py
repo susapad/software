@@ -31,16 +31,16 @@ class MainWindow(window.BaseWindow):
     
     @QtCore.Slot()
     def connect_to_susapad(self):
-        port = self.susapad.find()
+        port = "COM5" if self.susapad.debug else self.susapad.find() 
         if "" == port:
             self.main_widget.group_button.main.set_found(False)
             self.main_widget.group_header.status.setText("SusaPad não encontrado!")
             
             alert = alert_dialog.AlertDialog(self)
             alert.show()
-
         else:
-            self.susapad.connect(port)
+            if not self.susapad.debug:
+                self.susapad.connect(port)
             self.main_widget.group_button.main.set_found(True)
             self.main_widget.group_header.status.setText(f"SusaPad encontrado na porta {port}")
 
