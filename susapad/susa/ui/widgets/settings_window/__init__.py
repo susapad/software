@@ -15,8 +15,8 @@ class FormsGroup(QtWidgets.QWidget):
         self.rt_button = togglers.RapidTriggerButton(window, susapad)
         self.crt_button = togglers.ContinuousRapidTriggerButton(window, susapad)
 
-        self.sensibility_slider_press = sensibility.PressSensibilitySlider(window, susapad)
-        self.sensibility_slider_release = sensibility.ReleaseSensibilitySlider(window, susapad)
+        self.sensibility_slider_press = sensibility.PressSensibilitySlider(window, susapad, self)
+        self.sensibility_slider_release = sensibility.ReleaseSensibilitySlider(window, susapad, self)
         
         self.actuation_slider_lower = actuation_point.LowerActuationSlider(window, susapad, self)
         self.actuation_slider_upper = actuation_point.UpperActuationSlider(window, susapad, self)

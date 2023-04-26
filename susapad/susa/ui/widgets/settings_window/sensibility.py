@@ -5,7 +5,7 @@ from PySide6.QtCore import Qt
 
 class PressSensibilitySlider(QtWidgets.QSlider):
 
-    def __init__(self, window, susapad):
+    def __init__(self, window, susapad, forms):
         super().__init__()
 
         self.susapad = susapad
@@ -24,7 +24,7 @@ class PressSensibilitySlider(QtWidgets.QSlider):
 
 class ReleaseSensibilitySlider(QtWidgets.QSlider):
 
-    def __init__(self, window, susapad):
+    def __init__(self, window, susapad, forms):
         super().__init__()
 
         self.susapad = susapad
