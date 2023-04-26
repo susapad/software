@@ -57,13 +57,12 @@ class SusaPad:
         """"Set the Rapid Trigger's sensibility"""
         return self.__configure_susapad("rtds", value)
 
-    def set_actuation_point_lower(self, value: int) -> bool:
+    def set_actuation_point(self, value: int) -> bool:
         """Set Key's Actuation ponit"""
-        return self.__configure_susapad("lh", value)
+        r1 = self.__configure_susapad("uh", value)
+        r2 = self.__configure_susapad("lh", value - 10)
+        return r1 and r2
 
-    def set_actuation_point_upper(self, value: int) -> bool:
-        """Set Key's Actuation ponit"""
-        return self.__configure_susapad("uh", value)
 
 
     # Internal functions
