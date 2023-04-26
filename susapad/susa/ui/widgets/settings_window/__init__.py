@@ -28,7 +28,7 @@ class FormsGroup(QtWidgets.QWidget):
         self.layout = QtWidgets.QVBoxLayout(self)
         self.layout.addWidget(self.first_h2)
         self.layout.addWidget(self.rt_button)
-        self.layout.addWidget(QtWidgets.QLabel("Rapid Trigger Contínuor"))
+        self.layout.addWidget(QtWidgets.QLabel("Rapid Trigger Contínuo"))
         self.layout.addWidget(self.crt_button)
         self.layout.addWidget(self.sensibility_label)
         self.layout.addWidget(self.sensibility_slider_press, alignment = Qt.AlignJustify)
