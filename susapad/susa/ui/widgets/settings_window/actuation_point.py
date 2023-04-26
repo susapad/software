@@ -18,11 +18,18 @@ class LowerActuationSlider(QtWidgets.QSlider):
 
 
         self.sliderReleased.connect(self.action)
+        self.valueChanged.connect(self.update_label)
 
     @QtCore.Slot()
     def action(self):
         self.susapad.set_actuation_point_lower(self.value())
         self.forms.actuation_slider_upper.setMinimum(self.value())
+
+    @QtCore.Slot()
+    def update_label(self):
+        self.forms.actuation_label.setText(
+            f"Pontos de Ativação: Mínimo ({self.value()}) e Máximo ({self.forms.actuation_slider_upper.value()})"
+        )
 
 
 class UpperActuationSlider(QtWidgets.QSlider):
@@ -39,8 +46,15 @@ class UpperActuationSlider(QtWidgets.QSlider):
         self.setMinimumWidth(330)
 
         self.sliderReleased.connect(self.action)
+        self.valueChanged.connect(self.update_label)
 
     @QtCore.Slot()
     def action(self):
         self.susapad.set_actuation_point_upper(self.value())
         self.forms.actuation_slider_lower.setMaximum(self.value())
+
+    @QtCore.Slot()
+    def update_label(self):
+        self.forms.actuation_label.setText(
+            f"Pontos de Ativação: Mínimo ({self.forms.actuation_slider_lower.value()}) e Máximo ({self.value()})"
+        )

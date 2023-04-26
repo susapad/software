@@ -9,6 +9,7 @@ class PressSensibilitySlider(QtWidgets.QSlider):
         super().__init__()
 
         self.susapad = susapad
+        self.forms = forms
 
         self.setMinimumWidth(330)
         self.setMinimum(10)
@@ -16,10 +17,17 @@ class PressSensibilitySlider(QtWidgets.QSlider):
         self.setOrientation(Qt.Horizontal)
 
         self.sliderReleased.connect(self.action)
+        self.valueChanged.connect(self.update_label)
 
     @QtCore.Slot()
     def action(self):
         self.susapad.set_press_sensibility(self.value())
+
+    @QtCore.Slot()
+    def update_label(self):
+        self.forms.sensibility_label.setText(
+            f"Sensibilidade: Pressionar ({self.value()}) e Soltar ({self.forms.sensibility_slider_release.value()})"
+        )
 
 
 class ReleaseSensibilitySlider(QtWidgets.QSlider):
@@ -28,6 +36,7 @@ class ReleaseSensibilitySlider(QtWidgets.QSlider):
         super().__init__()
 
         self.susapad = susapad
+        self.forms = forms
 
         self.setMinimumWidth(330)
         self.setMinimum(10)
@@ -35,7 +44,14 @@ class ReleaseSensibilitySlider(QtWidgets.QSlider):
         self.setOrientation(Qt.Horizontal)
 
         self.sliderReleased.connect(self.action)
+        self.valueChanged.connect(self.update_label)
 
     @QtCore.Slot()
     def action(self):
         self.susapad.set_release_sensibility(self.value())
+
+    @QtCore.Slot()
+    def update_label(self):
+        self.forms.sensibility_label.setText(
+            f"Sensibilidade: Pressionar ({self.forms.sensibility_slider_press.value()}) e Soltar ({self.value()})"
+        )
