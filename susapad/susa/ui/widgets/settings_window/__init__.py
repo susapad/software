@@ -9,6 +9,9 @@ class FormsGroup(QtWidgets.QWidget):
     def __init__(self, window, susapad):
         super().__init__()
 
+        self.first_h2 = QtWidgets.QLabel("Rapid Trigger")
+        self.first_h2.setObjectName("first-h2")
+
         self.rt_button = togglers.RapidTriggerButton(window, susapad)
         self.crt_button = togglers.ContinuousRapidTriggerButton(window, susapad)
 
@@ -19,7 +22,7 @@ class FormsGroup(QtWidgets.QWidget):
         self.actuation_slider_upper = actuation_point.UpperActuationSlider(window, susapad, self)
 
         self.layout = QtWidgets.QVBoxLayout(self)
-        self.layout.addWidget(QtWidgets.QLabel("Rapid Trigger"))
+        self.layout.addWidget(self.first_h2)
         self.layout.addWidget(self.rt_button)
         self.layout.addWidget(QtWidgets.QLabel("Rapid Trigger Contínuor"))
         self.layout.addWidget(self.crt_button)
@@ -55,17 +58,33 @@ class WindowLayout(QtWidgets.QFrame):
                 background-color: #121212;
             }
 
-            QPushButton {
-                    background-color: #0e639e;
-                    border-radius: 15px;
-                    min-width: 10em;
-                    padding: 6px;
-                    font: bold;
-                    color: white;
-                }
+            QLabel {
+                color: white;
+                font: 16px;
+                margin-top: 20px;
+                margin-bottom: 10px;
+            } 
 
-            QPushButton:hover {
+            QLabel#first-h2 {
+                margin-top: 0px;
+            } 
+
+            QPushButton {
+                margin-left: 20px;
+            }
+
+            QSlider::groove:horizontal {
+                height: 16px;
+                background-color: #861252;
+                border-radius: 8px;
+            }
+
+            QSlider::handle:horizontal {
+                width: 16px;
+                height: 16px;
+                border-radius: 8px;
                 background-color: #127ecb;
+                cursor: pointer;
             }
 
             """
