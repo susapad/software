@@ -22,7 +22,6 @@ class LowerActuationSlider(QtWidgets.QSlider):
     def action(self):
         self.susapad.set_actuation_point_lower(self.value())
         self.forms.actuation_slider_upper.setMinimum(self.value())
-        self.forms.actuation_slider_upper.action()
 
 
 class UpperActuationSlider(QtWidgets.QSlider):
@@ -44,4 +43,3 @@ class UpperActuationSlider(QtWidgets.QSlider):
     def action(self):
         self.susapad.set_actuation_point_upper(self.value())
         self.forms.actuation_slider_lower.setMaximum(self.value())
-        self.forms.actuation_slider_lower.action()
