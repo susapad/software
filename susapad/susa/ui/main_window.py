@@ -40,6 +40,7 @@ class MainWindow(window.BaseWindow):
             alert.show()
 
         else:
+            self.susapad.connect(port)
             self.main_widget.group_button.main.set_found(True)
             self.main_widget.group_header.status.setText(f"SusaPad encontrado na porta {port}")
 
