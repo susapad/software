@@ -32,7 +32,7 @@ class RapidTriggerButton(button.BaseButton):
     def __turn_on(self):
         if not self.susapad.set_rapid_trigger(True):
             self.on = True
-            self.accessibleName = "on"
+            self.setAccessibleName("on")
             self.setText("Desligar")
             self.setStyleSheet(
                 """
@@ -58,7 +58,7 @@ class RapidTriggerButton(button.BaseButton):
     def __turn_off(self):
         if not self.susapad.set_rapid_trigger(False):
             self.on = False
-            self.accessibleName = "off"
+            self.setAccessibleName("off")
             self.setText("Ligar")
             self.setStyleSheet(
                 """
@@ -113,7 +113,7 @@ class ContinuousRapidTriggerButton(button.BaseButton):
     def __turn_on(self):
         if not self.susapad.set_rapid_trigger(True):
             self.on = True
-            self.accessibleName = "on"
+            self.setAccessibleName("on")
             self.setText("Desligar")
             self.setStyleSheet(
                 """
@@ -139,7 +139,7 @@ class ContinuousRapidTriggerButton(button.BaseButton):
     def __turn_off(self):
         if not self.susapad.set_rapid_trigger(False):
             self.on = False
-            self.accessibleName = "off"
+            self.setAccessibleName("off")
             self.setText("Ligar")
             self.setStyleSheet(
                 """
