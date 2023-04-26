@@ -19,7 +19,7 @@ class PressSensibilitySlider(QtWidgets.QSlider):
 
     @QtCore.Slot()
     def action(self):
-        self.susapad.set_press_sensibility(self.value)
+        self.susapad.set_press_sensibility(self.value())
 
 
 class ReleaseSensibilitySlider(QtWidgets.QSlider):
@@ -38,4 +38,4 @@ class ReleaseSensibilitySlider(QtWidgets.QSlider):
 
     @QtCore.Slot()
     def action(self):
-        self.susapad.set_release_sensibility(self.value)
+        self.susapad.set_release_sensibility(self.value())
