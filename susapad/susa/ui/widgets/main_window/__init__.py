@@ -58,35 +58,6 @@ class WindowLayout(QtWidgets.QFrame):
                     border-radius: 20px;
                     background-color: #121212;
                 }
-
-                QPushButton {
-                    background-color: #0e639e;
-                    border-radius: 15px;
-                    min-width: 10em;
-                    padding: 6px;
-                    font: bold;
-                    color: white;
-                }
-
-                QPushButton:hover {
-                    background-color: #127ecb;
-                }
-
-                QPushButton:pressed {
-                    background-color: #0a4874;
-                }
-
-                QPushButton[accessibleName="secondary"] {
-                    background-color: #b71970;
-                }
-
-                QPushButton:hover[accessibleName="secondary"] {
-                    background-color: #dd1e87;
-                }
-
-                QPushButton:pressed[accessibleName="secondary"] {
-                    background-color: #861252;
-                }
             """
         )
         self.setContentsMargins(20, 20, 20, 20)
