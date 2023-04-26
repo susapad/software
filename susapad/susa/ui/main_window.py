@@ -18,6 +18,8 @@ class MainWindow(window.BaseWindow):
         ## Configuration
         super().__init__(susapad)
 
+        self.settings_window = None
+
         ## Configure Layout
         self.main_widget = main_window.WindowLayout(self)
         self.layout.addWidget(self.main_widget)
@@ -43,5 +45,6 @@ class MainWindow(window.BaseWindow):
 
     @QtCore.Slot()
     def open_settings_window(self):
-        self.settings_window = settings_window.SettingsWindow(self)
-        self.settings_window.show()
+        if not self.settings_window:
+            self.settings_window = settings_window.SettingsWindow(self)
+            self.settings_window.show()
