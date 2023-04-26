@@ -1,6 +1,7 @@
 from PySide6 import QtCore, QtWidgets
 from PySide6.QtCore import Qt
 
+from susapad.susa.ui import alert
 
 
 class LowerActuationSlider(QtWidgets.QSlider):
@@ -10,6 +11,7 @@ class LowerActuationSlider(QtWidgets.QSlider):
 
         self.susapad = susapad
         self.forms = forms
+        self.window = window
 
         self.setMinimum(10)
         self.setMaximum(400)
@@ -20,10 +22,17 @@ class LowerActuationSlider(QtWidgets.QSlider):
         self.sliderReleased.connect(self.action)
         self.valueChanged.connect(self.update_label)
 
+    def __raise_alert(self):
+        alert = alert_dialog.AlertDialog(self.window)
+        alert.show()
+        self.window.close()
+
     @QtCore.Slot()
     def action(self):
-        self.susapad.set_actuation_point_lower(self.value())
-        self.forms.actuation_slider_upper.setMinimum(self.value())
+        if self.susapad.set_actuation_point_lower(self.value()):
+            self.forms.actuation_slider_upper.setMinimum(self.value())
+        else:
+            self.__raise_alert()
 
     @QtCore.Slot()
     def update_label(self):
@@ -39,6 +48,7 @@ class UpperActuationSlider(QtWidgets.QSlider):
 
         self.susapad = susapad
         self.forms = forms
+        self.window = window
 
         self.setMinimum(10)
         self.setMaximum(400)
@@ -48,10 +58,17 @@ class UpperActuationSlider(QtWidgets.QSlider):
         self.sliderReleased.connect(self.action)
         self.valueChanged.connect(self.update_label)
 
+    def __raise_alert(self):
+        alert = alert_dialog.AlertDialog(self.window)
+        alert.show()
+        self.window.close()
+
     @QtCore.Slot()
     def action(self):
-        self.susapad.set_actuation_point_upper(self.value())
-        self.forms.actuation_slider_lower.setMaximum(self.value())
+        if self.susapad.set_actuation_point_upper(self.value()):
+            self.forms.actuation_slider_lower.setMaximum(self.value())
+        else:
+            self.__raise_alert()
 
     @QtCore.Slot()
     def update_label(self):

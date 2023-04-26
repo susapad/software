@@ -1,6 +1,7 @@
 from PySide6 import QtCore, QtWidgets
 from PySide6.QtCore import Qt
 
+from susapad.susa.ui import alert
 
 
 class PressSensibilitySlider(QtWidgets.QSlider):
@@ -10,6 +11,7 @@ class PressSensibilitySlider(QtWidgets.QSlider):
 
         self.susapad = susapad
         self.forms = forms
+        self.window = window
 
         self.setMinimumWidth(330)
         self.setMinimum(10)
@@ -19,9 +21,15 @@ class PressSensibilitySlider(QtWidgets.QSlider):
         self.sliderReleased.connect(self.action)
         self.valueChanged.connect(self.update_label)
 
+    def __raise_alert(self):
+        alert = alert_dialog.AlertDialog(self.window)
+        alert.show()
+        self.window.close()
+
     @QtCore.Slot()
     def action(self):
-        self.susapad.set_press_sensibility(self.value())
+        if not self.susapad.set_press_sensibility(self.value()):
+            self.__raise_alert()
 
     @QtCore.Slot()
     def update_label(self):
@@ -37,6 +45,7 @@ class ReleaseSensibilitySlider(QtWidgets.QSlider):
 
         self.susapad = susapad
         self.forms = forms
+        self.window = window
 
         self.setMinimumWidth(330)
         self.setMinimum(10)
@@ -46,9 +55,15 @@ class ReleaseSensibilitySlider(QtWidgets.QSlider):
         self.sliderReleased.connect(self.action)
         self.valueChanged.connect(self.update_label)
 
+    def __raise_alert(self):
+        alert = alert_dialog.AlertDialog(self.window)
+        alert.show()
+        self.window.close()
+
     @QtCore.Slot()
     def action(self):
-        self.susapad.set_release_sensibility(self.value())
+        if not self.susapad.set_release_sensibility(self.value()):
+            self.__raise_alert()
 
     @QtCore.Slot()
     def update_label(self):
