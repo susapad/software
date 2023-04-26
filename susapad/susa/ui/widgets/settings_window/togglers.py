@@ -11,7 +11,7 @@ class RapidTriggerButton(button.BaseButton):
 
     def __init__(self, window, susapad):
         super().__init__("Desativar", None)
-        self.setFixedSize(100, 40)
+        self.setFixedSize(100, 30)
 
         self.susapad = susapad
         self.window = window
@@ -92,7 +92,7 @@ class ContinuousRapidTriggerButton(button.BaseButton):
 
     def __init__(self, window, susapad):
         super().__init__("Desativar", None)
-        self.setFixedSize(100, 40)
+        self.setFixedSize(100, 30)
 
         self.susapad = susapad
         self.window = window
@@ -118,6 +118,11 @@ class ContinuousRapidTriggerButton(button.BaseButton):
                 """
                 QPushButton {
                     background-color: #0e639e;
+                    border-radius: 15px;
+                    min-width: 10em;
+                    padding: 6px;
+                    font: bold;
+                    color: white;
                 }
 
                 QPushButton:hover {
@@ -139,6 +144,11 @@ class ContinuousRapidTriggerButton(button.BaseButton):
                 """
                 QPushButton {
                     background-color: #b71970;
+                    border-radius: 15px;
+                    min-width: 10em;
+                    padding: 6px;
+                    font: bold;
+                    color: white;
                 }
 
                 QPushButton:hover {
