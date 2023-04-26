@@ -3,4 +3,4 @@ exp*.py
 **/__pycache__/
 build/
 susapad.*/
-susapad.zip
+susapad*.zip
