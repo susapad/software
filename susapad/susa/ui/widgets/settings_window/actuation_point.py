@@ -9,6 +9,7 @@ class LowerActuationSlider(QtWidgets.QSlider):
         super().__init__()
 
         self.susapad = susapad
+        self.forms = forms
 
         self.setMinimum(10)
         self.setMaximum(400)
