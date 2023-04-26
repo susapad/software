@@ -8,7 +8,8 @@ import serial.tools.list_ports
 
 class SusaPad:
 
-    def __init__(self):
+    def __init__(self, debug: bool = False):
+        self.debug = debug
         self.serial: [serial.Serial | None] = None
         self.sensibility: int = 200
         self.rapid_trigger: bool = True
@@ -30,7 +31,11 @@ class SusaPad:
             self.serial = serial.Serial(port, 9600)
             return True
         except:
-            return False
+            if self.debug:
+                return True
+            else:
+                self.disconect
+                return False
 
     def disconnect(self):
         """Set `self.susapad_port` as None, virtually closing the connection"""
@@ -75,7 +80,10 @@ class SusaPad:
             time.sleep(1)
             return True
         except:
-            return False
+            if self.debug:
+                return True
+            else:
+                return False
 
     def __configure_susapad(self, command: str, value: int) -> bool:
         k1 = self.__configure_susapad_key(1, command, value)
