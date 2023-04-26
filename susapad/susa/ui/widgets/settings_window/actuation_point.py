@@ -13,7 +13,7 @@ class LowerActuationSlider(QtWidgets.QSlider):
         self.setMinimum(10)
         self.setMaximum(400)
         self.setOrientation(Qt.Horizontal)
-        self.setMinimumWidth(400)
+        self.setMinimumWidth(330)
 
 
         self.sliderReleased.connect(self.action)
@@ -35,7 +35,7 @@ class UpperActuationSlider(QtWidgets.QSlider):
         self.setMinimum(10)
         self.setMaximum(400)
         self.setOrientation(Qt.Horizontal)
-        self.setMinimumWidth(400)
+        self.setMinimumWidth(330)
 
         self.sliderReleased.connect(self.action)
 
