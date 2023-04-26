@@ -80,5 +80,5 @@ class SusaPad:
 
     def __configure_susapad(self, command: str, value: int) -> bool:
         k1 = self.__configure_susapad_key(1, command, value)
-        k2 = self.__configure_susapad_key(2, command, value)
+        k2 = self.__configure_susapad_key(3, command, value)
         return k1 and k2
