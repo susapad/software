@@ -5,8 +5,8 @@ from PySide6.QtCore import Qt
 
 class BaseButton(QtWidgets.QPushButton):
 
-    def __init__(self, text: str, shortcut: [str | None]):
-        super().__init__(text)
+    def __init__(self, text: str, shortcut: str = None, parent: str = None):
+        super().__init__(text, parent)
         self._init_style()
         if shortcut:
             self.setShortcut(shortcut)
