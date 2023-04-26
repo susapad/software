@@ -19,6 +19,7 @@ class MainWindow(window.BaseWindow):
         super().__init__(susapad)
 
         self.settings_window = None
+        self.susapad = susapad
 
         ## Configure Layout
         self.main_widget = main_window.WindowLayout(self)
