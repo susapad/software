@@ -7,7 +7,7 @@ from PySide6.QtCore import Qt
 from susapad.susa.ui import alert_dialog
 
 
-class RapidTriggerButton(QtWidgets.QPushButton):
+class RapidTriggerButton(button.BaseButton):
 
     def __init__(self, window, susapad):
         super().__init__("Desativar", None)
@@ -37,6 +37,11 @@ class RapidTriggerButton(QtWidgets.QPushButton):
                 """
                 QPushButton {
                     background-color: #0e639e;
+                    border-radius: 15px;
+                    min-width: 10em;
+                    padding: 6px;
+                    font: bold;
+                    color: white;
                 }
 
                 QPushButton:hover {
@@ -58,6 +63,11 @@ class RapidTriggerButton(QtWidgets.QPushButton):
                 """
                 QPushButton {
                     background-color: #b71970;
+                    border-radius: 15px;
+                    min-width: 10em;
+                    padding: 6px;
+                    font: bold;
+                    color: white;
                 }
 
                 QPushButton:hover {
@@ -78,7 +88,7 @@ class RapidTriggerButton(QtWidgets.QPushButton):
             self.__turn_on()
 
 
-class ContinuousRapidTriggerButton(QtWidgets.QPushButton):
+class ContinuousRapidTriggerButton(button.BaseButton):
 
     def __init__(self, window, susapad):
         super().__init__("Desativar", None)
