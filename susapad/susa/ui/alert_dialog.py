@@ -17,8 +17,8 @@ class AlertDialog(QtWidgets.QDialog):
 
 
         self.setWindowTitle("Aviso")
-        self.button_box = QtWidgets.QDialogButtonBox(QtWidgets.\
-            QDialogButtonBox.Ok)
+        self.button_box = QtWidgets.QDialogButtonBox(
+            QtWidgets.QDialogButtonBox.Ok)
         self.button_box.accepted.connect(self.accept)
 
 
