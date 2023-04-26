@@ -48,3 +48,8 @@ class MainWindow(window.BaseWindow):
         if not self.settings_window:
             self.settings_window = settings_window.SettingsWindow(self)
             self.settings_window.show()
+
+    @QtCore.Slot()
+    def close_settings_window(self):
+        self.settings_window.close()
+        self.settings_window = None

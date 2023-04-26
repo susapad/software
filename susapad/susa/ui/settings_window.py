@@ -5,6 +5,7 @@ from PySide6.QtCore import Qt
 
 from susapad.susa.ui.widgets import settings_window
 from susapad.susa.ui.widgets.common import window
+from susapad.susa.ui.widgets.settings_window import close
 
 
 class SettingsWindow(window.BaseWindow):
@@ -18,3 +19,5 @@ class SettingsWindow(window.BaseWindow):
 
         self.settings_widget = settings_window.WindowLayout(self, self.susapad)
         self.layout.addWidget(self.settings_widget)
+
+        self.close_button = close.CloseButton(self, parent)
