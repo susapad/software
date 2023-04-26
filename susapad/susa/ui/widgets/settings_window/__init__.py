@@ -17,19 +17,23 @@ class FormsGroup(QtWidgets.QWidget):
 
         self.sensibility_slider_press = sensibility.PressSensibilitySlider(window, susapad, self)
         self.sensibility_slider_release = sensibility.ReleaseSensibilitySlider(window, susapad, self)
+        self.sensibility_label = QtWidgets.QLabel(
+            f"Sensibilidade: Pressionar ({self.sensibility_slider_press.value()}) e Soltar ({self.sensibility_slider_release.value()})")
         
         self.actuation_slider_lower = actuation_point.LowerActuationSlider(window, susapad, self)
         self.actuation_slider_upper = actuation_point.UpperActuationSlider(window, susapad, self)
+        self.actuation_label = QtWidgets.QLabel(
+            f"Pontos de Ativação: Mínimo ({self.actuation_slider_lower.value()}) e Máximo ({self.actuation_slider_upper.value()})")
 
         self.layout = QtWidgets.QVBoxLayout(self)
         self.layout.addWidget(self.first_h2)
         self.layout.addWidget(self.rt_button)
         self.layout.addWidget(QtWidgets.QLabel("Rapid Trigger Contínuor"))
         self.layout.addWidget(self.crt_button)
-        self.layout.addWidget(QtWidgets.QLabel("Sensibilidade: Pressionar e Soltar"))
+        self.layout.addWidget(self.sensibility_label)
         self.layout.addWidget(self.sensibility_slider_press, alignment = Qt.AlignJustify)
         self.layout.addWidget(self.sensibility_slider_release, alignment = Qt.AlignJustify)
-        self.layout.addWidget(QtWidgets.QLabel("Pontos de Ativação: Mínimo e Máximo"))
+        self.layout.addWidget(self.actuation_label)
         self.layout.addWidget(self.actuation_slider_lower, alignment = Qt.AlignJustify)
         self.layout.addWidget(self.actuation_slider_upper, alignment = Qt.AlignJustify)
 
