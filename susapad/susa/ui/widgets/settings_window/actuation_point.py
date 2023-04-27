@@ -15,6 +15,7 @@ class ActuationSlider(QtWidgets.QSlider):
 
         self.setMinimum(10)
         self.setMaximum(400)
+        self.setInvertedAppearance(True)
         self.setOrientation(Qt.Horizontal)
         self.setMinimumWidth(330)
 
