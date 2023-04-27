@@ -84,7 +84,7 @@ class SusaPad:
             print(f"key{key}.{command} {value}")
             self.serial.write(f"key{key}.{command} {value}".encode())
             self.serial.flush()
-            time.sleep(1)
+            time.sleep(0.5)
             return True
         except:
             if self.debug:
