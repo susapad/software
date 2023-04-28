@@ -1,7 +1,7 @@
 from PySide6 import QtCore, QtWidgets
 from PySide6.QtCore import Qt
 
-from susapad.windows import alert
+from susapad.controler import exception
 
 
 def in_mm(value: int) -> str:
@@ -24,15 +24,11 @@ class PressSensibilitySlider(QtWidgets.QSlider):
         self.sliderReleased.connect(self.action)
         self.valueChanged.connect(self.update_label)
 
-    def __raise_alert(self):
-        alert_dialog = alert.AlertDialog(self.window)
-        alert_dialog.show()
-        self.window.close()
-
     @QtCore.Slot()
     def action(self):
         if not self.susapad.set_press_sensibility(self.value()):
-            self.__raise_alert()
+            exception.susapad_not_found(self.window)
+            exception.close_current_window(self.window)
 
     @QtCore.Slot()
     def update_label(self):
@@ -60,15 +56,11 @@ class ReleaseSensibilitySlider(QtWidgets.QSlider):
         self.sliderReleased.connect(self.action)
         self.valueChanged.connect(self.update_label)
 
-    def __raise_alert(self):
-        alert_dialog = alert.AlertDialog(self.window)
-        alert_dialog.show()
-        self.window.close()
-
     @QtCore.Slot()
     def action(self):
         if not self.susapad.set_release_sensibility(self.value()):
-            self.__raise_alert()
+            exception.susapad_not_found(self.window)
+            exception.close_current_window(self.window)
 
     @QtCore.Slot()
     def update_label(self):

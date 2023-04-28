@@ -5,8 +5,8 @@ import time
 from PySide6 import QtCore, QtGui, QtWidgets
 from PySide6.QtCore import Qt
 
-from susapad.controler import susapad
-from susapad.windows import settings, alert
+from susapad.controler import susapad, exception
+from susapad.windows import settings
 from susapad.windows.main import widgets
 from susapad import base_widgets as base
 
@@ -35,9 +35,7 @@ class MainWindow(base.BaseWindow):
         if "" == port:
             self.main_widget.group_button.main.set_found(False)
             self.main_widget.group_header.status.setText("SusaPad não encontrado!")
-            
-            alert_dialog = alert.AlertDialog(self)
-            alert_dialog.show()
+            exception.susapad_not_found(self.window)
         else:
             if not self.susapad.debug:
                 self.susapad.connect(port)

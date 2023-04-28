@@ -4,7 +4,7 @@ import time
 from PySide6 import QtWidgets, QtCore
 from PySide6.QtCore import Qt 
 
-from susapad.windows import alert
+from susapad.controler import exception
 from susapad import base_widgets as base
 
 
@@ -21,12 +21,6 @@ class RapidTriggerButton(base.BaseButton):
         self.clicked.connect(self.rapid_trigger)
         self.setCursor(Qt.PointingHandCursor)
         self.__turn_on()
-
-
-    def __raise_alert(self):
-        alert_dialog = alert.AlertDialog(self.window)
-        alert_dialog.show()
-        self.window.close()
 
 
     def __turn_on(self):
@@ -51,8 +45,8 @@ class RapidTriggerButton(base.BaseButton):
                 """
             )
         else:
-            print("Algum problema ocorreu. Certifique-se que seu Susapad está conectado.")
-            self.__raise_alert()
+            exception.susapad_not_found(self.window)
+            exception.close_current_window(self.window)
 
 
     def __turn_off(self):
@@ -77,8 +71,8 @@ class RapidTriggerButton(base.BaseButton):
                 """
             )
         else:
-            print("Algum problema ocorreu. Certifique-se que seu Susapad está conectado.")
-            self.__raise_alert()
+            exception.susapad_not_found(self.window)
+            exception.close_current_window(self.window)
     
 
     @QtCore.Slot()
@@ -103,13 +97,6 @@ class ContinuousRapidTriggerButton(base.BaseButton):
         self.setCursor(Qt.PointingHandCursor)
         self.__turn_on()
 
-
-    def __raise_alert(self):
-        alert_dialog = alert.AlertDialog(self.window)
-        alert_dialog.show()
-        self.window.close()
-
-
     def __turn_on(self):
         if self.susapad.set_continuous_rapid_trigger(True):
             self.on = True
@@ -132,8 +119,8 @@ class ContinuousRapidTriggerButton(base.BaseButton):
                 """
             )
         else:
-            print("Algum problema ocorreu. Certifique-se que seu Susapad está conectado.")
-            self.__raise_alert()
+            exception.susapad_not_found(self.window)
+            exception.close_current_window(self.window)
 
 
     def __turn_off(self):
@@ -158,8 +145,8 @@ class ContinuousRapidTriggerButton(base.BaseButton):
                 """
             )
         else:
-            print("Algum problema ocorreu. Certifique-se que seu Susapad está conectado.")
-            self.__raise_alert()
+            exception.susapad_not_found(self.window)
+            exception.close_current_window(self.window)
     
 
     @QtCore.Slot()

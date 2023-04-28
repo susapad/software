@@ -1,7 +1,7 @@
 from PySide6 import QtCore, QtWidgets
 from PySide6.QtCore import Qt
 
-from susapad.windows import alert
+from susapad.controler import exception
 
 
 class ActuationSlider(QtWidgets.QSlider):
@@ -22,11 +22,6 @@ class ActuationSlider(QtWidgets.QSlider):
         self.sliderReleased.connect(self.action)
         self.valueChanged.connect(self.update_label)
 
-    def __raise_alert(self):
-        alert_dialog = alert.AlertDialog(self.window)
-        alert_dialog.show()
-        self.window.close()
-
     @staticmethod
     def reverse(value: int) -> int:
         if 190 == value:
@@ -41,7 +36,8 @@ class ActuationSlider(QtWidgets.QSlider):
     @QtCore.Slot()
     def action(self):
         if not self.susapad.set_actuation_point(self.reverse(self.value())):
-            self.__raise_alert()
+            exception.susapad_not_found(self.window)
+            exception.close_current_window(self.window)
 
     @QtCore.Slot()
     def update_label(self):
