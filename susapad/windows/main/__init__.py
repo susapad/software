@@ -6,7 +6,8 @@ from PySide6 import QtCore, QtGui, QtWidgets
 from PySide6.QtCore import Qt
 
 from susapad.controler import susapad
-from susapad.ui import alert_dialog, settings_window
+from susapad.ui import alert_dialog
+from susapad.windows import settings
 from susapad.windows.main import widgets
 from susapad.base_widgets import window
 
@@ -47,7 +48,7 @@ class MainWindow(window.BaseWindow):
     @QtCore.Slot()
     def open_settings_window(self):
         if not self.settings_window:
-            self.settings_window = settings_window.SettingsWindow(self)
+            self.settings_window = settings.SettingsWindow(self)
             self.settings_window.show()
 
     @QtCore.Slot()

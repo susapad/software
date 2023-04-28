@@ -2,6 +2,7 @@ from PySide6 import QtCore, QtGui, QtWidgets
 from PySide6.QtCore import Qt
 
 from . import actuation_point, togglers, sensibility
+from .close import CloseButton
 
 
 class FormsGroup(QtWidgets.QWidget):
