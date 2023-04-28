@@ -18,7 +18,7 @@ class FormsGroup(QtWidgets.QWidget):
         self.sensibility_slider_press = sensibility.PressSensibilitySlider(window, susapad, self)
         self.sensibility_slider_release = sensibility.ReleaseSensibilitySlider(window, susapad, self)
         self.sensibility_label = QtWidgets.QLabel(
-            f"Sensibilidade: Pressionar ({self.sensibility_slider_press.value()}) e Soltar ({self.sensibility_slider_release.value()})")
+            f"Sensibilidade: Pressionar ({self.__get_press()}) e Soltar ({self.__get_release()})")
         
         self.actuation_slider = actuation_point.ActuationSlider(window, susapad, self)
         self.actuation_label = QtWidgets.QLabel(
@@ -40,6 +40,16 @@ class FormsGroup(QtWidgets.QWidget):
         value = self.actuation_slider.reverse(
                 self.actuation_slider.value())
         return self.actuation_slider.in_mm(value)
+
+    def __get_press(self) -> str:
+        return sensibility.in_percent(
+            self.sensibility_slider_press.value()
+        )
+
+    def __get_release(self) -> str:
+        return sensibility.in_percent(
+            self.sensibility_slider_release.value()
+        )
 
 
 
