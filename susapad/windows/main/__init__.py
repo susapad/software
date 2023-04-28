@@ -35,7 +35,7 @@ class MainWindow(base.BaseWindow):
         if "" == port:
             self.main_widget.group_button.main.set_found(False)
             self.main_widget.group_header.status.setText("SusaPad não encontrado!")
-            exception.susapad_not_found(self.window)
+            exception.susapad_not_found(self)
         else:
             if not self.susapad.debug:
                 self.susapad.connect(port)
