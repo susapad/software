@@ -18,7 +18,7 @@ from susapad.controler import susapad as susapad_module
 def run():
     """Start SusaPad's application"""
 
-    susapad = susapad_module.SusaPad(True)
+    susapad = susapad_module.SusaPad()
     susa_app = QtWidgets.QApplication([])
     susa_window = main.MainWindow(susapad)
     susa_window.show()
