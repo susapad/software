@@ -1,5 +1,5 @@
 
-from susapad.ui.widgets.common import button
+from susapad.base_widgets import button
 
 
 class CloseButton(button.BaseButton):

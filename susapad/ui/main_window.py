@@ -8,7 +8,7 @@ from PySide6.QtCore import Qt
 from susapad.controler import susapad
 from susapad.ui import alert_dialog, settings_window
 from susapad.ui.widgets import main_window
-from susapad.ui.widgets.common import window
+from susapad.base_widgets import window
 
 
 class MainWindow(window.BaseWindow):
