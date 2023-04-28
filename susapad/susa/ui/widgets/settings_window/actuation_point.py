@@ -29,12 +29,10 @@ class ActuationSlider(QtWidgets.QSlider):
 
     @staticmethod
     def reverse(value: int) -> int:
-        if 190 < value:
-            return 380 - value
-        elif 190 > value:
-            return 400 - value
+        if 190 == value:
+            return 190
         else:
-            return value
+            return 400 - value
 
     @staticmethod
     def in_mm(value: int) -> str:
