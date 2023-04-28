@@ -7,7 +7,7 @@ from PySide6.QtCore import Qt
 
 from susapad.controler import susapad
 from susapad.ui import alert_dialog, settings_window
-from susapad.ui.widgets import main_window
+from susapad.windows.main import widgets
 from susapad.base_widgets import window
 
 
@@ -22,7 +22,7 @@ class MainWindow(window.BaseWindow):
         self.susapad = susapad
 
         ## Configure Layout
-        self.main_widget = main_window.WindowLayout(self)
+        self.main_widget = widgets.WindowLayout(self)
         self.layout.addWidget(self.main_widget)
 
         ## Startup
