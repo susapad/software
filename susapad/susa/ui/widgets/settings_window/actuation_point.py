@@ -36,6 +36,10 @@ class ActuationSlider(QtWidgets.QSlider):
         else:
             return value
 
+    @staticmethod
+    def in_mm(value: int) -> str:
+        return f"{value/100}mm"
+
     @QtCore.Slot()
     def action(self):
         if not self.susapad.set_actuation_point(self.value()):
