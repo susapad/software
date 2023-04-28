@@ -27,6 +27,15 @@ class ActuationSlider(QtWidgets.QSlider):
         alert.show()
         self.window.close()
 
+    @staticmethod
+    def reverse(value: int) -> int:
+        if 190 < value:
+            return 380 - value
+        elif 190 > value:
+            return 400 - value
+        else:
+            return value
+
     @QtCore.Slot()
     def action(self):
         if not self.susapad.set_actuation_point(self.value()):
