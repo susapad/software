@@ -1,7 +1,7 @@
 from PySide6 import QtCore, QtWidgets
 from PySide6.QtCore import Qt
 
-from susapad.susa.ui import alert_dialog
+from susapad.ui import alert_dialog
 
 
 def in_mm(value: int) -> str:

@@ -3,9 +3,9 @@ import serial
 from PySide6 import QtGui, QtWidgets
 from PySide6.QtCore import Qt
 
-from susapad.susa.ui.widgets import settings_window
-from susapad.susa.ui.widgets.common import window
-from susapad.susa.ui.widgets.settings_window import close
+from susapad.ui.widgets import settings_window
+from susapad.ui.widgets.common import window
+from susapad.ui.widgets.settings_window import close
 
 
 class SettingsWindow(window.BaseWindow):

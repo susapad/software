@@ -4,8 +4,8 @@ import time
 from PySide6 import QtWidgets, QtCore
 from PySide6.QtCore import Qt 
 
-from susapad.susa.ui import alert_dialog
-from susapad.susa.ui.widgets.common import button
+from susapad.ui import alert_dialog
+from susapad.ui.widgets.common import button
 
 
 class RapidTriggerButton(button.BaseButton):

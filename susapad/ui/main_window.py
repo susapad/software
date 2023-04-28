@@ -5,10 +5,10 @@ import time
 from PySide6 import QtCore, QtGui, QtWidgets
 from PySide6.QtCore import Qt
 
-from susapad.susa.controler import susapad
-from susapad.susa.ui import alert_dialog, settings_window
-from susapad.susa.ui.widgets import main_window
-from susapad.susa.ui.widgets.common import window
+from susapad.controler import susapad
+from susapad.ui import alert_dialog, settings_window
+from susapad.ui.widgets import main_window
+from susapad.ui.widgets.common import window
 
 
 class MainWindow(window.BaseWindow):
