@@ -4,7 +4,7 @@ import time
 from PySide6 import QtWidgets, QtCore
 from PySide6.QtCore import Qt 
 
-from susapad.ui import alert_dialog
+from susapad.windows import alert
 from susapad.base_widgets import button
 
 
@@ -24,8 +24,8 @@ class RapidTriggerButton(button.BaseButton):
 
 
     def __raise_alert(self):
-        alert = alert_dialog.AlertDialog(self.window)
-        alert.show()
+        alert_dialog = alert.AlertDialog(self.window)
+        alert_dialog.show()
         self.window.close()
 
 
@@ -105,8 +105,8 @@ class ContinuousRapidTriggerButton(button.BaseButton):
 
 
     def __raise_alert(self):
-        alert = alert_dialog.AlertDialog(self.window)
-        alert.show()
+        alert_dialog = alert.AlertDialog(self.window)
+        alert_dialog.show()
         self.window.close()
 
 
