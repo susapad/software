@@ -4,8 +4,8 @@ from PySide6.QtCore import Qt
 from susapad.susa.ui import alert_dialog
 
 
-def in_percent(value: int) -> str:
-        return f"{((value - 10) / 3.9):0.1f}%"
+def in_mm(value: int) -> str:
+    return f"{value/100}mm"
 
 class PressSensibilitySlider(QtWidgets.QSlider):
 
@@ -36,8 +36,8 @@ class PressSensibilitySlider(QtWidgets.QSlider):
 
     @QtCore.Slot()
     def update_label(self):
-        press = in_percent(self.value())
-        release = in_percent(self.forms.sensibility_slider_release.value())
+        press = in_mm(self.value())
+        release = in_mm(self.forms.sensibility_slider_release.value())
         self.forms.sensibility_label.setText(
             f"Sensibilidade: Pressionar ({press}) e Soltar ({release})"
         )
@@ -72,8 +72,8 @@ class ReleaseSensibilitySlider(QtWidgets.QSlider):
 
     @QtCore.Slot()
     def update_label(self):
-        release = in_percent(self.value())
-        press = in_percent(self.forms.sensibility_slider_press.value())
+        release = in_mm(self.value())
+        press = in_mm(self.forms.sensibility_slider_press.value())
         self.forms.sensibility_label.setText(
             f"Sensibilidade: Pressionar ({press}) e Soltar ({release})"
         )

@@ -41,12 +41,12 @@ class FormsGroup(QtWidgets.QWidget):
         return self.actuation_slider.in_mm(value)
 
     def __get_press(self) -> str:
-        return sensibility.in_percent(
+        return sensibility.in_mm(
             self.sensibility_slider_press.value()
         )
 
     def __get_release(self) -> str:
-        return sensibility.in_percent(
+        return sensibility.in_mm(
             self.sensibility_slider_release.value()
         )
 
