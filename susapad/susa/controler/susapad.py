@@ -65,10 +65,11 @@ class SusaPad:
     def set_actuation_point(self, value: int) -> bool:
         """Set Key's Actuation ponit"""
 
-        # NOTE: We need to reset `lh` to avoid undesired side-effects.
+        # NOTE: We need to reset `lh` and `uh` to avoid undesired side-effects.
         #   Note that `uh` must always be smaller than `lh`.
         #   So bugs may occur if we don't reset this value.
         r2 = self.__configure_susapad("lh", 0)
+        r2 = self.__configure_susapad("uh", 390)
 
         r1 = self.__configure_susapad("uh", value)
         r2 = self.__configure_susapad("lh", value - 10)
