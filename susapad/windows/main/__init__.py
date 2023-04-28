@@ -8,10 +8,10 @@ from PySide6.QtCore import Qt
 from susapad.controler import susapad
 from susapad.windows import settings, alert
 from susapad.windows.main import widgets
-from susapad.base_widgets import window
+from susapad import base_widgets as base
 
 
-class MainWindow(window.BaseWindow):
+class MainWindow(base.BaseWindow):
 
     def __init__(self, susapad):
 

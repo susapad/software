@@ -1,8 +1,8 @@
 
-from susapad.base_widgets import button
+from susapad import base_widgets as base
 
 
-class CloseButton(button.BaseButton):
+class CloseButton(base.BaseButton):
 
     def __init__(self, window, main_window):
         super().__init__("Fechar", "Escape", window)

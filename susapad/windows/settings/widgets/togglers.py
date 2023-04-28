@@ -5,10 +5,10 @@ from PySide6 import QtWidgets, QtCore
 from PySide6.QtCore import Qt 
 
 from susapad.windows import alert
-from susapad.base_widgets import button
+from susapad import base_widgets as base
 
 
-class RapidTriggerButton(button.BaseButton):
+class RapidTriggerButton(base.BaseButton):
 
     def __init__(self, window, susapad):
         super().__init__("Desativar", None)
@@ -89,7 +89,7 @@ class RapidTriggerButton(button.BaseButton):
             self.__turn_on()
 
 
-class ContinuousRapidTriggerButton(button.BaseButton):
+class ContinuousRapidTriggerButton(base.BaseButton):
 
     def __init__(self, window, susapad):
         super().__init__("Desativar", None)

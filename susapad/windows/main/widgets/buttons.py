@@ -1,10 +1,10 @@
 from PySide6 import QtCore, QtWidgets
 from PySide6.QtCore import Qt
 
-from susapad.base_widgets import button
+from susapad import base_widgets as base
 
 
-class ActionButton(button.BaseButton):
+class ActionButton(base.BaseButton):
 
     def __init__(self, main_window):
         super().__init__("Conectar", "Enter")
@@ -29,7 +29,7 @@ class ActionButton(button.BaseButton):
             self.main_window.connect_to_susapad()
 
 
-class CloseButton(button.BaseButton):
+class CloseButton(base.BaseButton):
 
     def __init__(self):
         super().__init__("Fechar", "Escape")

@@ -3,12 +3,12 @@ import serial
 from PySide6 import QtGui, QtWidgets
 from PySide6.QtCore import Qt
 
-from susapad.base_widgets import window
+from susapad import base_widgets as base
 
 from . import widgets
 
 
-class SettingsWindow(window.BaseWindow):
+class SettingsWindow(base.BaseWindow):
 
     def __init__(self, parent):
 
