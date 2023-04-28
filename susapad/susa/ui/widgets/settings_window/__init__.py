@@ -37,8 +37,7 @@ class FormsGroup(QtWidgets.QWidget):
 
 
     def __get_actuation_point(self) -> str:
-        value = self.actuation_slider.reverse(
-                self.actuation_slider.value())
+        value = self.actuation_slider.value()
         return self.actuation_slider.in_mm(value)
 
     def __get_press(self) -> str:

@@ -45,7 +45,7 @@ class ActuationSlider(QtWidgets.QSlider):
 
     @QtCore.Slot()
     def update_label(self):
-        value = self.in_mm(self.reverse(self.value()))
+        value = self.in_mm(self.value())
         self.forms.actuation_label.setText(
             f"Ponto de Atuação: ({value})"
         )
