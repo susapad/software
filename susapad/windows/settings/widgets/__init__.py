@@ -102,7 +102,6 @@ class WindowLayout(QtWidgets.QFrame):
                 height: 16px;
                 border-radius: 8px;
                 background-color: #127ecb;
-                cursor: pointer;
             }
 
             """
