@@ -7,7 +7,7 @@ from . import button as base
 
 
 _TOGGLE_STYLE = """
-        QPushButton[accessibleName="on"] {
+        QPushButton {
                 background-color: #0e639e;
                 border-radius: 15px;
                 min-width: 10em;
@@ -16,17 +16,12 @@ _TOGGLE_STYLE = """
                 color: white;
         }
 
-        QPushButton:hover[accessibleName="on"] {
+        QPushButton:hover {
             background-color: #127ecb;
         }
 
         QPushButton[accessibleName="off"] {
                 background-color: #b71970;
-                border-radius: 15px;
-                min-width: 10em;
-                padding: 6px;
-                font: bold;
-                color: white;
         }
 
         QPushButton:hover[accessibleName="off"] {
