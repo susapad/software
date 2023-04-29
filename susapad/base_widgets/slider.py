@@ -70,6 +70,8 @@ class BaseSliderGroup(QtWidgets.QWidget):
         self.slider.sliderReleased.connect(self._update_susapad)
         self.slider.valueChanged.connect(self._update_label) 
 
+        self.setStyleSheet("QSlider { margin-top: 15px; }")
+
     # Template function
 
     def update_susapad(self, value: int) -> bool:
@@ -150,6 +152,8 @@ class BaseDualSliderGroup(QtWidgets.QWidget):
         self.slider2.sliderReleased.connect(self._update_susapad_slider2)
         self.slider1.valueChanged.connect(self._update_label) 
         self.slider2.valueChanged.connect(self._update_label) 
+
+        self.setStyleSheet("QSlider { margin-top: 15px; }")
 
     # Template function
 
