@@ -6,6 +6,35 @@ from susapad.controller import exception
 from . import button as base
 
 
+_TOGGLE_STYLE = """
+        QPushButton[accessibleName="on"] {
+                background-color: #0e639e;
+                border-radius: 15px;
+                min-width: 10em;
+                padding: 6px;
+                font: bold;
+                color: white;
+        }
+
+        QPushButton:hover[accessibleName="on"] {
+            background-color: #127ecb;
+        }
+
+        QPushButton[accessibleName="off"] {
+                background-color: #b71970;
+                border-radius: 15px;
+                min-width: 10em;
+                padding: 6px;
+                font: bold;
+                color: white;
+        }
+
+        QPushButton:hover[accessibleName="off"] {
+            background-color: #dd1e87;
+        }
+    """
+
+
 class BaseToggleButton(base.BaseButton):
 
     def __init__(self, window, susapad, on: bool = True):
@@ -19,39 +48,12 @@ class BaseToggleButton(base.BaseButton):
         self.clicked.connect(self.toggle)
         self.setCursor(Qt.PointingHandCursor)
 
-        self.style = """
-            QPushButton[accessibleName="on"] {
-                    background-color: #0e639e;
-                    border-radius: 15px;
-                    min-width: 10em;
-                    padding: 6px;
-                    font: bold;
-                    color: white;
-            }
-
-            QPushButton:hover[accessibleName="on"] {
-                background-color: #127ecb;
-            }
-
-            QPushButton[accessibleName="off"] {
-                    background-color: #b71970;
-                    border-radius: 15px;
-                    min-width: 10em;
-                    padding: 6px;
-                    font: bold;
-                    color: white;
-            }
-
-            QPushButton:hover[accessibleName="off"] {
-                background-color: #dd1e87;
-            }
-        """
+        self.style = _TOGGLE_STYLE
         
         if on:
             self.__turn_on()
         else:
             self.__turn_off()
-
 
     # Template functions
 
@@ -60,7 +62,6 @@ class BaseToggleButton(base.BaseButton):
 
     def command_off() -> bool:
         pass
-
 
     # Internal functions
 
