@@ -1,71 +1,26 @@
+from string import Template
+
 from PySide6 import QtCore, QtWidgets
 from PySide6.QtCore import Qt
 
 from susapad.controller import exception
+from susapad import base_widgets as base
 
 
-def in_mm(value: int) -> str:
-    return f"{value/100}mm"
+class SensiblitySlidersGroup(base.BaseDualSliderGroup):
 
-class PressSensibilitySlider(QtWidgets.QSlider):
+    def __init__(self, window, susapad):
+        super().__init__(window, susapad)
 
-    def __init__(self, window, susapad, forms):
-        super().__init__()
+        self.set_template(Template(
+            "Sensibilidade: Pressionar (${value1}) e Soltar (${value2})"))
+        self.set_range((10, 400))
+        self._update_label()
 
-        self.susapad = susapad
-        self.forms = forms
-        self.window = window
+    @QtCore.Slot() # press
+    def update_susapad_slider1(self, value: int) -> bool:
+        return self.susapad.set_press_sensibility(value)
 
-        self.setMinimumWidth(330)
-        self.setMinimum(10)
-        self.setMaximum(400)
-        self.setOrientation(Qt.Horizontal)
-
-        self.sliderReleased.connect(self.action)
-        self.valueChanged.connect(self.update_label)
-
-    @QtCore.Slot()
-    def action(self):
-        if not self.susapad.set_press_sensibility(self.value()):
-            exception.susapad_not_found(self.window)
-            exception.close_current_window(self.window)
-
-    @QtCore.Slot()
-    def update_label(self):
-        press = in_mm(self.value())
-        release = in_mm(self.forms.sensibility_slider_release.value())
-        self.forms.sensibility_label.setText(
-            f"Sensibilidade: Pressionar ({press}) e Soltar ({release})"
-        )
-
-
-class ReleaseSensibilitySlider(QtWidgets.QSlider):
-
-    def __init__(self, window, susapad, forms):
-        super().__init__()
-
-        self.susapad = susapad
-        self.forms = forms
-        self.window = window
-
-        self.setMinimumWidth(330)
-        self.setMinimum(10)
-        self.setMaximum(400)
-        self.setOrientation(Qt.Horizontal)
-
-        self.sliderReleased.connect(self.action)
-        self.valueChanged.connect(self.update_label)
-
-    @QtCore.Slot()
-    def action(self):
-        if not self.susapad.set_release_sensibility(self.value()):
-            exception.susapad_not_found(self.window)
-            exception.close_current_window(self.window)
-
-    @QtCore.Slot()
-    def update_label(self):
-        release = in_mm(self.value())
-        press = in_mm(self.forms.sensibility_slider_press.value())
-        self.forms.sensibility_label.setText(
-            f"Sensibilidade: Pressionar ({press}) e Soltar ({release})"
-        )
+    @QtCore.Slot() # release
+    def update_susapad_slider2(self, value: int) -> bool:
+        return self.susapad.set_release_sensibility(value)

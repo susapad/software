@@ -16,11 +16,7 @@ class FormsGroup(QtWidgets.QWidget):
         self.rt_button = togglers.RapidTriggerButton(window, susapad)
         self.crt_button = togglers.ContinuousRapidTriggerButton(window, susapad)
 
-        self.sensibility_slider_press = sensibility.PressSensibilitySlider(window, susapad, self)
-        self.sensibility_slider_release = sensibility.ReleaseSensibilitySlider(window, susapad, self)
-        self.sensibility_label = QtWidgets.QLabel(
-            f"Sensibilidade: Pressionar ({self.__get_press()}) e Soltar ({self.__get_release()})")
-        
+        self.sensibility_slider = sensibility.SensiblitySlidersGroup(window, susapad)
         self.actuation_slider = actuation_point.ActuationPointGroup(window, susapad)
 
         self.layout = QtWidgets.QVBoxLayout(self)
@@ -28,20 +24,8 @@ class FormsGroup(QtWidgets.QWidget):
         self.layout.addWidget(self.rt_button)
         self.layout.addWidget(QtWidgets.QLabel("Rapid Trigger Contínuo"))
         self.layout.addWidget(self.crt_button)
-        self.layout.addWidget(self.sensibility_label)
-        self.layout.addWidget(self.sensibility_slider_press, alignment = Qt.AlignJustify)
-        self.layout.addWidget(self.sensibility_slider_release, alignment = Qt.AlignJustify)
-        self.layout.addWidget(self.actuation_slider, alignment = Qt.AlignJustify)
-
-    def __get_press(self) -> str:
-        return sensibility.in_mm(
-            self.sensibility_slider_press.value()
-        )
-
-    def __get_release(self) -> str:
-        return sensibility.in_mm(
-            self.sensibility_slider_release.value()
-        )
+        self.layout.addWidget(self.sensibility_slider)
+        self.layout.addWidget(self.actuation_slider)
 
 
 
@@ -81,23 +65,6 @@ class WindowLayout(QtWidgets.QFrame):
 
             QPushButton {
                 margin-left: 20px;
-            }
-
-            QSlider::groove:horizontal {
-                height: 16px;
-                background-color: #090909;
-                border-radius: 8px;
-            }
-
-            QSlider::handle {
-                background-color: #b71970;
-                width: 16px;
-                height: 16px;
-                border-radius: 8px;
-            }
-
-            QSlider::handle:hover {
-                background-color: #dd1e87;
             }
 
             """
