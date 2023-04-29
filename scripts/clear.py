@@ -59,10 +59,10 @@ def run():
     """"Starts the script 
     - use your Current Working Directory as root path
     """
-    print("Cleaning __pycache__...")
+    print("Cleaning __pycache__ ...")
     PyCacheDump(".").clear()
 
-    print("Cleaning build")
+    print("Cleaning build ...")
     BuildDump("susapad", ".").clear()
 
 
