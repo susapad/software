@@ -93,15 +93,19 @@ class WindowLayout(QtWidgets.QFrame):
 
             QSlider::groove:horizontal {
                 height: 16px;
-                background-color: #861252;
+                background-color: #090909;
                 border-radius: 8px;
             }
 
-            QSlider::handle:horizontal {
+            QSlider::handle {
+                background-color: #b71970;
                 width: 16px;
                 height: 16px;
                 border-radius: 8px;
-                background-color: #127ecb;
+            }
+
+            QSlider::handle:hover {
+                background-color: #dd1e87;
             }
 
             """
