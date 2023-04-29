@@ -38,9 +38,6 @@ class BaseSlider(QtWidgets.QSlider):
         self.setMinimumWidth(330)
         self.setStyleSheet(_SLIDER_STYLE)
 
-        self.sliderReleased.connect(self.group._update_susapad)
-        self.valueChanged.connect(self.group._update_label) 
-
 
 class BaseSliderGroup(QtWidgets.QWidget):
 
@@ -68,6 +65,10 @@ class BaseSliderGroup(QtWidgets.QWidget):
         self.layout = QtWidgets.QVBoxLayout(self)
         self.layout.addWidget(self.title)
         self.layout.addWidget(self.bottom)
+
+        # Configuring Sliders
+        self.slider.sliderReleased.connect(self._update_susapad)
+        self.slider.valueChanged.connect(self._update_label) 
 
     # Template function
 
