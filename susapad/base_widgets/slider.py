@@ -131,13 +131,13 @@ class BaseDualSliderGroup(QtWidgets.QWidget):
         self.slider1_group = QtWidgets.QWidget()
         self.slider1_layout = QtWidgets.QHBoxLayout(self.slider1_group)
         self.slider1_layout.addWidget(self.min1)
-        self.slider1_layout.addWidget(self.slider1, alignment = Qt.AlignBaseline)
+        self.slider1_layout.addWidget(self.slider1)
         self.slider1_layout.addWidget(self.max1)
 
         self.slider2_group = QtWidgets.QWidget()
         self.slider2_layout = QtWidgets.QHBoxLayout(self.slider2_group)
         self.slider2_layout.addWidget(self.min2)
-        self.slider2_layout.addWidget(self.slider2, alignment = Qt.AlignBaseline)
+        self.slider2_layout.addWidget(self.slider2)
         self.slider2_layout.addWidget(self.max2)
 
         self.layout = QtWidgets.QVBoxLayout(self)
