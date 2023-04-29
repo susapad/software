@@ -62,22 +62,19 @@ class BaseToggleButton(base.BaseButton):
     def __reload_style(self):
         self.setStyleSheet(self.style)
 
-    def __turn_on(self):
-        if self.command_on():
-            self.setAccessibleName("on")
-            self.setText("Desligar")
+    def __turn(self, command, name: str, text: str):
+        if command():
+            self.setAccessibleName(name)
+            self.setText(text)
             self.__reload_style()
         else:
             self.__error()
 
+    def __turn_on(self):
+        self.__turn(self.command_on, "on", "Desligar")
 
     def __turn_off(self):
-        if self.command_off():
-            self.setAccessibleName("off")
-            self.setText("Ligar")
-            self.__reload_style()
-        else:
-            self.__error()
+        self.__turn(self.command_off, "off", "Ligar")
 
     def __error():
         exception.susapad_not_found(self.window)
