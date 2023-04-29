@@ -21,9 +21,7 @@ class FormsGroup(QtWidgets.QWidget):
         self.sensibility_label = QtWidgets.QLabel(
             f"Sensibilidade: Pressionar ({self.__get_press()}) e Soltar ({self.__get_release()})")
         
-        self.actuation_slider = actuation_point.ActuationSlider(window, susapad, self)
-        self.actuation_label = QtWidgets.QLabel(
-            f"Ponto de Atuação: ({self.__get_actuation_point()})")
+        self.actuation_slider = actuation_point.ActuationPointGroup(window, susapad)
 
         self.layout = QtWidgets.QVBoxLayout(self)
         self.layout.addWidget(self.first_h2)
@@ -33,13 +31,7 @@ class FormsGroup(QtWidgets.QWidget):
         self.layout.addWidget(self.sensibility_label)
         self.layout.addWidget(self.sensibility_slider_press, alignment = Qt.AlignJustify)
         self.layout.addWidget(self.sensibility_slider_release, alignment = Qt.AlignJustify)
-        self.layout.addWidget(self.actuation_label)
         self.layout.addWidget(self.actuation_slider, alignment = Qt.AlignJustify)
-
-
-    def __get_actuation_point(self) -> str:
-        value = self.actuation_slider.value()
-        return self.actuation_slider.in_mm(value)
 
     def __get_press(self) -> str:
         return sensibility.in_mm(

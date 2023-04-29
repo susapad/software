@@ -1,26 +1,21 @@
+from string import Template
+
 from PySide6 import QtCore, QtWidgets
 from PySide6.QtCore import Qt
 
+from susapad import base_widgets as base
 from susapad.controller import exception
 
+class ActuationPointGroup(base.BaseSliderGroup):
 
-class ActuationSlider(QtWidgets.QSlider):
+    def __init__(self, window, susapad):
+        super().__init__(window, susapad)
+        self.set_range((10, 390))
+        self.set_template(Template("Ponto de atuação: (${value})"))
+        self._update_label()
 
-    def __init__(self, window, susapad, forms):
-        super().__init__()
-
-        self.susapad = susapad
-        self.forms = forms
-        self.window = window
-
-        self.setMinimum(10)
-        self.setMaximum(390)
-        self.setOrientation(Qt.Horizontal)
-        self.setMinimumWidth(330)
-
-
-        self.sliderReleased.connect(self.action)
-        self.valueChanged.connect(self.update_label)
+    def update_susapad(self, value: int) -> bool:
+        return self.susapad.set_actuation_point(self.reverse(value))
 
     @staticmethod
     def reverse(value: int) -> int:
@@ -28,20 +23,3 @@ class ActuationSlider(QtWidgets.QSlider):
             return 190
         else:
             return 400 - value
-
-    @staticmethod
-    def in_mm(value: int) -> str:
-        return f"{value/100}mm"
-
-    @QtCore.Slot()
-    def action(self):
-        if not self.susapad.set_actuation_point(self.reverse(self.value())):
-            exception.susapad_not_found(self.window)
-            exception.close_current_window(self.window)
-
-    @QtCore.Slot()
-    def update_label(self):
-        value = self.in_mm(self.value())
-        self.forms.actuation_label.setText(
-            f"Ponto de Atuação: ({value})"
-        )
