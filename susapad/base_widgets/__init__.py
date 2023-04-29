@@ -5,5 +5,5 @@ from .slider import BaseSliderGroup, BaseDualSliderGroup
 
 __all__ = [
     "BaseButton", "BaseWindow", "BaseToggleButton", 
-    "BaseSliderGroup"
+    "BaseSliderGroup", "BaseDualSliderGroup"
 ]
