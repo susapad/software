@@ -1,7 +1,7 @@
 from PySide6 import QtCore, QtWidgets
 from PySide6.QtCore import Qt
 
-from susapad.controler import exception
+from susapad.controller import exception
 
 
 class ActuationSlider(QtWidgets.QSlider):
