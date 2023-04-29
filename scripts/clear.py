@@ -9,16 +9,13 @@ and `py .\\susapad\\scripts\\clear.py` for Windows as well.
 import pathlib as path
 
 
-class Build:
+class BuildDump:
 
     def __init__(self, project: str ,root_dir: str):
         self.name = project
         self.root = path.Path(root_dir)
-        
-        self.delete(self.root / f"{self.name}.build")
-        self.delete(self.root / f"{self.name}.dist")
 
-    def delete(self, directory: path.Path):
+    def __delete(self, directory: path.Path):
         for element in directory.iterdir():
             if element.is_dir():
                 self.delete(element)
@@ -29,8 +26,12 @@ class Build:
             folder.rmdir()
         directory.rmdir()
 
+    def clear(self):
+        self.__delete(self.root / f"{self.name}.build")
+        self.__delete(self.root / f"{self.name}.dist")
 
-class PyCache:
+
+class PyCacheDump:
     """"Stores and cleans the project's __pycache__ folders"""
 
     def __init__(self, root_dir: str):
@@ -42,14 +43,14 @@ class PyCache:
             root_dir.rglob("**/__pycache__/")
         )
 
-    def _delete_pyc_files(self, directory: path.Path):
+    def __delete_pyc_files(self, directory: path.Path):
         for file in directory.iterdir():
             file.unlink()
 
-    def clear_pycache(self):
+    def clear(self):
         """cleans `self.directories`'s folders and files"""
         for directory in self.directories:
-            self._delete_pyc_files(directory)
+            self.__delete_pyc_files(directory)
             directory.rmdir()
 
 # == Callable ==
@@ -59,10 +60,10 @@ def run():
     - use your Current Working Directory as root path
     """
     print("Cleaning __pycache__...")
-    PyCache(".").clear_pycache()
+    PyCacheDump(".").clear()
 
     print("Cleaning build")
-    Build("susapad", ".")
+    BuildDump("susapad", ".").clear()
 
 
 if __name__ == "__main__":
