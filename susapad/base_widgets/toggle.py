@@ -43,7 +43,6 @@ class BaseToggleButton(base.BaseButton):
 
         self.window = window
         self.susapad = susapad
-        self.on = True
 
         self.clicked.connect(self.toggle)
         self.setCursor(Qt.PointingHandCursor)
@@ -70,7 +69,6 @@ class BaseToggleButton(base.BaseButton):
 
     def __turn_on(self):
         if self.command_on():
-            self.on = True
             self.setAccessibleName("on")
             self.setText("Desligar")
             self.__reload_style()
@@ -80,7 +78,6 @@ class BaseToggleButton(base.BaseButton):
 
     def __turn_off(self):
         if self.command_off():
-            self.on = False
             self.setAccessibleName("off")
             self.setText("Ligar")
             self.__reload_style()
@@ -94,7 +91,7 @@ class BaseToggleButton(base.BaseButton):
 
     @QtCore.Slot()
     def toggle(self):
-        if self.on:
+        if "on" == self.accessibleName():
             self.__turn_off()
         else:
             self.__turn_on()
