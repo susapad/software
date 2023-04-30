@@ -33,6 +33,15 @@ class ButtonGroup(QtWidgets.QWidget):
         self.layout.addWidget(self.main)
         self.layout.addWidget(self.close)
 
+class HelpButton(base.BaseFloatingButton):
+
+    def __init__(self, window):
+        super().__init__(window, "Ajuda", "F1")
+
+    @QtCore.Slot()
+    def action(self):
+        pass
+
 
 class WindowLayout(base.BaseFrame):
 
@@ -47,3 +56,6 @@ class WindowLayout(base.BaseFrame):
                 alignment = Qt.AlignCenter | Qt.AlignTop)
         self.layout.addWidget(self.group_button, 
                 alignment = Qt.AlignCenter | Qt.AlignBottom)
+
+        self.help_button = HelpButton(self)
+        self.help_button.move(400, 20)
