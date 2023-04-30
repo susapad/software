@@ -33,22 +33,32 @@ class WindowLayout(base.BaseFrame):
 
         # Configure Layout
 
-        self.first_h2 = QtWidgets.QLabel("Susapad")
-        self.first_h2.setObjectName("first-h2")
+        self.input_label = QtWidgets.QLabel("Habilitar Input")
+        self.input_label.setObjectName("first-h2")
+        self.input_button = rt.TriggerButton(window, susapad)
 
-        self.trigger_button = rt.TriggerButton(window, susapad)
+        self.rt_label = QtWidgets.QLabel("Rapid Trigger")
         self.rt_button = rt.RapidTriggerButton(window, susapad)
+
+        self.crt_label = QtWidgets.QLabel("Rapid Trigger Contínuo")
         self.crt_button = rt.ContinuousRapidTriggerButton(window, susapad)
 
-        self.sensibility_slider = sensibility.SensiblitySlidersGroup(window, susapad)
         self.actuation_slider = actuation_point.ActuationPointGroup(window, susapad)
+
+        self.sensibility_slider = sensibility.SensiblitySlidersGroup(window, susapad)
+
+        self.trigger_layout = QtWidgets.QVBoxLayout()
+        self.trigger_layout.addWidget(self.input_label)
+        self.trigger_layout.addWidget(self.input_button)
+        self.trigger_layout.addWidget(self.rt_label)
+        self.trigger_layout.addWidget(self.rt_button)
+        self.trigger_layout.addWidget(self.crt_label)
+        self.trigger_layout.addWidget(self.crt_button)
+        
+        self.upper_layout = QtWidgets.QHBoxLayout()
+        self.upper_layout.addLayout(self.trigger_layout, 1)
+        self.upper_layout.addWidget(self.actuation_slider, 1)
         
         self.layout = QtWidgets.QVBoxLayout(self)
-        self.layout.addWidget(self.first_h2)
-        self.layout.addWidget(self.trigger_button)
-        self.layout.addWidget(QtWidgets.QLabel("Rapid Trigger"))
-        self.layout.addWidget(self.rt_button)
-        self.layout.addWidget(QtWidgets.QLabel("Rapid Trigger Contínuo"))
-        self.layout.addWidget(self.crt_button)
+        self.layout.addLayout(self.upper_layout)
         self.layout.addWidget(self.sensibility_slider)
-        self.layout.addWidget(self.actuation_slider)
