@@ -91,6 +91,9 @@ def run():
     print("Cleaning build ...")
     BuildDump("susapad", ".").clear()
 
+    print("Cleaning experimental files")
+    ExperimentsDump(".").clear()
+
 
 if __name__ == "__main__":
     run()
