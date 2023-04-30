@@ -9,9 +9,9 @@ class SusaPadLogo(QtWidgets.QLabel):
         super().__init__()
         self.setPixmap(QtGui.QPixmap("susapad/media/logo.png"))
         self.setStyleSheet("border-radius: 75%; margin: 0, 10px, 0, 20px;")
-        self.blue_shadow()
+        self.purple_shadow()
 
-    def blue_shadow(self):
+    def purple_shadow(self):
         shadow = QtWidgets.QGraphicsDropShadowEffect(self)
         shadow.setOffset(QtCore.QPoint(0,5))
         shadow.setBlurRadius(25)
