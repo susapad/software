@@ -24,6 +24,36 @@ _SLIDER_STYLE = """
     }
 """
 
+_GROUP_STYLE = """
+
+    QWidget {
+        margin-top: 0px; 
+        margin-bottom: 0px; 
+    }
+
+    QWidget[accessibleName="group"] {
+        margin-left: 0px; 
+        margin-right: 0px; 
+    }
+
+    QLabel {
+        color: white;
+        font: 16px;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    } 
+
+    QLabel[accessibleName="side"] {
+        color: white;
+        font: 12px;
+        margin: 10px, 0, 10px, 0;
+    } 
+
+    QSlider { 
+        margin-top: 10px; 
+    }
+"""
+
 
 class BaseSlider(QtWidgets.QSlider):
 
@@ -61,16 +91,23 @@ class BaseSliderGroup(QtWidgets.QWidget):
         self.bottom_layout.addWidget(self.min)
         self.bottom_layout.addWidget(self.slider, alignment = Qt.AlignBaseline)
         self.bottom_layout.addWidget(self.max)
+        self.bottom_layout.setContentsMargins(10, 5, 10, 5)
 
         self.layout = QtWidgets.QVBoxLayout(self)
         self.layout.addWidget(self.title)
         self.layout.addWidget(self.bottom)
+        self.layout.setContentsMargins(0, 0, 0, 0)
 
         # Configuring Sliders
         self.slider.sliderReleased.connect(self._update_susapad)
-        self.slider.valueChanged.connect(self._update_label) 
+        self.slider.valueChanged.connect(self._update_label)
 
-        self.setStyleSheet("QSlider { margin-top: 15px; }")
+        # Configuring Style
+        self.min.setAccessibleName("side")
+        self.max.setAccessibleName("side")
+
+        self.setAccessibleName("group")
+        self.setStyleSheet(_GROUP_STYLE)
 
     # Template function
 
@@ -135,17 +172,20 @@ class BaseDualSliderGroup(QtWidgets.QWidget):
         self.slider1_layout.addWidget(self.min1)
         self.slider1_layout.addWidget(self.slider1)
         self.slider1_layout.addWidget(self.max1)
+        self.slider1_layout.setContentsMargins(10, 5, 10, 5)
 
         self.slider2_group = QtWidgets.QWidget()
         self.slider2_layout = QtWidgets.QHBoxLayout(self.slider2_group)
         self.slider2_layout.addWidget(self.min2)
         self.slider2_layout.addWidget(self.slider2)
         self.slider2_layout.addWidget(self.max2)
+        self.slider2_layout.setContentsMargins(10, 5, 10, 5)
 
         self.layout = QtWidgets.QVBoxLayout(self)
         self.layout.addWidget(self.title)
         self.layout.addWidget(self.slider1_group)
         self.layout.addWidget(self.slider2_group)
+        self.layout.setContentsMargins(0, 0, 0, 0)
 
         # Configuring sliders
         self.slider1.sliderReleased.connect(self._update_susapad_slider1)
@@ -153,7 +193,14 @@ class BaseDualSliderGroup(QtWidgets.QWidget):
         self.slider1.valueChanged.connect(self._update_label) 
         self.slider2.valueChanged.connect(self._update_label) 
 
-        self.setStyleSheet("QSlider { margin-top: 15px; }")
+        # Configuring Styles
+        self.min1.setAccessibleName("side")
+        self.min2.setAccessibleName("side")
+        self.max1.setAccessibleName("side")
+        self.max2.setAccessibleName("side")
+
+        self.setAccessibleName("group")
+        self.setStyleSheet(_GROUP_STYLE)
 
     # Template function
 
