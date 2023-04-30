@@ -34,8 +34,10 @@ class BuildDump:
         directory.rmdir()
 
     def clear(self):
-        self.__delete(self.root / f"{self.name}.build")
-        self.__delete(self.root / f"{self.name}.dist")
+        if (self.root / f"{self.name}.build").exists():
+            self.__delete(self.root / f"{self.name}.build")
+        if (self.root / f"{self.name}.dist").exists():
+            self.__delete(self.root / f"{self.name}.dist")
 
 
 class PyCacheDump:
@@ -56,6 +58,9 @@ class PyCacheDump:
 
     def clear(self):
         """cleans `self.directories`'s folders and files"""
+        if not self.directories:
+            return
+
         for directory in self.directories:
             self.__delete_pyc_files(directory)
             directory.rmdir()
