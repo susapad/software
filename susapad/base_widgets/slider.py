@@ -116,6 +116,7 @@ class BaseSliderGroup(QtWidgets.QWidget):
         if vertical:
             self.slider.setOrientation(Qt.Vertical)
             self.slider.setMinimumHeight(200)
+            self.slider.setMinimumWidth(100)
             self.slider.setInvertedAppearance(True)
         else:
             self.slider.setMinimumWidth(330)
