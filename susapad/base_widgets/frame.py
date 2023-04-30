@@ -4,6 +4,8 @@ _FRAME_STYLE = """
     QFrame {
         border-radius: 20px;
         background-color: #121212;
+        font-size: 15px;
+        color: white;
     }
 """
 
