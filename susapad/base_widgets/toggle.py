@@ -76,7 +76,7 @@ class BaseToggleButton(base.BaseButton):
     def __turn_off(self):
         self.__turn(self.command_off, "off", "Ligar")
 
-    def __error():
+    def __error(self):
         exception.susapad_not_found(self.window)
         exception.close_current_window(self.window)
     
