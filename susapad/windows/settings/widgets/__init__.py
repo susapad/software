@@ -1,15 +1,11 @@
 from PySide6 import QtCore, QtGui, QtWidgets
 from PySide6.QtCore import Qt
 
+from susapad import base_widgets as base
 from . import actuation_point, rapid_trigger as rt, sensibility
 from .close import CloseButton
 
 _SETTINGS_STYLE = """
-    QFrame {
-        border-radius: 20px;
-        background-color: #121212;
-    }
-
     QLabel {
         color: white;
         font: 16px;
@@ -27,15 +23,13 @@ _SETTINGS_STYLE = """
 """
 
 
-class WindowLayout(QtWidgets.QFrame):
+class WindowLayout(base.BaseFrame):
 
     def __init__(self, window, susapad):
         super().__init__()
 
         # Configure Style
-
-        self.setStyleSheet(_SETTINGS_STYLE)
-        self.setContentsMargins(20, 20, 20, 20)
+        self.setStyleSheet(self.styleSheet() + _SETTINGS_STYLE)
 
         # Configure Layout
 

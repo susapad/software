@@ -1,6 +1,7 @@
 from PySide6 import QtCore, QtGui, QtWidgets
 from PySide6.QtCore import Qt
 
+from susapad import base_widgets as base
 from . import buttons, header
 
 
@@ -33,14 +34,10 @@ class ButtonGroup(QtWidgets.QWidget):
         self.layout.addWidget(self.close)
 
 
-class WindowLayout(QtWidgets.QFrame):
+class WindowLayout(base.BaseFrame):
 
     def __init__(self, main_window):
         super().__init__()
-
-        # Configuration
-        self.setObjectName("background-frame")
-        self.__init_style()
 
         self.group_header = HeaderGroup(main_window)
         self.group_button = ButtonGroup(main_window)
@@ -50,14 +47,3 @@ class WindowLayout(QtWidgets.QFrame):
                 alignment = Qt.AlignCenter | Qt.AlignTop)
         self.layout.addWidget(self.group_button, 
                 alignment = Qt.AlignCenter | Qt.AlignBottom)
-
-    def __init_style(self):
-        self.setStyleSheet(
-            """
-                QFrame {
-                    border-radius: 20px;
-                    background-color: #121212;
-                }
-            """
-        )
-        self.setContentsMargins(20, 20, 20, 20)
