@@ -40,7 +40,7 @@ class BaseFloatingButton(base.BaseButton):
 
     def _set_position(self):
         self.setGeometry(
-            self.window.width() - self.width,
+            self.window.width() - self.width - self.margin,
             self.margin,
             self.width,
             self.height
