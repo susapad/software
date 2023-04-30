@@ -16,6 +16,20 @@ and `py .\\susapad\\scripts\\clear.py` for Windows as well.
 import pathlib as path
 
 
+class ExperimentsDump:
+
+    def __init__(self, root_dir: str):
+        self.root = path.Path(root_dir)
+        self.files = self.__get_exp_files()
+
+    def __get_exp_files(self) -> list[path.Path]:
+        return self.root.rglob("exp_*.py")
+
+    def clear(self):
+        for file in self.files:
+            file.unlink()
+
+
 class BuildDump:
 
     def __init__(self, project: str, root_dir: str):
