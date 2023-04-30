@@ -25,7 +25,7 @@ class BuildDump:
     def __delete(self, directory: path.Path):
         for element in directory.iterdir():
             if element.is_dir():
-                self.delete(element)
+                self.__delete(element)
             else:
                 element.unlink()
 
