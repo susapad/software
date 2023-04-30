@@ -15,8 +15,7 @@ class SusaPadLogo(QtWidgets.QLabel):
         shadow = QtWidgets.QGraphicsDropShadowEffect(self)
         shadow.setOffset(QtCore.QPoint(0,5))
         shadow.setBlurRadius(25)
-        shadow.setColor(QtGui.QColor(195, 27, 120))
-        opacity = QtWidgets.QGraphicsOpacityEffect(shadow)
+        shadow.setColor(QtGui.QColor(195, 27, 120, 40))
         self.setGraphicsEffect(shadow)
 
 
