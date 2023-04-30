@@ -17,3 +17,4 @@ class SettingsWindow(base.BaseWindow):
         self.layout.addWidget(self.settings_widget)
 
         self.close_button = widgets.CloseButton(self, parent)
+        self.close_button.move(420, 20)
