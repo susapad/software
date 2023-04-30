@@ -44,12 +44,12 @@ class SusaPad:
 
     # Settings functions
 
-    def set_rapid_trigger(self, on: True) -> bool:
+    def set_rapid_trigger(self, on: bool = True) -> bool:
         """Set if SusaPad is **on** or **off**"""
         n = 1 if on else 0
         return self.__configure_susapad("rt", n)
 
-    def set_continuous_rapid_trigger(self, on: True) -> bool:
+    def set_continuous_rapid_trigger(self, on: bool = True) -> bool:
         """Set if SusaPad is **on** or **off**"""
         n = 1 if on else 0
         return self.__configure_susapad("crt", n)
