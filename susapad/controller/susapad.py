@@ -45,25 +45,25 @@ class SusaPad:
     # Settings functions
 
     def set_rapid_trigger(self, on: bool = True) -> bool:
-        """Set if SusaPad is **on** or **off**"""
+        """Set if SusaPad's Rapid Trigger is **on** or **off**"""
         n = 1 if on else 0
         return self.__configure_susapad("rt", n)
 
     def set_continuous_rapid_trigger(self, on: bool = True) -> bool:
-        """Set if SusaPad is **on** or **off**"""
+        """Set if SusaPad's Continuous Rapid Trigger is **on** or **off**"""
         n = 1 if on else 0
         return self.__configure_susapad("crt", n)
 
     def set_release_sensibility(self, value: int) -> bool:
-        """"Set the Rapid Trigger's sensibility"""
+        """"Set SusaPad's sensibility"""
         return self.__configure_susapad("rtus", value)
 
     def set_press_sensibility(self, value: int) -> bool:
-        """"Set the Rapid Trigger's sensibility"""
+        """"Set SusaPad's sensibility"""
         return self.__configure_susapad("rtds", value)
 
     def set_actuation_point(self, value: int) -> bool:
-        """Set Key's Actuation ponit"""
+        """Set SusaPad's Actuation ponit"""
 
         # NOTE: We need to reset `lh` and `uh` to avoid undesired side-effects.
         #   Note that `uh` must always be smaller than `lh`.
