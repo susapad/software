@@ -1,7 +1,7 @@
 from PySide6 import QtCore, QtGui, QtWidgets
 from PySide6.QtCore import Qt
 
-from . import actuation_point, togglers, sensibility
+from . import actuation_point, rapid_trigger as rt, sensibility
 from .close import CloseButton
 
 _SETTINGS_STYLE = """
@@ -42,8 +42,8 @@ class WindowLayout(QtWidgets.QFrame):
         self.first_h2 = QtWidgets.QLabel("Rapid Trigger")
         self.first_h2.setObjectName("first-h2")
 
-        self.rt_button = togglers.RapidTriggerButton(window, susapad)
-        self.crt_button = togglers.ContinuousRapidTriggerButton(window, susapad)
+        self.rt_button = rt.RapidTriggerButton(window, susapad)
+        self.crt_button = rt.ContinuousRapidTriggerButton(window, susapad)
 
         self.sensibility_slider = sensibility.SensiblitySlidersGroup(window, susapad)
         self.actuation_slider = actuation_point.ActuationPointGroup(window, susapad)
