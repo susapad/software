@@ -4,6 +4,7 @@ import time
 
 import serial
 import serial.tools.list_ports
+from PySide6 import QtCore
 
 
 class SusaPad:
@@ -86,10 +87,10 @@ class SusaPad:
 
     def __configure_susapad_key(self, key: int, command: str, value: int) -> bool:
         try:
+            time.sleep(0.2)
             print(f"key{key}.{command} {value}")
             self.serial.write(f"key{key}.{command} {value}".encode())
             self.serial.flush()
-            time.sleep(1)
             return True
         except:
             if self.debug:
