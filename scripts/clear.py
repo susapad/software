@@ -18,7 +18,7 @@ import pathlib as path
 
 class BuildDump:
 
-    def __init__(self, project: str ,root_dir: str):
+    def __init__(self, project: str, root_dir: str):
         self.name = project
         self.root = path.Path(root_dir)
 
