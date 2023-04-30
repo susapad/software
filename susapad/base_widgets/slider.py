@@ -12,6 +12,12 @@ _SLIDER_STYLE = """
         border-radius: 8px;
     }
 
+    QSlider::groove:vertical {
+        width: 16px;
+        background-color: #090909;
+        border-radius: 8px;
+    }
+
     QSlider::handle {
         background-color: #b71970;
         width: 16px;
@@ -65,13 +71,12 @@ class BaseSlider(QtWidgets.QSlider):
         self.window = window
 
         self.setOrientation(Qt.Horizontal)
-        self.setMinimumWidth(330)
         self.setStyleSheet(_SLIDER_STYLE)
 
 
 class BaseSliderGroup(QtWidgets.QWidget):
 
-    def __init__(self, window, susapad):
+    def __init__(self, window, susapad, vertical: bool = False):
         super().__init__()
         
         self.window = window
@@ -87,11 +92,13 @@ class BaseSliderGroup(QtWidgets.QWidget):
         # Configuring layout
 
         self.bottom = QtWidgets.QWidget()
-        self.bottom_layout = QtWidgets.QHBoxLayout(self.bottom)
-        self.bottom_layout.addWidget(self.min)
-        self.bottom_layout.addWidget(self.slider, alignment = Qt.AlignBaseline)
-        self.bottom_layout.addWidget(self.max)
+        self.bottom_layout = QtWidgets.QVBoxLayout(self.bottom) if vertical \
+                            else QtWidgets.QHBoxLayout(self.bottom)
+        self.bottom_layout.addWidget(self.min, alignment = Qt.AlignHCenter)
+        self.bottom_layout.addWidget(self.slider, alignment = Qt.AlignHCenter)
+        self.bottom_layout.addWidget(self.max, alignment = Qt.AlignHCenter)
         self.bottom_layout.setContentsMargins(10, 5, 10, 5)
+        self.bottom_layout.setAlignment(Qt.AlignHCenter)
 
         self.layout = QtWidgets.QVBoxLayout(self)
         self.layout.addWidget(self.title)
@@ -105,6 +112,13 @@ class BaseSliderGroup(QtWidgets.QWidget):
         # Configuring Style
         self.min.setAccessibleName("side")
         self.max.setAccessibleName("side")
+
+        if vertical:
+            self.slider.setOrientation(Qt.Vertical)
+            self.slider.setMinimumHeight(200)
+            self.slider.setInvertedAppearance(True)
+        else:
+            self.slider.setMinimumWidth(330)
 
         self.setAccessibleName("group")
         self.setStyleSheet(_GROUP_STYLE)
