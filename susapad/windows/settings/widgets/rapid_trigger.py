@@ -8,6 +8,18 @@ from susapad.controller import exception
 from susapad import base_widgets as base
 
 
+class TriggerButton(base.BaseToggleButton):
+
+    def __init__(self, window, susapad):
+        super().__init__(window, susapad)
+
+    def command_on(self):
+        return self.susapad.set_trigger(True)
+
+    def command_off(self):
+        return self.susapad.set_trigger(False)
+
+
 class RapidTriggerButton(base.BaseToggleButton):
 
     def __init__(self, window, susapad):

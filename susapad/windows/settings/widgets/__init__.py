@@ -33,9 +33,10 @@ class WindowLayout(base.BaseFrame):
 
         # Configure Layout
 
-        self.first_h2 = QtWidgets.QLabel("Rapid Trigger")
+        self.first_h2 = QtWidgets.QLabel("Susapad")
         self.first_h2.setObjectName("first-h2")
 
+        self.trigger_button = rt.TriggerButton(window, susapad)
         self.rt_button = rt.RapidTriggerButton(window, susapad)
         self.crt_button = rt.ContinuousRapidTriggerButton(window, susapad)
 
@@ -44,6 +45,8 @@ class WindowLayout(base.BaseFrame):
         
         self.layout = QtWidgets.QVBoxLayout(self)
         self.layout.addWidget(self.first_h2)
+        self.layout.addWidget(self.trigger_button)
+        self.layout.addWidget(QtWidgets.QLabel("Rapid Trigger"))
         self.layout.addWidget(self.rt_button)
         self.layout.addWidget(QtWidgets.QLabel("Rapid Trigger Contínuo"))
         self.layout.addWidget(self.crt_button)
