@@ -4,7 +4,7 @@ Cleans:
     - `__pycache__` folders
     - `susapad.build` folder
     - `susapad.dist` folder
-    - experimental files, that starts with `exp`. 
+    - experimental files, that starts with `exp_`. 
         i.e.: `exp_new_window.py`
 
 To use this module simply run `poetry run clean`.
