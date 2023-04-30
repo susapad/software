@@ -26,22 +26,9 @@ class BaseFloatingButton(base.BaseButton):
 
         self.window = window
 
-        self.width = 60
-        self.height = 16
-        self.margin = 20
-
         self.setAccessibleName("floating")
         self.clicked.connect(self.action)
         self.setStyleSheet(_FLOATING_STYLE)
-        self._set_position()
 
     def action(self):
         pass
-
-    def _set_position(self):
-        self.setGeometry(
-            self.window.width() - self.width - self.margin,
-            self.margin,
-            self.width,
-            self.height
-        )
