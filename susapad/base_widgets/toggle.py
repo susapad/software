@@ -32,7 +32,7 @@ _TOGGLE_STYLE = """
 
 class BaseToggleButton(base.BaseButton):
 
-    def __init__(self, window, susapad, on: bool = True):
+    def __init__(self, window, susapad):
         super().__init__("", None)
         self.setFixedSize(100, 30)
 
@@ -43,18 +43,13 @@ class BaseToggleButton(base.BaseButton):
         self.setCursor(Qt.PointingHandCursor)
 
         self.style = _TOGGLE_STYLE
-        
-        if on:
-            self.__turn_on()
-        else:
-            self.__turn_off()
 
     # Template functions
 
-    def command_on() -> bool:
+    def command_on(self) -> bool:
         pass
 
-    def command_off() -> bool:
+    def command_off(self) -> bool:
         pass
 
     # Internal functions
@@ -62,19 +57,21 @@ class BaseToggleButton(base.BaseButton):
     def __reload_style(self):
         self.setStyleSheet(self.style)
 
-    def __turn(self, command, name: str, text: str):
-        if command():
-            self.setAccessibleName(name)
-            self.setText(text)
+    def turn_on(self):
+        if self.command_on():
+            self.setAccessibleName("on")
+            self.setText("Desligar")
             self.__reload_style()
         else:
             self.__error()
 
-    def __turn_on(self):
-        self.__turn(self.command_on, "on", "Desligar")
-
-    def __turn_off(self):
-        self.__turn(self.command_off, "off", "Ligar")
+    def turn_off(self):
+        if self.command_off():
+            self.setAccessibleName("off")
+            self.setText("Ligar")
+            self.__reload_style()
+        else:
+            self.__error()
 
     def __error(self):
         exception.susapad_not_found(self.window)
@@ -84,6 +81,6 @@ class BaseToggleButton(base.BaseButton):
     @QtCore.Slot()
     def toggle(self):
         if "on" == self.accessibleName():
-            self.__turn_off()
+            self.turn_off()
         else:
-            self.__turn_on()
+            self.turn_on()
