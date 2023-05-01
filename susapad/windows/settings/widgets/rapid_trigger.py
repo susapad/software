@@ -12,6 +12,7 @@ class TriggerButton(base.BaseToggleButton):
 
     def __init__(self, window, susapad):
         super().__init__(window, susapad)
+        self.susapad = susapad
 
     def command_on(self):
         return self.susapad.set_trigger(True)
@@ -24,6 +25,7 @@ class RapidTriggerButton(base.BaseToggleButton):
 
     def __init__(self, window, susapad):
         super().__init__(window, susapad)
+        self.susapad = susapad
 
     def command_on(self):
         return self.susapad.set_rapid_trigger(True)
@@ -36,6 +38,7 @@ class ContinuousRapidTriggerButton(base.BaseToggleButton):
 
     def __init__(self, window, susapad):
         super().__init__(window, susapad)
+        self.susapad = susapad
 
     def command_on(self):
         return self.susapad.set_continuous_rapid_trigger(True)
