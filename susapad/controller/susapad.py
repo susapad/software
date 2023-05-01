@@ -87,7 +87,7 @@ class SusaPad:
 
     def __configure_susapad_key(self, key: int, command: str, value: int) -> bool:
         try:
-            time.sleep(0.2)
+            time.sleep(1)
             print(f"key{key}.{command} {value}")
             self.serial.write(f"key{key}.{command} {value}".encode())
             self.serial.flush()
