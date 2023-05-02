@@ -35,7 +35,7 @@ SusaPad Software is under GPL-3.0, and it follows the four degree of Freedom:
 - Freedom to improve the program & release your improvements to the public, 
     so that the whole community benefits.
 
-For more details about our licence: [LICENSE](./LICENSE) and [LEGAL](./LEGAL)
+For more details about our licence: [LICENSE](./LICENSE).
 
 ### Alternative GNU Logo
 
