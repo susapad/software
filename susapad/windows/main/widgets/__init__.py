@@ -1,8 +1,13 @@
+import webbrowser
+
 from PySide6 import QtCore, QtGui, QtWidgets
 from PySide6.QtCore import Qt
 
 from susapad import base_widgets as base
 from . import buttons, header
+
+
+README_LINK = "https://github.com/RickBarretto/SusaPadSoftware#readme"
 
 
 class HeaderGroup(QtWidgets.QWidget):
@@ -40,7 +45,7 @@ class HelpButton(base.BaseFloatingButton):
 
     @QtCore.Slot()
     def action(self):
-        pass
+        webbrowser.open_new(README_LINK)
 
 
 class WindowLayout(base.BaseFrame):
