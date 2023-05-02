@@ -2,6 +2,8 @@
 
 # SusaPad Software
 
+![gpl-3.0](./susapad/media/gplv3-with-text-136x68.png)
+
 SusaPad Software is the software used to configure SusaPad/MiniPad.
 
 > **Note**: SusaPad Software refers to this project itself, 
@@ -35,6 +37,13 @@ SusaPad Software is under GPL-3.0, and it follows the four degree of Freedom:
 
 For more details about our licence: [LICENSE](./LICENSE) and [LEGAL](./LEGAL)
 
+### Alternative GNU Logo
+
+Official GPL, AGPL and LGPL logos
+These images are in the public domain.
+
+For more details about GNU's logo, [GNU License Logos][gnu-logos].
+
 ### Nuitka
 
 The Apache License, Version 2.0,
@@ -44,7 +53,7 @@ This product is compiled by software developed
 by Kay Hayen and Nuitka Contributors.
 https://nuitka.net/index.html
 
-For more detaills about their license. [read Nuitka's License][nuitka-license]
+For more details about their license, [read Nuitka's License][nuitka-license].
 
 ### pySerial
 
@@ -55,20 +64,20 @@ This product includes libraries developed
 by Chris Liechti and pySerial's Contributors.
 https://github.com/pyserial
 
-For more details about their license, [read pySerial's License][pyserial-license]
+For more details about their license, [read pySerial's License][pyserial-license].
 
 ### PySide6 
 
 The Lesser General Public License (LGPL), 
-© 2023 The Qt Company Ltd. All rights reserved.
+© Copyright 2023 The Qt Company Ltd. All rights reserved.
 
 This product includes libraries developed by The Qt Company Ltd. 
 for use in GUI.
 https://www.qt.io/
 
-For more details about their license, [read Qt's License][qt-license]
+For more details about their license, [read Qt's License][qt-license].
 
-
+[gnu-logos]: https://www.gnu.org/graphics/license-logos.html
 [nuitka-license]: https://www.apache.org/licenses/LICENSE-2.0
 [pyserial-license]: https://github.com/pyserial/pyserial/blob/master/LICENSE.txt
 [qt-license]: https://www.qt.io/licensing/
