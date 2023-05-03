@@ -4,11 +4,12 @@
 
 ![gpl-3.0](./susapad/media/gplv3-with-text-136x68.png)
 
-SusaPad Software is the software used to configure SusaPad/MiniPad.
+SusaPad Software is the software used to configure SusaPad/[MiniPad][minipad].
 
 > **Note**: SusaPad Software refers to this project itself,
-> but it's not the same as SusaPad, that is just a Keypad (hardware).
+> but it's not the same as SusaPad, which is just a *keypad* (hardware).
 
+[minipad]: https://github.com/minipadKB
 
 ## User Guide
 
@@ -27,7 +28,8 @@ SusaPad Software is the software used to configure SusaPad/MiniPad.
 
 ### SusaPad Software
 
-SusaPad Software is under GPL-3.0, and it follows the four degree of Freedom:
+SusaPad Software is under GPL-3.0, and it follows the following
+four degrees of freedom:
 
 - Freedom to run the program for any purpose.
 - Freedom to study how the program works & adapt it to specific needs.
@@ -87,14 +89,19 @@ For more details about their license, [read Qt's License][qt-license].
 
 ### Is it compatible with Minipad?
 
-Yes, it's compatible with the current minipad-firmware ([*2023.410.1* version][minipad-release]), wich SusaPad will use.
+Yes, it's compatible with the [current minipad-firmware's
+version (*2023.410.1*)][minipad-release],
+which SusaPad will use.
 
 
 ### Why my application is so slow?
 
-It's not the application itself, but the way we comunicate with arduino.
-Unfurtunately, the commands just can be sent with one second for each.
-And, for each configuration, we can send from 2 to 6 requests each to configure.
+It's not the application itself,
+but the way it comunicate with arduino.
+
+Unfortunately, the commands can only be sent with
+one second of interval between.
+As a result, some configurations may take up to 6 seconds to complete.
 
 
 ### Does this project have any relationship with others?
