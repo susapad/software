@@ -4,10 +4,10 @@
 
 ![gpl-3.0](./susapad/media/gplv3-with-text-136x68.png)
 
-SusaPad Software is the software used to configure SusaPad/[MiniPad][minipad].
+*SusaPad Software* is the software used to configure *SusaPad*/[*MiniPad*][minipad].
 
-> **Note**: SusaPad Software refers to this project itself,
-> but it's not the same as SusaPad, which is just a *keypad* (hardware).
+> **Note**: *SusaPad Software* refers to this project itself,
+> but it's not the same as *SusaPad*, which is just a *keypad* (hardware).
 
 [minipad]: https://github.com/minipadKB
 
@@ -15,11 +15,11 @@ SusaPad Software is the software used to configure SusaPad/[MiniPad][minipad].
 
 ### Installation
 
-> In production...
+> **Warning**: In production...
 
-### Reporting bugs/Feature requests
+### Issues
 
-> In production...
+> **Warning**: In production...
 
 ---
 
@@ -28,7 +28,7 @@ SusaPad Software is the software used to configure SusaPad/[MiniPad][minipad].
 
 ### SusaPad Software
 
-SusaPad Software is under GPL-3.0, and it follows the following
+*SusaPad Software* is under *GPL-3.0*, and it follows the following
 four degrees of freedom:
 
 - Freedom to run the program for any purpose.
@@ -87,11 +87,11 @@ For more details about their license, [read Qt's License][qt-license].
 
 ## FAQ
 
-### Is it compatible with Minipad?
+### Is it compatible with *Minipad*?
 
-Yes, it's compatible with the [current minipad-firmware's
+Yes, it's compatible with the [current *minipad-firmware*'s
 version (*2023.410.1*)][minipad-release],
-which SusaPad will use.
+which *SusaPad* will use.
 
 
 ### Why my application is so slow?
@@ -122,7 +122,7 @@ such as *Minipad Project*, *Nuitka*, *pySerial* or *QT Company*.
 - Legacy application by: [Luiz Fernando][batatinho]
 
 It's good to mention Luiz Fernando who was responsible for creating
-the first functional version of SusaPad in *Kivy*.
+the first functional version of *SusaPad* in *Kivy*.
 
 
 [sousa]: https://github.com/sousaone1
