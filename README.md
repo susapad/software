@@ -101,14 +101,16 @@ but the way it comunicate with arduino.
 
 Unfortunately, the commands can only be sent with
 one second of interval between.
-As a result, some configurations may take up to 6 seconds to complete.
+As a result, some configurations
+may take up to six seconds to complete.
 
 
 ### Does this project have any relationship with others?
 
 No, it isn't. This project is independent
 and has no relationship with other projects
-such as *Minipad Project*, *Nuitka*, *pySerial* or *QT Company*.
+such as *Minipad Project*, *Nuitka*, *pySerial* or *QT Company*,
+but it has relationship with *SusaPad* itself.
 
 
 [minipad-release]: https://github.com/minipadKB/minipad-firmware/releases/tag/2023.410.1

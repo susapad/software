@@ -103,15 +103,16 @@ mas a forma como nos comunicamos com o arduino.
 
 Infelizmente, os comandos só podem ser enviado com
 um segundo de intervalo entre eles.
-Como resultado, algumas configurações podem levar até 6 segundos
-para serem completadas.
+Como resultado, algumas configurações
+podem levar até seis segundos para serem completadas.
 
 
 ### Esse projeto tem algum relacionamento com outros?
 
 Não, ele não tem. Esse projeto é independete
 e não tem quaisquer relações com outros projetos
-como *Minipad Project*, *Nuitka*, *pySerial* ou *QT Company*.
+como *Minipad Project*, *Nuitka*, *pySerial* ou *QT Company*,
+apenas com o *SusaPad* em si.
 
 [minipad-release]: https://github.com/minipadKB/minipad-firmware/releases/tag/2023.410.1
 
