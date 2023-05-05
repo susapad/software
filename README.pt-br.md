@@ -2,6 +2,8 @@
 
 # SusaPad Software
 
+> [[English](./README.md)] | [[Español](./README.es.md)]
+
 ![gpl-3.0](./susapad/media/gplv3-with-text-136x68.png)
 
 *SusaPad Software* is the software used to configure *SusaPad*/[*MiniPad*][minipad].
