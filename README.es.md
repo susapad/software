@@ -26,7 +26,7 @@
 ---
 
 
-## Licensas
+## Licencias
 
 > Parte de esa secção será mantida en inglés.
 
