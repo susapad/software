@@ -114,6 +114,13 @@ uno segundo de intervalo entre los mismos.
 Como resultado, algunas configuraciones pueden
 levar hasta seis segundos para completarse.
 
+### Ese software es traducido?
+
+No, pero planejamos traducirlo próximamente.
+Por ahora, el *SusaPad Software* apresentase
+disponible sólo en el portugués,
+la lenguaje nativa del proyeto.
+
 
 ### ¿Este proyecto tiene alguna relación con otros?
 

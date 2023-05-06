@@ -115,6 +115,13 @@ As a result, some configurations
 may take up to six seconds to complete.
 
 
+### Is this software translated?
+
+No, it isn't. But we plan to translate it soon.
+For now *SusaPad Software* is just available to Portuguese,
+the native language of this project.
+
+
 ### Does this project have any relationship with others?
 
 No, it isn't. This project is independent
