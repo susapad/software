@@ -49,7 +49,7 @@ four degrees of freedom:
 
 For more details about our licence: [LICENSE](./LICENSE).
 
-### Alternative GNU Logo
+### GNU Logo
 
 Official GPL, AGPL and LGPL logos
 These images are in the public domain.

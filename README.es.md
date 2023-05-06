@@ -51,7 +51,7 @@ cuatro grados de liberdad:
 
 Para mas detalles nuestra licensa: [LICENSE](./LICENSE).
 
-### Alternative GNU Logo
+### GNU Logo
 
 Official GPL, AGPL and LGPL logos
 These images are in the public domain.
