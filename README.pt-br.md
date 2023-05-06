@@ -2,6 +2,8 @@
 
 # SusaPad Software
 
+> [[English](./README.md)] | [[Español](./README.es.md)]
+
 ![gpl-3.0](./susapad/media/gplv3-with-text-136x68.png)
 
 *SusaPad Software* is the software used to configure *SusaPad*/[*MiniPad*][minipad].
@@ -19,7 +21,16 @@
 
 ### Propostas
 
-> **Warning**: Em produção...
+Você poderá adicionar propostas:
+bugs, dúvidas, perguntas, requisições de recursos,
+via Issues.
+
+Por favor, leia atentamente [nossa proposta fixada][issue-1]
+e tenha certeza de estar ciente das
+[Diretrizes da Comunidade do GitHub][gh-rules].
+
+[issue-1]: https://github.com/susapad/software/issues/1
+[gh-rules]: https://docs.github.com/pt/site-policy/github-terms/github-community-guidelines#maintaining-a-strong-community
 
 ---
 
@@ -41,7 +52,7 @@ quatro degraus de liberdade:
 
 Para mais detalhes sobre nossa licença: [LICENSE](./LICENSE).
 
-### Alternative GNU Logo
+### GNU Logo
 
 Official GPL, AGPL and LGPL logos
 These images are in the public domain.
@@ -103,15 +114,24 @@ mas a forma como nos comunicamos com o arduino.
 
 Infelizmente, os comandos só podem ser enviado com
 um segundo de intervalo entre eles.
-Como resultado, algumas configurações podem levar até 6 segundos
-para serem completadas.
+Como resultado, algumas configurações
+podem levar até seis segundos para serem completadas.
+
+
+### Esse software é traduzido?
+
+Não, mas planejamos traduzí-lo em breve.
+Por enquanto, o *SusaPad Software* se apresenta
+disponível apenas em português,
+a linguagem nativa desse projeto.
 
 
 ### Esse projeto tem algum relacionamento com outros?
 
 Não, ele não tem. Esse projeto é independete
 e não tem quaisquer relações com outros projetos
-como *Minipad Project*, *Nuitka*, *pySerial* ou *QT Company*.
+como *Minipad Project*, *Nuitka*, *pySerial* ou *QT Company*,
+apenas com o *SusaPad* em si.
 
 [minipad-release]: https://github.com/minipadKB/minipad-firmware/releases/tag/2023.410.1
 
