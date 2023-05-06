@@ -21,7 +21,16 @@
 
 ### Propostas
 
-> **Warning**: Em produção...
+Você poderá adicionar propostas:
+bugs, dúvidas, perguntas, requisições de recursos,
+via Issues.
+
+Por favor, leia atentamente [nossa proposta fixada][issue-1]
+e tenha certeza de estar ciente das
+[Diretrizes da Comunidade do GitHub][gh-rules].
+
+[issue-1]: https://github.com/susapad/software/issues/1
+[gh-rules]: https://docs.github.com/pt/site-policy/github-terms/github-community-guidelines#maintaining-a-strong-community
 
 ---
 

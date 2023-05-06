@@ -21,7 +21,15 @@
 
 ### Issues
 
-> **Warning**: In production...
+You can add issues: bugs, doubts, questions, feature requests,
+via Issues.
+
+Please, carefully read [our pinned Issue][issue-1]
+and make sure that you know about
+[Github's Community Guideline][gh-rules].
+
+[issue-1]: https://github.com/susapad/software/issues/1
+[gh-rules]: https://docs.github.com/en/site-policy/github-terms/github-community-guidelines#maintaining-a-strong-community
 
 ---
 
