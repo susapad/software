@@ -1,0 +1,131 @@
+on:
+  push:
+    branches:
+        - "main"
+        - "ci-builds"
+    tags:
+        - "v*.*.*"
+
+permissions:
+    contents: read
+
+
+env:
+  application: "susapad"
+  main-folder: "SusaPadSoftware"
+  app-icon: "susapad/media/logo.ico"
+
+
+jobs:
+
+  build:
+    strategy:
+      matrix:
+        os:
+          - windows-latest
+          - ubuntu-latest
+
+    runs-on: ${{ matrix.os }}
+
+    defaults:
+      run:
+        shell: bash {0}
+
+
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v3
+
+
+      - name: Setup Msys2 (Windows only)
+        if: matrix.os == 'windows-latest'
+        uses: msys2/setup-msys2@v2
+        with:
+          update: false
+          install: >-
+            git
+            base-devel
+          # pacboy: >-
+          #   gcc:m
+          #   gcc-libs:m
+
+
+      - name: Configure Msys2 (Windows only)
+        if: matrix.os == 'windows-latest'
+        run: |
+          echo "${{ runner.temp }}/msys/msys64/mingw64/bin" >> $env:GITHUB_PATH
+
+
+      - name: Setup Python
+        uses: actions/setup-python@v4.6.0
+        with:
+          python-version: "3.10"
+          cache: "pip"
+
+
+      - name: Install pip and pipx
+        run: |
+          python -m pip install --upgrade pip
+          pip install pipx
+
+
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements.txt
+          pipx install nuitka==1.5.6
+
+
+      - name: Build SusaPad (Windows only)
+        if: matrix.os == 'windows-latest'
+        run: |
+          nuitka ${{ env.application }}                         ^
+              --windows-icon-from-ico=${{ env.app-icon }}       ^
+              --disable-console                                 ^
+              --standalone                                      ^
+              --lto=yes                                         ^
+              --enable-plugin=pyside6                           ^
+              --mingw64 --assume-yes-for-downloads --show-scons
+        shell: cmd
+
+
+      - name: Build SusaPad (Linux only)
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          nuitka3 ${{ env.application }}                         \
+              --windows-icon-from-ico=${{ env.app-icon }}       \
+              --disable-console                                 \
+              --standalone                                      \
+              --lto=yes                                         \
+              --enable-plugin=pyside6                           \
+              --assume-yes-for-downloads --show-scons
+
+
+      - name: Create Artifact's Folder
+        run: |
+          mkdir ${{ env.main-folder }}
+          mkdir ${{ env.main-folder }}/${{ env.application }}
+          mkdir ${{ env.main-folder }}/${{ env.application }}/media
+
+          cp -r ${{ env.application }}.dist/**  ${{ env.main-folder }}/
+          cp -r ${{ env.application }}/media/** ${{ env.main-folder }}/${{ env.application }}/media/
+
+          cp LICENSE         ${{ env.main-folder }}/LICENSE
+          cp README.md       ${{ env.main-folder }}/README.md
+          cp README.pt-br.md ${{ env.main-folder }}/README.pt-br.md
+          cp README.es.md    ${{ env.main-folder }}/README.es.md
+
+
+      - name: Upload Artifact (Windows only)
+        if: matrix.os == 'windows-latest'
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ env.application }}-${{ github.ref_name }}-x64-win
+          path: "${{ env.main-folder }}"
+
+      - name: Upload Artifact (Linux only)
+        if: matrix.os == 'ubuntu-latest'
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ env.application }}-${{ github.ref_name }}-x64-linux
+          path: "${{ env.main-folder }}"
