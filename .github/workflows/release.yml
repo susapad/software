@@ -1,8 +1,5 @@
 on:
   push:
-    branches:
-        - "main"
-        - "ci-builds"
     tags:
         - "v*.*.*"
 
@@ -42,13 +39,10 @@ jobs:
         if: matrix.os == 'windows-latest'
         uses: msys2/setup-msys2@v2
         with:
-          update: false
+          update: true
           install: >-
             git
             base-devel
-          # pacboy: >-
-          #   gcc:m
-          #   gcc-libs:m
 
 
       - name: Configure Msys2 (Windows only)
