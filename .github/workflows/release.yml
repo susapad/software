@@ -57,29 +57,29 @@ jobs:
           echo "${{ runner.temp }}/msys/msys64/mingw64/bin" >> $env:GITHUB_PATH
 
 
+      - name: Install Poetry
+        run: |
+          python -m pip install --upgrade pip
+          pip install pipx
+          pipx install poetry==1.4.2
+
+
       - name: Setup Python
         uses: actions/setup-python@v4.6.0
         with:
           python-version: "3.10"
-          cache: "pip"
-
-
-      - name: Install pip and pipx
-        run: |
-          python -m pip install --upgrade pip
-          pip install pipx
+          cache: "poetry"
 
 
       - name: Install Dependencies
         run: |
-          pip install -r requirements.txt
-          pipx install nuitka==1.5.6
+          poetry install
 
 
       - name: Build SusaPad (Windows only)
         if: matrix.os == 'windows-latest'
         run: |
-          nuitka ${{ env.application }}                         ^
+          poetry run nuitka ${{ env.application }}              ^
               --windows-icon-from-ico=${{ env.app-icon }}       ^
               --disable-console                                 ^
               --standalone                                      ^
@@ -92,7 +92,7 @@ jobs:
       - name: Build SusaPad (Linux only)
         if: matrix.os == 'ubuntu-latest'
         run: |
-          nuitka3 ${{ env.application }}                         \
+          poetry run nuitka3 ${{ env.application }}             \
               --windows-icon-from-ico=${{ env.app-icon }}       \
               --disable-console                                 \
               --standalone                                      \
