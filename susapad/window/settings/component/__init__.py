@@ -11,11 +11,11 @@ _SETTINGS_STYLE = """
         font: 16px;
         margin-top: 20px;
         margin-bottom: 10px;
-    } 
+    }
 
     QLabel#first-h2 {
         margin-top: 0px;
-    } 
+    }
 
     QPushButton {
         margin-left: 20px;
@@ -30,9 +30,10 @@ class WindowLayout(base.BaseFrame):
 
         # Configure Style
         self.setStyleSheet(self.styleSheet() + _SETTINGS_STYLE)
+        self.init_widgets()
+        self.init_layout()
 
-        # Configure Layout
-
+    def init_widgets(self):
         self.input_label = QtWidgets.QLabel("Habilitar Input")
         self.input_label.setObjectName("first-h2")
         self.input_button = rt.TriggerButton(window, susapad)
@@ -47,18 +48,26 @@ class WindowLayout(base.BaseFrame):
 
         self.sensibility_slider = sensibility.SensiblitySlidersGroup(window, susapad)
 
-        self.trigger_layout = QtWidgets.QVBoxLayout()
-        self.trigger_layout.addWidget(self.input_label)
-        self.trigger_layout.addWidget(self.input_button)
-        self.trigger_layout.addWidget(self.rt_label)
-        self.trigger_layout.addWidget(self.rt_button)
-        self.trigger_layout.addWidget(self.crt_label)
-        self.trigger_layout.addWidget(self.crt_button)
-        
-        self.upper_layout = QtWidgets.QHBoxLayout()
-        self.upper_layout.addLayout(self.trigger_layout, 1)
-        self.upper_layout.addWidget(self.actuation_slider, 1)
-        
-        self.layout = QtWidgets.QVBoxLayout(self)
-        self.layout.addLayout(self.upper_layout)
-        self.layout.addWidget(self.sensibility_slider)
+    def init_layout(self):
+        layout = QtWidgets.QVBoxLayout(self)
+        layout.addLayout(self.__init_upper_layout())
+        layout.addWidget(self.sensibility_slider)
+
+    def __init_upper_layout(self):
+
+        left_layout = QtWidgets.QVBoxLayout()
+        left_layout.addWidget(self.input_label)
+        left_layout.addWidget(self.input_button)
+        left_layout.addWidget(self.rt_label)
+        left_layout.addWidget(self.rt_button)
+        left_layout.addWidget(self.crt_label)
+        left_layout.addWidget(self.crt_button)
+
+        right_layout = QtWidgets.QBoxLayout()
+        right_layout.addWidget(self.actuation_slider)
+
+        upper_layout = QtWidgets.QHBoxLayout()
+        upper_layout.addLayout(self.left_layout, 1)
+        upper_layout.addLayout(self.right_layout, 1)
+
+        return upper_layout
