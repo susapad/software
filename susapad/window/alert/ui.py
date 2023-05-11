@@ -4,11 +4,11 @@ from susapad import base_widgets
 
 class AlertUI(base_widgets.BaseFrame):
 
-    def __init__(self, dialog, parent, message: str):
+    def __init__(self, dialog, caller, message: str):
         super().__init__()
         self.message = message
         self.dialog = dialog
-        self.parent = parent
+        self.caller = caller
 
         self.init_widgets()
         self.init_layout()
@@ -31,5 +31,5 @@ class AlertUI(base_widgets.BaseFrame):
 
     @QtCore.Slot()
     def close_dialog(self):
-        self.parent.setEnabled(True)
+        self.caller.setEnabled(True)
         self.dialog.close()
