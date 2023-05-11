@@ -7,7 +7,7 @@ _BUTTON_STYLE = """
     QPushButton {
         background-color: #0e639e;
         border-radius: 15px;
-        min-width: 10em;
+        height: 30px;
         padding: 6px;
         font: bold;
         color: white;
@@ -40,10 +40,8 @@ class BaseButton(QtWidgets.QPushButton):
     def __init__(self, text: str, shortcut: str = None, parent: str = None):
         super().__init__(text, parent)
 
-        self.setFixedSize(100, 40)
         self.setStyleSheet(_BUTTON_STYLE)
         self.setCursor(Qt.PointingHandCursor)
 
         if shortcut:
             self.setShortcut(shortcut)
-        
