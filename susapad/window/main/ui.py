@@ -3,14 +3,14 @@ import webbrowser
 from PySide6 import QtCore, QtGui, QtWidgets
 from PySide6.QtCore import Qt
 
-from susapad import base_widgets as base
+from susapad import widget
 from .component import buttons, header
 
 
 README_LINK = "https://github.com/RickBarretto/SusaPadSoftware#readme"
 
 
-class HelpButton(base.BaseFloatingButton):
+class HelpButton(widget.BaseFloatingButton):
 
     def __init__(self, window):
         super().__init__(window, "Ajuda", "F1")
@@ -20,7 +20,7 @@ class HelpButton(base.BaseFloatingButton):
         webbrowser.open_new(README_LINK)
 
 
-class MainUI(base.BaseFrame):
+class MainUI(widget.BaseFrame):
 
     def __init__(self, main_window):
         super().__init__()

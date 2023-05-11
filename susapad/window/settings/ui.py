@@ -1,7 +1,7 @@
 from PySide6 import QtCore, QtGui, QtWidgets
 from PySide6.QtCore import Qt
 
-from susapad import base_widgets as base
+from susapad import widget
 from .component import actuation_point, rapid_trigger as rt, sensibility
 
 _SETTINGS_STYLE = """
@@ -22,7 +22,7 @@ _SETTINGS_STYLE = """
 """
 
 
-class SettingsUI(base.BaseFrame):
+class SettingsUI(widget.BaseFrame):
 
     def __init__(self, window, susapad):
         super().__init__()

@@ -8,12 +8,12 @@ from PySide6.QtCore import Qt
 from susapad.controller import exception
 from susapad.window import settings
 from susapad.window.main import component
-from susapad import base_widgets as base
+from susapad import widgets
 
 from . import ui
 
 
-class MainWindow(base.BaseWindow):
+class MainWindow(widget.BaseWindow):
 
     def __init__(self, susapad):
         super().__init__(susapad)

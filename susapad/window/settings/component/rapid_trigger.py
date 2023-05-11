@@ -57,7 +57,7 @@ from PySide6 import QtWidgets, QtCore
 from PySide6.QtCore import Qt
 
 from susapad.window import alert as alert_dialog
-from susapad.base_widgets import button
+from susapad.widget import button
 
 
 TOGGLERS_STYLE = """

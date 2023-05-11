@@ -3,10 +3,10 @@ from string import Template
 from PySide6 import QtCore, QtWidgets
 from PySide6.QtCore import Qt
 
-from susapad import base_widgets as base
+from susapad import widget
 from susapad.controller import exception
 
-class ActuationPointGroup(base.BaseSliderGroup):
+class ActuationPointGroup(widget.BaseSliderGroup):
 
     def __init__(self, window, susapad):
         super().__init__(window, susapad, vertical = True)

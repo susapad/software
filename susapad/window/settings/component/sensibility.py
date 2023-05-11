@@ -4,10 +4,10 @@ from PySide6 import QtCore, QtWidgets
 from PySide6.QtCore import Qt
 
 from susapad.controller import exception
-from susapad import base_widgets as base
+from susapad import widget
 
 
-class SensiblitySlidersGroup(base.BaseDualSliderGroup):
+class SensiblitySlidersGroup(widget.BaseDualSliderGroup):
 
     def __init__(self, window, susapad):
         super().__init__(window, susapad)

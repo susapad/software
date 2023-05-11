@@ -1,8 +1,8 @@
 
-from susapad import base_widgets
+from susapad import widget
 
 
-class AlertUI(base_widgets.BaseFrame):
+class AlertUI(widget.BaseFrame):
 
     def __init__(self, dialog, message: str):
         super().__init__()
@@ -11,8 +11,8 @@ class AlertUI(base_widgets.BaseFrame):
         self.init_widgets(message)
         self.init_layout()
 
-    def init_close_button(self) -> base_widgets.BaseButton:
-        button = base_widgets.BaseButton("Ok", "Enter")
+    def init_close_button(self) -> widget.BaseButton:
+        button = widget.BaseButton("Ok", "Enter")
         button.setAccessibleName("secondary")
         button.clicked.connect(self.dialog.close_dialog)
         return button

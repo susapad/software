@@ -2,7 +2,7 @@
 from PySide6 import QtWidgets, QtCore
 from PySide6.QtCore import Qt
 
-from susapad import base_widgets as base
+from susapad import widget
 
 from . import ui
 
@@ -12,7 +12,7 @@ Certifique-se que ele está conectado corretamente
 """
 
 
-class AlertDialog(base.BaseWindow):
+class AlertDialog(widget.BaseWindow):
 
     def __init__(self, caller, message: str = None, susapad = None):
         super().__init__(susapad)
