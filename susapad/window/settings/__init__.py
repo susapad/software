@@ -13,9 +13,16 @@ class SettingsWindow(widget.BaseWindow):
 
     def __init__(self, parent):
         super().__init__(parent.susapad, parent)
+        self.init_widgets()
+        self.init_layout()
 
+    def init_widgets(self):
         self.ui = ui.SettingsUI(self, self.susapad)
-        self.layout.addWidget(self.ui)
 
+    def init_layout(self):
+        self.layout.addWidget(self.ui)
+        self.__init_close_button()
+
+    def __init_close_button(self):
         self.close_button = close.CloseButton(self, parent)
         self.close_button.move(420, 20)
