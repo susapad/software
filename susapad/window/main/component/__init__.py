@@ -10,24 +10,6 @@ from . import buttons, header
 README_LINK = "https://github.com/RickBarretto/SusaPadSoftware#readme"
 
 
-class HeaderGroup(QtWidgets.QWidget):
-
-    def __init__(self, main_window):
-        super().__init__()
-
-        self.logo   = header.SusaPadLogo()
-        self.title  = header.SusaPadTitle()
-        self.status = header.StatusLabel(main_window)
-
-        self.layout = QtWidgets.QVBoxLayout(self)
-        self.layout.addWidget(self.logo,
-                alignment = Qt.AlignCenter | Qt.AlignTop)
-        self.layout.addWidget(self.title,
-                alignment = Qt.AlignCenter | Qt.AlignTop)
-        self.layout.addWidget(self.status,
-                alignment = Qt.AlignCenter | Qt.AlignTop)
-
-
 class HelpButton(base.BaseFloatingButton):
 
     def __init__(self, window):
@@ -47,12 +29,24 @@ class WindowLayout(base.BaseFrame):
         self.init_help_button()
 
     def init_widgets(self, window):
+        self.app_logo       = header.SusaPadLogo()
+        self.app_title      = header.SusaPadTitle()
+        self.susapad_status = header.StatusLabel(window)
+
         self.main_button  = buttons.ActionButton(window)
         self.close_button = buttons.CloseButton()
 
-        self.group_header = HeaderGroup(main_window)
 
     def init_layout(self):
+        header_alignment = Qt.AlignCenter | Qt.AlignTop
+
+        header_layout = QtWidgets.QVBoxLayout()
+        header_layout.addWidget(self.app_logo, alignment       =
+                                header_alignment)
+        header_layout.addWidget(self.app_title, alignment      =
+                                header_alignment)
+        header_layout.addWidget(self.susapad_status, alignment =
+                                header_alignment)
 
         bottom_layout = QtWidgets.QHBoxLayout()
         bottom_layout.addWidget(self.main)
@@ -60,11 +54,11 @@ class WindowLayout(base.BaseFrame):
 
         main_layout = QtWidgets.QVBoxLayout(self)
 
-        main_layout.addWidget(self.group_header,
-                alignment = Qt.AlignCenter | Qt.AlignTop)
+        main_layout.addLayout(self.header_layout, alignment =
+                                Qt.AlignCenter | Qt.AlignTop)
+        main_layout.addLayout(self.bottom_layout, alignment =
+                                Qt.AlignCenter | Qt.AlignBottom)
 
-        main_layout.addLayout(self.bottom_layout,
-                alignment = Qt.AlignCenter | Qt.AlignBottom)
 
     def init_help_button(self):
         self.help_button = HelpButton(self)
