@@ -54,16 +54,16 @@ class WindowLayout(base.BaseFrame):
 
     def init_layout(self):
 
-        header_layout = QtWidgets.QHBoxLayout()
-        header_layout.addWidget(self.main)
-        header_layout.addWidget(self.close)
+        bottom_layout = QtWidgets.QHBoxLayout()
+        bottom_layout.addWidget(self.main)
+        bottom_layout.addWidget(self.close)
 
         main_layout = QtWidgets.QVBoxLayout(self)
 
         main_layout.addWidget(self.group_header,
                 alignment = Qt.AlignCenter | Qt.AlignTop)
 
-        main_layout.addWidget(self.group_button,
+        main_layout.addLayout(self.bottom_layout,
                 alignment = Qt.AlignCenter | Qt.AlignBottom)
 
     def init_help_button(self):
