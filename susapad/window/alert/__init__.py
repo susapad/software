@@ -23,5 +23,5 @@ class AlertDialog(base.BaseWindow):
         self.message = message if message else _DEFAULT_MESSAGE
 
         ## Configure Layout
-        self.main_widget = ui.AlertFrame(self, self.parent, self.message)
+        self.main_widget = ui.AlertUI(self, self.parent, self.message)
         self.layout.addWidget(self.main_widget)

@@ -2,7 +2,7 @@
 from susapad import base_widgets
 
 
-class AlertFrame(base_widgets.BaseFrame):
+class AlertUI(base_widgets.BaseFrame):
 
     def __init__(self, dialog, parent, message: str):
         super().__init__()
