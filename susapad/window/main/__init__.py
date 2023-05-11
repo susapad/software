@@ -7,7 +7,7 @@ from PySide6.QtCore import Qt
 
 from susapad.controller import susapad, exception
 from susapad.window import settings
-from susapad.window.main import widgets
+from susapad.window.main import component
 from susapad import base_widgets as base
 
 

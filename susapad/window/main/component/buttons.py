@@ -1,7 +1,7 @@
 from PySide6 import QtCore, QtWidgets
 from PySide6.QtCore import Qt
 
-from susapad import base_widgets as base
+from susapad import base_widget as base
 
 
 class ActionButton(base.BaseButton):
