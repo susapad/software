@@ -1,3 +1,5 @@
+from __feature__ import true_property
+from __feature__ import snake_case
 
 import dataclasses as ds
 import time
@@ -30,7 +32,7 @@ class MainWindow(widget.BaseWindow):
         self.ui = ui.MainUI(self)
 
     def init_layout(self):
-        self.layout.addWidget(self.ui)
+        self.layout.add_widget(self.ui)
 
 
     @QtCore.Slot()
@@ -38,13 +40,13 @@ class MainWindow(widget.BaseWindow):
         port = "COM5" if self.susapad.debug else self.susapad.find()
         if "" == port:
             self.ui.main_button.set_found(False)
-            self.ui.susapad_status.setText("SusaPad não encontrado!")
+            self.ui.susapad_status.text = "SusaPad não encontrado!"
             exception.susapad_not_found(self)
         else:
             if not self.susapad.debug:
                 self.susapad.connect(port)
             self.ui.main_button.set_found(True)
-            self.ui.susapad_status.setText(f"SusaPad encontrado na porta {port}")
+            self.ui.susapad_status.text = f"SusaPad encontrado na porta {port}"
 
     @QtCore.Slot()
     def open_settings_window(self):

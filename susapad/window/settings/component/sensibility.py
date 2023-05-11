@@ -1,3 +1,6 @@
+from __feature__ import true_property
+from __feature__ import snake_case
+
 from string import Template
 
 from PySide6 import QtCore, QtWidgets
@@ -14,7 +17,7 @@ class SensiblitySlidersGroup(widget.BaseDualSliderGroup):
 
         self.set_template(Template(
             "Sensibilidade: Pressionar (${value1}) e Soltar (${value2})"))
-        self.set_range((10, 400))
+        self.range = (10, 400)
         self._update_label()
 
     @QtCore.Slot() # press

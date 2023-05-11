@@ -1,3 +1,5 @@
+from __feature__ import true_property
+from __feature__ import snake_case
 
 from PySide6 import QtWidgets, QtCore
 from PySide6.QtCore import Qt
@@ -24,15 +26,15 @@ class AlertDialog(widget.BaseWindow):
         self.init_layout()
 
     def init_proprieties(self):
-        self.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint)
+        self.window_flags = Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint
 
     def init_widgets(self):
         self.main_widget = ui.AlertUI(self, self.message)
 
     def init_layout(self):
-        self.layout.addWidget(self.main_widget)
+        self.layout.add_widget(self.main_widget)
 
     @QtCore.Slot()
     def close_dialog(self):
-        self.caller.setEnabled(True)
+        self.caller.enabled = True
         self.close()

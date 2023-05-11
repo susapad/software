@@ -1,3 +1,5 @@
+from __feature__ import true_property
+from __feature__ import snake_case
 
 import serial
 from PySide6 import QtGui, QtWidgets
@@ -20,7 +22,7 @@ class SettingsWindow(widget.BaseWindow):
         self.ui = ui.SettingsUI(self, self.susapad)
 
     def init_layout(self, parent):
-        self.layout.addWidget(self.ui)
+        self.layout.add_widget(self.ui)
         self.__init_close_button(parent)
 
     def __init_close_button(self, parent):

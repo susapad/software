@@ -1,3 +1,5 @@
+from __feature__ import true_property
+from __feature__ import snake_case
 
 import time
 
@@ -36,14 +38,14 @@ class TriggerButton(button.BaseButton):
 
     def __init__(self, window, susapad):
         super().__init__("Desativar", None)
-        self.setFixedSize(100, 30)
+        self.set_fixed_size(100, 30)
 
         self.susapad = susapad
         self.window = window
         self.on = True
 
         self.clicked.connect(self.rapid_trigger)
-        self.setCursor(Qt.PointingHandCursor)
+        self.cursor = Qt.PointingHandCursor
         self.__turn_on()
 
 
@@ -56,9 +58,9 @@ class TriggerButton(button.BaseButton):
     def __turn_on(self):
         if self.susapad.set_trigger(True):
             self.on = True
-            self.setAccessibleName("on")
-            self.setText("Desligar")
-            self.setStyleSheet(TOGGLERS_STYLE)
+            self.accessible_name = "on"
+            self.text = "Desligar"
+            self.style_sheet = TOGGLERS_STYLE
         else:
             print("Algum problema ocorreu. Certifique-se que seu Susapad está conectado.")
             self.__raise_alert()
@@ -67,9 +69,9 @@ class TriggerButton(button.BaseButton):
     def __turn_off(self):
         if self.susapad.set_trigger(False):
             self.on = False
-            self.setAccessibleName("off")
-            self.setText("Ligar")
-            self.setStyleSheet(TOGGLERS_STYLE)
+            self.accessible_name = "off"
+            self.text = "Ligar"
+            self.style_sheet = TOGGLERS_STYLE
         else:
             print("Algum problema ocorreu. Certifique-se que seu Susapad está conectado.")
             self.__raise_alert()
@@ -87,14 +89,14 @@ class RapidTriggerButton(button.BaseButton):
 
     def __init__(self, window, susapad):
         super().__init__("Desativar", None)
-        self.setFixedSize(100, 30)
+        self.set_fixed_size(100, 30)
 
         self.susapad = susapad
         self.window = window
         self.on = True
 
         self.clicked.connect(self.rapid_trigger)
-        self.setCursor(Qt.PointingHandCursor)
+        self.cursor = Qt.PointingHandCursor
         self.__turn_on()
 
 
@@ -107,9 +109,9 @@ class RapidTriggerButton(button.BaseButton):
     def __turn_on(self):
         if self.susapad.set_rapid_trigger(True):
             self.on = True
-            self.setAccessibleName("on")
-            self.setText("Desligar")
-            self.setStyleSheet(TOGGLERS_STYLE)
+            self.accessible_name = "on"
+            self.text = "Desligar"
+            self.style_sheet = TOGGLERS_STYLE
         else:
             print("Algum problema ocorreu. Certifique-se que seu Susapad está conectado.")
             self.__raise_alert()
@@ -118,9 +120,9 @@ class RapidTriggerButton(button.BaseButton):
     def __turn_off(self):
         if self.susapad.set_rapid_trigger(False):
             self.on = False
-            self.setAccessibleName("off")
-            self.setText("Ligar")
-            self.setStyleSheet(TOGGLERS_STYLE)
+            self.accessible_name = "off"
+            self.text = "Ligar"
+            self.style_sheet = TOGGLERS_STYLE
         else:
             print("Algum problema ocorreu. Certifique-se que seu Susapad está conectado.")
             self.__raise_alert()
@@ -138,14 +140,14 @@ class ContinuousRapidTriggerButton(button.BaseButton):
 
     def __init__(self, window, susapad):
         super().__init__("Desativar", None)
-        self.setFixedSize(100, 30)
+        self.set_fixed_size(100, 30)
 
         self.susapad = susapad
         self.window = window
         self.on = True
 
         self.clicked.connect(self.rapid_trigger)
-        self.setCursor(Qt.PointingHandCursor)
+        self.cursor = Qt.PointingHandCursor
         self.__turn_on()
 
 
@@ -158,9 +160,9 @@ class ContinuousRapidTriggerButton(button.BaseButton):
     def __turn_on(self):
         if self.susapad.set_continuous_rapid_trigger(True):
             self.on = True
-            self.setAccessibleName("on")
-            self.setText("Desligar")
-            self.setStyleSheet(TOGGLERS_STYLE)
+            self.accessible_name = "on"
+            self.text = "Desligar"
+            self.style_sheet = TOGGLERS_STYLE
         else:
             print("Algum problema ocorreu. Certifique-se que seu Susapad está conectado.")
             self.__raise_alert()
@@ -169,9 +171,9 @@ class ContinuousRapidTriggerButton(button.BaseButton):
     def __turn_off(self):
         if self.susapad.set_continuous_rapid_trigger(False):
             self.on = False
-            self.setAccessibleName("off")
-            self.setText("Ligar")
-            self.setStyleSheet(TOGGLERS_STYLE)
+            self.accessible_name = "off"
+            self.text = "Ligar"
+            self.style_sheet = TOGGLERS_STYLE
         else:
             print("Algum problema ocorreu. Certifique-se que seu Susapad está conectado.")
             self.__raise_alert()

@@ -1,3 +1,6 @@
+from __feature__ import true_property
+from __feature__ import snake_case
+
 from PySide6 import QtCore, QtGui, QtWidgets
 from PySide6.QtCore import Qt
 
@@ -28,13 +31,13 @@ class SettingsUI(widget.BaseFrame):
         super().__init__()
 
         # Configure Style
-        self.setStyleSheet(self.styleSheet() + _SETTINGS_STYLE)
+        self.style_sheet += _SETTINGS_STYLE
         self.init_widgets(window, susapad)
         self.init_layout()
 
     def init_widgets(self, window, susapad):
         self.input_label = QtWidgets.QLabel("Habilitar Input")
-        self.input_label.setObjectName("first-h2")
+        self.input_label.object_name = "first-h2"
         self.input_button = rt.TriggerButton(window, susapad)
 
         self.rt_label = QtWidgets.QLabel("Rapid Trigger")
@@ -49,24 +52,24 @@ class SettingsUI(widget.BaseFrame):
 
     def init_layout(self):
         layout = QtWidgets.QVBoxLayout(self)
-        layout.addLayout(self.__init_upper_layout())
-        layout.addWidget(self.sensibility_slider)
+        layout.add_layout(self.__init_upper_layout())
+        layout.add_widget(self.sensibility_slider)
 
     def __init_upper_layout(self):
 
         left_layout = QtWidgets.QVBoxLayout()
-        left_layout.addWidget(self.input_label)
-        left_layout.addWidget(self.input_button)
-        left_layout.addWidget(self.rt_label)
-        left_layout.addWidget(self.rt_button)
-        left_layout.addWidget(self.crt_label)
-        left_layout.addWidget(self.crt_button)
+        left_layout.add_widget(self.input_label)
+        left_layout.add_widget(self.input_button)
+        left_layout.add_widget(self.rt_label)
+        left_layout.add_widget(self.rt_button)
+        left_layout.add_widget(self.crt_label)
+        left_layout.add_widget(self.crt_button)
 
         right_layout = QtWidgets.QVBoxLayout()
-        right_layout.addWidget(self.actuation_slider)
+        right_layout.add_widget(self.actuation_slider)
 
         upper_layout = QtWidgets.QHBoxLayout()
-        upper_layout.addLayout(left_layout, 1)
-        upper_layout.addLayout(right_layout, 1)
+        upper_layout.add_layout(left_layout, 1)
+        upper_layout.add_layout(right_layout, 1)
 
         return upper_layout

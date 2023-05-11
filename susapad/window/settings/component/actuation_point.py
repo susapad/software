@@ -1,3 +1,6 @@
+from __feature__ import true_property
+from __feature__ import snake_case
+
 from string import Template
 
 from PySide6 import QtCore, QtWidgets
@@ -10,7 +13,7 @@ class ActuationPointGroup(widget.BaseSliderGroup):
 
     def __init__(self, window, susapad):
         super().__init__(window, susapad, vertical = True)
-        self.set_range((10, 390))
+        self.range = (10, 390)
         self.set_template(Template("Ponto de atuação: (${value})"))
         self._update_label()
 

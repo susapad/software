@@ -1,3 +1,5 @@
+from __feature__ import true_property
+from __feature__ import snake_case
 
 from PySide6 import QtWidgets
 
@@ -15,7 +17,7 @@ class AlertUI(widget.BaseFrame):
 
     def init_close_button(self) -> widget.BaseButton:
         button = widget.BaseButton("Ok", "Enter")
-        button.setAccessibleName("secondary")
+        button.accessible_name = "secondary"
         button.clicked.connect(self.dialog.close_dialog)
         return button
 
@@ -25,5 +27,5 @@ class AlertUI(widget.BaseFrame):
 
     def init_layout(self):
         self.layout = QtWidgets.QVBoxLayout(self)
-        self.layout.addWidget(self.content)
-        self.layout.addWidget(self.close_button)
+        self.layout.add_widget(self.content)
+        self.layout.add_widget(self.close_button)

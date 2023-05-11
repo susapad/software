@@ -1,3 +1,6 @@
+from __feature__ import true_property
+from __feature__ import snake_case
+
 from PySide6 import QtCore, QtWidgets
 from PySide6.QtCore import Qt
 
@@ -16,10 +19,10 @@ class ActionButton(widget.BaseButton):
     def set_found(self, found: bool = True):
         if found:
             self.found = True
-            self.setText("Configurar")
+            self.text = "Configurar"
         else:
             self.found = False
-            self.setText("Tentar novamente!")
+            self.text = "Tentar novamente!"
 
     @QtCore.Slot()
     def action(self):
@@ -33,7 +36,7 @@ class CloseButton(widget.BaseButton):
 
     def __init__(self):
         super().__init__("Fechar", "Escape")
-        self.setAccessibleName("secondary")
+        self.accessible_name = "secondary"
         self.clicked.connect(self.close_application)
 
     @QtCore.Slot()

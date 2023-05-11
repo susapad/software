@@ -1,3 +1,6 @@
+from __feature__ import true_property
+from __feature__ import snake_case
+
 import webbrowser
 
 from PySide6 import QtCore, QtGui, QtWidgets
@@ -39,24 +42,24 @@ class MainUI(widget.BaseFrame):
 
     def init_layout(self):
         main_layout = QtWidgets.QVBoxLayout(self)
-        main_layout.addLayout(self.__init_header_layout())
-        main_layout.addLayout(self.__init_bottom_layout())
+        main_layout.add_layout(self.__init_header_layout())
+        main_layout.add_layout(self.__init_bottom_layout())
 
     def __init_header_layout(self):
         header_alignment = Qt.AlignCenter | Qt.AlignTop
         header_layout = QtWidgets.QVBoxLayout()
-        header_layout.addWidget(self.app_logo, alignment       =
+        header_layout.add_widget(self.app_logo, alignment       =
                                 header_alignment)
-        header_layout.addWidget(self.app_title, alignment      =
+        header_layout.add_widget(self.app_title, alignment      =
                                 header_alignment)
-        header_layout.addWidget(self.susapad_status, alignment =
+        header_layout.add_widget(self.susapad_status, alignment =
                                 header_alignment)
         return header_layout
 
     def __init_bottom_layout(self):
         bottom_layout = QtWidgets.QHBoxLayout()
-        bottom_layout.addWidget(self.main_button)
-        bottom_layout.addWidget(self.close_button)
+        bottom_layout.add_widget(self.main_button)
+        bottom_layout.add_widget(self.close_button)
         return bottom_layout
 
 
