@@ -39,11 +39,17 @@ _BUTTON_STYLE = """
 
 class BaseButton(QtWidgets.QPushButton):
 
-    def __init__(self, text: str = None, shortcut: str = None, parent: str = None):
+    def __init__(
+            self,
+            text: str = None,
+            shortcut: str = None,
+            parent: QtWidgets.QWidget = None
+        ):
+
         super().__init__(text, parent)
 
-        self.style_sheet = _BUTTON_STYLE
-        self.cursor = Qt.PointingHandCursor
+        self.style_sheet: str = _BUTTON_STYLE
+        self.cursor: Qt = Qt.PointingHandCursor
 
         if shortcut:
             self.shortcut = shortcut
