@@ -1,3 +1,6 @@
+from __feature__ import true_property
+from __feature__ import snake_case
+
 from PySide6 import QtCore
 from PySide6.QtCore import Qt
 
@@ -34,15 +37,13 @@ class BaseToggleButton(base.BaseButton):
 
     def __init__(self, window, susapad):
         super().__init__("", None)
-        self.setFixedSize(100, 30)
+        self.set_fixed_size(100, 30)
 
         self.window = window
         self.susapad = susapad
 
         self.clicked.connect(self.toggle)
-        self.setCursor(Qt.PointingHandCursor)
-
-        self.style = _TOGGLE_STYLE
+        self.cursor = Qt.PointingHandCursor
 
     # Template functions
 
@@ -55,20 +56,20 @@ class BaseToggleButton(base.BaseButton):
     # Internal functions
 
     def __reload_style(self):
-        self.setStyleSheet(self.style)
+        self.style_sheet = _TOGGLE_STYLE
 
     def turn_on(self):
         if self.command_on():
-            self.setAccessibleName("on")
-            self.setText("Desligar")
+            self.accessible_name = "on"
+            self.text = "Desligar"
             self.__reload_style()
         else:
             self.__error()
 
     def turn_off(self):
         if self.command_off():
-            self.setAccessibleName("off")
-            self.setText("Ligar")
+            self.accessible_name = "off"
+            self.text = "Ligar"
             self.__reload_style()
         else:
             self.__error()
@@ -76,11 +77,11 @@ class BaseToggleButton(base.BaseButton):
     def __error(self):
         exception.susapad_not_found(self.window)
         exception.close_current_window(self.window)
-    
+
 
     @QtCore.Slot()
     def toggle(self):
-        if "on" == self.accessibleName():
+        if "on" == self.accessible_name:
             self.turn_off()
         else:
             self.turn_on()
