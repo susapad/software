@@ -20,7 +20,7 @@ class HelpButton(base.BaseFloatingButton):
         webbrowser.open_new(README_LINK)
 
 
-class WindowLayout(base.BaseFrame):
+class MainUI(base.BaseFrame):
 
     def __init__(self, main_window):
         super().__init__()

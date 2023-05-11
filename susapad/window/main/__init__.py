@@ -10,6 +10,8 @@ from susapad.window import settings
 from susapad.window.main import component
 from susapad import base_widgets as base
 
+from . import ui
+
 
 class MainWindow(base.BaseWindow):
 
@@ -22,8 +24,8 @@ class MainWindow(base.BaseWindow):
         self.susapad = susapad
 
         ## Configure Layout
-        self.main_widget = widgets.WindowLayout(self)
-        self.layout.addWidget(self.main_widget)
+        self.ui = ui.MainUI(self)
+        self.layout.addWidget(self.ui)
 
         ## Startup
         self.connect_to_susapad()
@@ -33,14 +35,14 @@ class MainWindow(base.BaseWindow):
     def connect_to_susapad(self):
         port = "COM5" if self.susapad.debug else self.susapad.find()
         if "" == port:
-            self.main_widget.main_button.set_found(False)
-            self.main_widget.susapad_status.setText("SusaPad não encontrado!")
+            self.ui.main_button.set_found(False)
+            self.ui.susapad_status.setText("SusaPad não encontrado!")
             exception.susapad_not_found(self)
         else:
             if not self.susapad.debug:
                 self.susapad.connect(port)
-            self.main_widget.main_button.set_found(True)
-            self.main_widget.susapad_status.setText(f"SusaPad encontrado na porta {port}")
+            self.ui.main_button.set_found(True)
+            self.ui.susapad_status.setText(f"SusaPad encontrado na porta {port}")
 
     @QtCore.Slot()
     def open_settings_window(self):
