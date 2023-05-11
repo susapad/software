@@ -12,13 +12,13 @@ sys.path.append(
 from PySide6 import QtWidgets
 
 from susapad.window import main
-from susapad.controller import susapad as susapad_module
+from susapad.controller import keypad
 
 
 def run():
     """Start SusaPad's application"""
 
-    susapad = susapad_module.SusaPad()
+    susapad = keypad.SusaPad()
     susa_app = QtWidgets.QApplication([])
     susa_window = main.MainWindow(susapad)
     susa_window.show()

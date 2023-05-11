@@ -5,7 +5,7 @@ import time
 from PySide6 import QtCore, QtGui, QtWidgets
 from PySide6.QtCore import Qt
 
-from susapad.controller import susapad, exception
+from susapad.controller import exception
 from susapad.window import settings
 from susapad.window.main import component
 from susapad import base_widgets as base
