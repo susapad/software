@@ -25,3 +25,4 @@ build-backend = "poetry.core.masonry.api"
 [tool.poetry.scripts]
 clear = { callable = "scripts.clear:run" }
 susapad = {callable = "susapad.__main__:run"}
+debug = { callable = "susapad.__dev__:run_debug" }
