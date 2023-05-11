@@ -1,4 +1,7 @@
-from PySide6 import QtWidgets
+from __feature__ import true_property
+from __feature__ import snake_case
+
+from PySide6 import QtWidgets, QtCore
 
 _FRAME_STYLE = """
     QFrame {
@@ -16,6 +19,6 @@ class BaseFrame(QtWidgets.QFrame):
         super().__init__()
 
         # Configuration
-        self.setObjectName("background-frame")
-        self.setStyleSheet(_FRAME_STYLE)
-        self.setContentsMargins(20, 20, 20, 20)
+        self.object_name = "background-frame"
+        self.style_sheet = _FRAME_STYLE
+        self.set_contents_margins(QtCore.QMargins(20, 20, 20, 20))
