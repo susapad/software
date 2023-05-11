@@ -37,7 +37,7 @@ TOGGLERS_STYLE = """
 class TriggerButton(button.BaseButton):
 
     def __init__(self, window, susapad):
-        super().__init__("Desativar", None)
+        super().__init__("Desativar")
         self.set_fixed_size(100, 30)
 
         self.susapad = susapad
@@ -88,7 +88,7 @@ class TriggerButton(button.BaseButton):
 class RapidTriggerButton(button.BaseButton):
 
     def __init__(self, window, susapad):
-        super().__init__("Desativar", None)
+        super().__init__("Desativar")
         self.set_fixed_size(100, 30)
 
         self.susapad = susapad
@@ -139,7 +139,7 @@ class RapidTriggerButton(button.BaseButton):
 class ContinuousRapidTriggerButton(button.BaseButton):
 
     def __init__(self, window, susapad):
-        super().__init__("Desativar", None)
+        super().__init__("Desativar")
         self.set_fixed_size(100, 30)
 
         self.susapad = susapad

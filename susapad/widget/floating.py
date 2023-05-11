@@ -26,6 +26,8 @@ class BaseFloatingButton(base.BaseButton):
         super().__init__(text, parent=window, shortcut=shortcut)
 
         self.window = window
+        self.text = text
+        self.shortcut = shortcut
 
         self.accessible_name = "floating"
         self.clicked.connect(self.action)

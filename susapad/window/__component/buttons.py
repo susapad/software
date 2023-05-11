@@ -11,6 +11,7 @@ class ActionButton(widget.BaseButton):
 
     def __init__(self, main_window):
         super().__init__("Conectar", "Enter")
+
         self.main_window = main_window
         self.found: bool = False
         self.set_found(main_window.susapad.serial)
@@ -36,6 +37,7 @@ class CloseButton(widget.BaseButton):
 
     def __init__(self):
         super().__init__("Fechar", "Escape")
+
         self.accessible_name = "secondary"
         self.clicked.connect(self.close_application)
 
