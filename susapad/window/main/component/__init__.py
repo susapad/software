@@ -28,16 +28,6 @@ class HeaderGroup(QtWidgets.QWidget):
                 alignment = Qt.AlignCenter | Qt.AlignTop)
 
 
-class ButtonGroup(QtWidgets.QWidget):
-    def __init__(self, main_window):
-        super().__init__()
-        self.main  = buttons.ActionButton(main_window)
-        self.close = buttons.CloseButton()
-
-        self.layout = QtWidgets.QHBoxLayout(self)
-        self.layout.addWidget(self.main)
-        self.layout.addWidget(self.close)
-
 class HelpButton(base.BaseFloatingButton):
 
     def __init__(self, window):
@@ -57,16 +47,23 @@ class WindowLayout(base.BaseFrame):
         self.init_help_button()
 
     def init_widgets(self, window):
+        self.main_button  = buttons.ActionButton(main_window)
+        self.close_button = buttons.CloseButton()
+
         self.group_header = HeaderGroup(main_window)
-        self.group_button = ButtonGroup(main_window)
 
     def init_layout(self):
-        self.layout = QtWidgets.QVBoxLayout(self)
 
-        self.layout.addWidget(self.group_header,
+        header_layout = QtWidgets.QHBoxLayout()
+        header_layout.addWidget(self.main)
+        header_layout.addWidget(self.close)
+
+        main_layout = QtWidgets.QVBoxLayout(self)
+
+        main_layout.addWidget(self.group_header,
                 alignment = Qt.AlignCenter | Qt.AlignTop)
 
-        self.layout.addWidget(self.group_button,
+        main_layout.addWidget(self.group_button,
                 alignment = Qt.AlignCenter | Qt.AlignBottom)
 
     def init_help_button(self):
