@@ -11,7 +11,7 @@ sys.path.append(
 
 from PySide6 import QtWidgets
 
-from susapad.window import main
+from susapad import window
 from susapad.controller import keypad
 
 
@@ -20,7 +20,7 @@ def run():
 
     susapad = keypad.SusaPad(True)
     susa_app = QtWidgets.QApplication([])
-    susa_window = main.MainWindow(susapad)
+    susa_window = window.MainWindow(susapad)
     susa_window.show()
     sys.exit(susa_app.exec())
 

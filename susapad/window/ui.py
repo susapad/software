@@ -4,7 +4,7 @@ from PySide6 import QtCore, QtGui, QtWidgets
 from PySide6.QtCore import Qt
 
 from susapad import widget
-from .component import buttons, header
+from .__component import buttons, header
 
 
 README_LINK = "https://github.com/RickBarretto/SusaPadSoftware#readme"
