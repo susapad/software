@@ -29,10 +29,10 @@ class SettingsUI(widget.BaseFrame):
 
         # Configure Style
         self.setStyleSheet(self.styleSheet() + _SETTINGS_STYLE)
-        self.init_widgets()
+        self.init_widgets(window, susapad)
         self.init_layout()
 
-    def init_widgets(self):
+    def init_widgets(self, window, susapad):
         self.input_label = QtWidgets.QLabel("Habilitar Input")
         self.input_label.setObjectName("first-h2")
         self.input_button = rt.TriggerButton(window, susapad)
@@ -62,11 +62,11 @@ class SettingsUI(widget.BaseFrame):
         left_layout.addWidget(self.crt_label)
         left_layout.addWidget(self.crt_button)
 
-        right_layout = QtWidgets.QBoxLayout()
+        right_layout = QtWidgets.QVBoxLayout()
         right_layout.addWidget(self.actuation_slider)
 
         upper_layout = QtWidgets.QHBoxLayout()
-        upper_layout.addLayout(self.left_layout, 1)
-        upper_layout.addLayout(self.right_layout, 1)
+        upper_layout.addLayout(left_layout, 1)
+        upper_layout.addLayout(right_layout, 1)
 
         return upper_layout

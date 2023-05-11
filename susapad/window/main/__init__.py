@@ -8,7 +8,7 @@ from PySide6.QtCore import Qt
 from susapad.controller import exception
 from susapad.window import settings
 from susapad.window.main import component
-from susapad import widgets
+from susapad import widget
 
 from . import ui
 

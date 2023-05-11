@@ -39,10 +39,8 @@ class MainUI(widget.BaseFrame):
 
     def init_layout(self):
         main_layout = QtWidgets.QVBoxLayout(self)
-        main_layout.addLayout(self.__init_header_layout(),
-                                alignment = Qt.AlignCenter | Qt.AlignTop)
-        main_layout.addLayout(self.__init_bottom_layout(),
-                                alignment = Qt.AlignCenter | Qt.AlignBottom)
+        main_layout.addLayout(self.__init_header_layout())
+        main_layout.addLayout(self.__init_bottom_layout())
 
     def __init_header_layout(self):
         header_alignment = Qt.AlignCenter | Qt.AlignTop
@@ -57,8 +55,8 @@ class MainUI(widget.BaseFrame):
 
     def __init_bottom_layout(self):
         bottom_layout = QtWidgets.QHBoxLayout()
-        bottom_layout.addWidget(self.main)
-        bottom_layout.addWidget(self.close)
+        bottom_layout.addWidget(self.main_button)
+        bottom_layout.addWidget(self.close_button)
         return bottom_layout
 
 

@@ -1,4 +1,6 @@
 
+from PySide6 import QtWidgets
+
 from susapad import widget
 
 
@@ -17,11 +19,11 @@ class AlertUI(widget.BaseFrame):
         button.clicked.connect(self.dialog.close_dialog)
         return button
 
-    def init_widgets(self)
+    def init_widgets(self, message):
         self.close_button = self.init_close_button()
         self.content = QtWidgets.QLabel(message)
 
     def init_layout(self):
         self.layout = QtWidgets.QVBoxLayout(self)
-        self.layout.addWidget(self.label)
-        self.layout.addWidget(self.close)
+        self.layout.addWidget(self.content)
+        self.layout.addWidget(self.close_button)
