@@ -1,4 +1,5 @@
-
+from __feature__ import true_property
+from __feature__ import snake_case
 
 from . import button as base
 
@@ -26,9 +27,9 @@ class BaseFloatingButton(base.BaseButton):
 
         self.window = window
 
-        self.setAccessibleName("floating")
+        self.accessible_name = "floating"
         self.clicked.connect(self.action)
-        self.setStyleSheet(_FLOATING_STYLE)
+        self.style_sheet = _FLOATING_STYLE
 
     def action(self):
         pass
