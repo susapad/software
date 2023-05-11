@@ -22,7 +22,7 @@ _SETTINGS_STYLE = """
 """
 
 
-class WindowLayout(base.BaseFrame):
+class SettingsUI(base.BaseFrame):
 
     def __init__(self, window, susapad):
         super().__init__()
