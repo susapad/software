@@ -12,7 +12,6 @@ class BaseWindow(QtWidgets.QWidget):
         super().__init__()
         self.set_window_flags(Qt.FramelessWindowHint)
         self.set_attribute(Qt.WA_TranslucentBackground)
-        self._configure_shadows()
         self.resize(500, 200)
 
         self.parent = parent
@@ -20,14 +19,15 @@ class BaseWindow(QtWidgets.QWidget):
         self.old_pos = None
 
         self.layout = QtWidgets.QVBoxLayout(self)
+        self.set_graphics_effect(self.init_shadow())
 
 
-    def _configure_shadows(self):
+    def init_shadow(self):
         shadow = QtWidgets.QGraphicsDropShadowEffect(self)
         shadow.offset = QtCore.QPoint(0,0)
         shadow.blur_radius = 30
         shadow.color = QtGui.QColor(0,0,0)
-        self.graphics_effect = shadow
+        return shadow
 
     def mousePressEvent(self, event):
         if event.button() == Qt.MouseButton.LeftButton:
