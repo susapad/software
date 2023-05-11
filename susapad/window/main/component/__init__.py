@@ -47,7 +47,7 @@ class WindowLayout(base.BaseFrame):
         self.init_help_button()
 
     def init_widgets(self, window):
-        self.main_button  = buttons.ActionButton(main_window)
+        self.main_button  = buttons.ActionButton(window)
         self.close_button = buttons.CloseButton()
 
         self.group_header = HeaderGroup(main_window)
