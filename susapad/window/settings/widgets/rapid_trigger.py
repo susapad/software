@@ -2,7 +2,7 @@
 # import time
 
 # from PySide6 import QtWidgets, QtCore
-# from PySide6.QtCore import Qt 
+# from PySide6.QtCore import Qt
 
 # from susapad.controller import exception
 # from susapad import base_widgets as base
@@ -54,9 +54,9 @@
 import time
 
 from PySide6 import QtWidgets, QtCore
-from PySide6.QtCore import Qt 
+from PySide6.QtCore import Qt
 
-from susapad.windows import alert as alert_dialog
+from susapad.window import alert as alert_dialog
 from susapad.base_widgets import button
 
 
@@ -125,7 +125,7 @@ class TriggerButton(button.BaseButton):
         else:
             print("Algum problema ocorreu. Certifique-se que seu Susapad está conectado.")
             self.__raise_alert()
-    
+
 
     @QtCore.Slot()
     def rapid_trigger(self):
@@ -176,7 +176,7 @@ class RapidTriggerButton(button.BaseButton):
         else:
             print("Algum problema ocorreu. Certifique-se que seu Susapad está conectado.")
             self.__raise_alert()
-    
+
 
     @QtCore.Slot()
     def rapid_trigger(self):
@@ -227,7 +227,7 @@ class ContinuousRapidTriggerButton(button.BaseButton):
         else:
             print("Algum problema ocorreu. Certifique-se que seu Susapad está conectado.")
             self.__raise_alert()
-    
+
 
     @QtCore.Slot()
     def rapid_trigger(self):

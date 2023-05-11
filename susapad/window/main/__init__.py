@@ -6,8 +6,8 @@ from PySide6 import QtCore, QtGui, QtWidgets
 from PySide6.QtCore import Qt
 
 from susapad.controller import susapad, exception
-from susapad.windows import settings
-from susapad.windows.main import widgets
+from susapad.window import settings
+from susapad.window.main import widgets
 from susapad import base_widgets as base
 
 
@@ -28,10 +28,10 @@ class MainWindow(base.BaseWindow):
         ## Startup
         self.connect_to_susapad()
 
-    
+
     @QtCore.Slot()
     def connect_to_susapad(self):
-        port = "COM5" if self.susapad.debug else self.susapad.find() 
+        port = "COM5" if self.susapad.debug else self.susapad.find()
         if "" == port:
             self.main_widget.group_button.main.set_found(False)
             self.main_widget.group_header.status.setText("SusaPad não encontrado!")

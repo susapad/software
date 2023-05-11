@@ -11,7 +11,7 @@ sys.path.append(
 
 from PySide6 import QtWidgets
 
-from susapad.windows import main
+from susapad.window import main
 from susapad.controller import susapad as susapad_module
 
 
