@@ -2,8 +2,7 @@ from PySide6 import QtCore, QtGui, QtWidgets
 from PySide6.QtCore import Qt
 
 from susapad import base_widgets as base
-from . import actuation_point, rapid_trigger as rt, sensibility
-from .close import CloseButton
+from .component import actuation_point, rapid_trigger as rt, sensibility
 
 _SETTINGS_STYLE = """
     QLabel {
