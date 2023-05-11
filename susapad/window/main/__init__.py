@@ -16,19 +16,21 @@ from . import ui
 class MainWindow(base.BaseWindow):
 
     def __init__(self, susapad):
-
-        ## Configuration
         super().__init__(susapad)
 
         self.settings_window = None
         self.susapad = susapad
 
-        ## Configure Layout
-        self.ui = ui.MainUI(self)
-        self.layout.addWidget(self.ui)
+        self.init_widgets()
+        self.init_layout()
 
-        ## Startup
         self.connect_to_susapad()
+
+    def init_widgets(self):
+        self.ui = ui.MainUI(self)
+
+    def init_layout(self):
+        self.layout.addWidget(self.ui)
 
 
     @QtCore.Slot()
