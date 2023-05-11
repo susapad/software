@@ -52,15 +52,23 @@ class WindowLayout(base.BaseFrame):
 
     def __init__(self, main_window):
         super().__init__()
+        self.init_widgets(main_window)
+        self.init_layout()
+        self.init_help_button()
 
+    def init_widgets(self, window):
         self.group_header = HeaderGroup(main_window)
         self.group_button = ButtonGroup(main_window)
 
+    def init_layout(self):
         self.layout = QtWidgets.QVBoxLayout(self)
+
         self.layout.addWidget(self.group_header,
                 alignment = Qt.AlignCenter | Qt.AlignTop)
+
         self.layout.addWidget(self.group_button,
                 alignment = Qt.AlignCenter | Qt.AlignBottom)
 
+    def init_help_button(self):
         self.help_button = HelpButton(self)
         self.help_button.move(400, 20)
