@@ -17,7 +17,7 @@ class SensiblitySlidersGroup(widget.BaseDualSliderGroup):
 
         self.set_template(Template(
             "Sensibilidade: Pressionar (${value1}) e Soltar (${value2})"))
-        self.range = (10, 400)
+        self.set_range((10, 400))
         self._update_label()
 
     @QtCore.Slot() # press

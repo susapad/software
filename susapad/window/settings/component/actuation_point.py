@@ -13,7 +13,7 @@ class ActuationPointGroup(widget.BaseSliderGroup):
 
     def __init__(self, window, susapad):
         super().__init__(window, susapad, vertical = True)
-        self.range = (10, 390)
+        self.set_range((10, 390))
         self.set_template(Template("Ponto de atuação: (${value})"))
         self._update_label()
 
