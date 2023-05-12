@@ -79,13 +79,9 @@ class BaseSlider(QtWidgets.QSlider):
 
 class BaseSliderGroup(QtWidgets.QWidget):
 
-    def __init__(self, window, susapad, vertical: bool = False):
+    def __init__(self, vertical: bool = False):
         super().__init__()
-
-        self.window = window
-        self.susapad = susapad
         self.vertical = vertical
-
         self.template: Template = Template("")
 
         self._init_configuration()
