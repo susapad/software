@@ -17,8 +17,8 @@ class SensiblitySlidersGroup(widget.BaseDualSliderGroup):
 
         self.susapad = susapad
 
-        self.set_template(Template(
-            "Sensibilidade: Pressionar (${value1}) e Soltar (${value2})"))
+        self.template = Template(
+            "Sensibilidade: Pressionar (${value1}) e Soltar (${value2})")
         self.set_range((10, 400))
         self._update_label()
 

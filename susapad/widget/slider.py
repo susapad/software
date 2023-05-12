@@ -142,11 +142,6 @@ class BaseSliderGroup(QtWidgets.QWidget):
         self.min.text, self.max.text = \
                 (self.__in_mm(value[0]), self.__in_mm(value[1]))
 
-
-    def set_template(self, template: Template):
-        self.template = template
-
-
     # Internal functions
 
     @staticmethod
@@ -244,9 +239,6 @@ class BaseDualSliderGroup(QtWidgets.QWidget):
         self.max1.text = self.__in_mm(value[1])
         self.min2.text = self.__in_mm(value[0])
         self.max2.text = self.__in_mm(value[1])
-
-    def set_template(self, template: Template):
-        self.template = template
 
     # Internal functions
 

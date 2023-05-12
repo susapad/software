@@ -17,7 +17,7 @@ class ActuationPointGroup(widget.BaseSliderGroup):
         self.susapad = susapad
 
         self.set_range((10, 390))
-        self.set_template(Template("Ponto de atuação: (${value})"))
+        self.template = Template("Ponto de atuação: (${value})")
         self._update_label()
 
     def update_susapad(self, value: int) -> bool:
