@@ -7,15 +7,22 @@ import serial.tools.list_ports
 from PySide6 import QtCore
 
 
+INSIDERS_ID = {
+    "VID:PID=2341:8037",
+    "VID:PID=2341:8036"
+}
+
+
 class SusaPad:
 
     def __init__(self, debug: bool = False):
         self.debug = debug
+        self.insider = False
         self.serial: [serial.Serial | None] = None
         self.sensibility: int = 200
         self.rapid_trigger: bool = True
 
-    
+
     def find(self) -> str:
         """Looks for connected SusaPad device's port"""
         ports = serial.tools.list_ports.comports()
@@ -23,7 +30,13 @@ class SusaPad:
             if "VID:PID=0727:0727" in hwid:
                 print("Susapad encontrado!")
                 print("{}: {} [{}]".format(port, desc, hwid))
-                return port 
+                return port
+            for _id in INSIDERS_ID:
+                if _id in hwid:
+                    print("Susapad Insider encontrado!")
+                    print("{}: {} [{}]".format(port, desc, hwid))
+                    self.insider = True
+                    return port
         return ""
 
     def connect(self, port) -> bool:
@@ -81,8 +94,6 @@ class SusaPad:
 
         return r1 and r2
 
-
-
     # Internal functions
 
     def __configure_susapad_key(self, key: int, command: str, value: int) -> bool:
@@ -102,3 +113,48 @@ class SusaPad:
         k1 = self.__configure_susapad_key(1, command, value)
         k2 = self.__configure_susapad_key(3, command, value)
         return k1 and k2
+
+
+    ## Insider functions
+
+    def set_insider_rapid_trigger(self, on: bool = True) -> bool:
+        """Set if SusaPad Insider's Rapid Trigger is **on** or **off**"""
+        n = 1 if on else 0
+        return self.__configure_susapad_insider("rt", n)
+
+    def set_insider_sensibility(self, value: int) -> bool:
+        """"Set SusaPad Insider's sensibility"""
+        return self.__configure_susapad_insider("rts", value)
+
+    def set_insider_hysteresis(self, value: int) -> bool:
+        """Set SusaPad Insider's Actuation ponit"""
+        r1 = self.__configure_susapad_insider("uh", value)
+        r2 = self.__configure_susapad_insider("lh", value - 10)
+        return r1 and r2
+
+    def insider_save(self) -> bool:
+        """Saves SusaPad Insider's configuration"""
+        try:
+            time.sleep(1)
+            print(f"save")
+            self.serial.write(f"save".encode())
+            self.serial.flush()
+            return True
+        except:
+            if self.debug:
+                return True
+            else:
+                return False
+
+    def __configure_susapad_insider(self, command: str, value: int) -> bool:
+        try:
+            time.sleep(1)
+            print(f"{command} {value}")
+            self.serial.write(f"{command} {value}".encode())
+            self.serial.flush()
+            return True
+        except:
+            if self.debug:
+                return True
+            else:
+                return False
