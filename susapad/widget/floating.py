@@ -3,6 +3,8 @@ from __feature__ import snake_case
 
 from . import button as base
 
+from PySide6.QtWidgets import QWidget
+
 
 _FLOATING_STYLE = """
     QPushButton[accessibleName="floating"] {
@@ -22,16 +24,20 @@ _FLOATING_STYLE = """
 
 class BaseFloatingButton(base.BaseButton):
 
-    def __init__(self, window, text, shortcut: str = None):
-        super().__init__(text, parent=window, shortcut=shortcut)
+    def __init__(
+            self,
+            window: QWidget,
+            text: str = None,
+            shortcut: str = None):
+        super().__init__(text, parent=window)
 
-        self.window = window
-        self.text = text
+        self.window: QWidget = window
+        self.text: str = text
         self.shortcut = shortcut
 
-        self.accessible_name = "floating"
+        self.accessible_name: str = "floating"
         self.clicked.connect(self.action)
-        self.style_sheet = _FLOATING_STYLE
+        self.style_sheet: str = _FLOATING_STYLE
 
     def action(self):
         pass
