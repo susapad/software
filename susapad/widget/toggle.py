@@ -43,28 +43,28 @@ class BaseToggleButton(base.BaseButton):
         self.shortcut = None
         self.cursor = Qt.PointingHandCursor
 
-    # Template functions
-
-    @QtCore.Slot()
-    def turn_on(self):
-        pass
-
-    @QtCore.Slot()
-    def turn_off(self):
-        pass
+        self.on: bool
+        self.text_on: str
+        self.text_off: str
+        self.accessible_name: str
 
     # Internal functions
 
-    def reload_style(self):
+    def _reload_style(self):
         self.style_sheet = _TOGGLE_STYLE
 
-    def error(self):
-        exception.susapad_not_found(self.window)
-        exception.close_current_window(self.window)
+    def error(self, window):
+        exception.susapad_not_found(window)
+        exception.close_current_window(window)
 
-    @QtCore.Slot()
-    def toggle(self):
-        if "on" == self.accessible_name:
-            self.turn_off()
-        else:
-            self.turn_on()
+    def _turn_on(self):
+        self.on = True
+        self.accessible_name = "on"
+        self.text = self.text_on
+        self._reload_style()
+
+    def _turn_off(self):
+        self.on = False
+        self.accessible_name = "off"
+        self.text = self.text_off
+        self._reload_style()
