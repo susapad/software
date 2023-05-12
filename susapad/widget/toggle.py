@@ -40,7 +40,6 @@ class BaseToggleButton(base.BaseButton):
 
         self.set_fixed_size(100, 30)
         self.text = ""
-        self.shortcut = None
         self.cursor = Qt.PointingHandCursor
 
         self.on: bool

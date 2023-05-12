@@ -10,7 +10,7 @@ from susapad import widget
 class TriggerButton(widget.BaseToggleButton):
 
     def __init__(self, window, susapad):
-        super().__init__("Desativar")
+        super().__init__()
         self.susapad = susapad
         self.window = window
 
