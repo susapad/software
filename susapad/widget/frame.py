@@ -19,6 +19,6 @@ class BaseFrame(QtWidgets.QFrame):
         super().__init__()
 
         # Configuration
-        self.object_name = "background-frame"
-        self.style_sheet = _FRAME_STYLE
+        self.object_name: str = "background-frame"
+        self.style_sheet: str = _FRAME_STYLE
         self.set_contents_margins(QtCore.QMargins(20, 20, 20, 20))
