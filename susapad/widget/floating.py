@@ -31,7 +31,6 @@ class BaseFloatingButton(base.BaseButton):
             shortcut: str = None):
         super().__init__(text, parent=window)
 
-        self.window: QWidget = window
         self.text: str = text
         self.shortcut = shortcut
 
