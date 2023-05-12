@@ -1,8 +1,6 @@
 from __feature__ import true_property
 from __feature__ import snake_case
 
-import time
-
 from PySide6 import QtWidgets, QtCore
 from PySide6.QtCore import Qt
 
