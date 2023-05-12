@@ -13,7 +13,9 @@ from susapad import widget
 class SensiblitySlidersGroup(widget.BaseDualSliderGroup):
 
     def __init__(self, window, susapad):
-        super().__init__(window, susapad)
+        super().__init__()
+
+        self.susapad = susapad
 
         self.set_template(Template(
             "Sensibilidade: Pressionar (${value1}) e Soltar (${value2})"))

@@ -66,13 +66,8 @@ _GROUP_STYLE = """
 
 class BaseSlider(QtWidgets.QSlider):
 
-    def __init__(self, group, window, susapad):
+    def __init__(self):
         super().__init__()
-
-        self.group = group
-        self.susapad = susapad
-        self.window = window
-
         self.orientation = Qt.Horizontal
         self.style_sheet = _SLIDER_STYLE
 
@@ -90,7 +85,7 @@ class BaseSliderGroup(QtWidgets.QWidget):
 
     def _init_widgets(self):
         self.title = QtWidgets.QLabel()
-        self.slider = BaseSlider(self, self.window, self.susapad)
+        self.slider = BaseSlider()
         self.min = QtWidgets.QLabel()
         self.max = QtWidgets.QLabel()
         self.__configure_widgets()
@@ -173,11 +168,8 @@ class BaseSliderGroup(QtWidgets.QWidget):
 
 class BaseDualSliderGroup(QtWidgets.QWidget):
 
-    def __init__(self, window, susapad):
+    def __init__(self):
         super().__init__()
-
-        self.window = window
-        self.susapad = susapad
 
         self.template: Template = Template("")
 
@@ -191,8 +183,8 @@ class BaseDualSliderGroup(QtWidgets.QWidget):
         self.style_sheet = _GROUP_STYLE
 
     def _init_widgets(self):
-        self.slider1 = BaseSlider(self, self.window, self.susapad)
-        self.slider2 = BaseSlider(self, self.window, self.susapad)
+        self.slider1 = BaseSlider()
+        self.slider2 = BaseSlider()
 
         self.min1 = QtWidgets.QLabel()
         self.max1 = QtWidgets.QLabel()
