@@ -4,7 +4,7 @@ from __feature__ import snake_case
 from PySide6 import QtWidgets
 
 from susapad import widget
-from .component import actuation_point, rapid_trigger as rt, sensibility
+from .component import sliders, rapid_trigger as rt
 
 _SETTINGS_STYLE = """
     QLabel {
@@ -45,9 +45,9 @@ class SettingsUI(widget.BaseFrame):
         self.crt_label = QtWidgets.QLabel("Rapid Trigger Contínuo")
         self.crt_button = rt.ContinuousRapidTriggerButton(window, susapad)
 
-        self.actuation_slider = actuation_point.ActuationPointGroup(susapad)
+        self.actuation_slider = sliders.ActuationPointGroup(susapad)
 
-        self.sensibility_slider = sensibility.SensiblitySlidersGroup(window, susapad)
+        self.sensibility_slider = sliders.SensiblitySlidersGroup(window, susapad)
 
     def init_layout(self):
         layout = QtWidgets.QVBoxLayout(self)
