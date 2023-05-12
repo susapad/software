@@ -1,7 +1,6 @@
 from __feature__ import true_property
 from __feature__ import snake_case
 
-from PySide6 import QtCore
 from PySide6.QtCore import Qt
 
 

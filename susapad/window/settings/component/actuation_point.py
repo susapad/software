@@ -1,13 +1,9 @@
 from __feature__ import true_property
 from __feature__ import snake_case
 
-from string import Template
-
-from PySide6 import QtCore, QtWidgets
-from PySide6.QtCore import Qt
+from PySide6 import QtCore
 
 from susapad import widget
-from susapad.controller import exception
 
 class ActuationPointGroup(widget.SingleSlider):
 

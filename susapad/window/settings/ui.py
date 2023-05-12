@@ -1,8 +1,7 @@
 from __feature__ import true_property
 from __feature__ import snake_case
 
-from PySide6 import QtCore, QtGui, QtWidgets
-from PySide6.QtCore import Qt
+from PySide6 import QtWidgets
 
 from susapad import widget
 from .component import actuation_point, rapid_trigger as rt, sensibility

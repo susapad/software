@@ -1,10 +1,6 @@
 from __feature__ import true_property
 from __feature__ import snake_case
 
-import serial
-from PySide6 import QtGui, QtWidgets
-from PySide6.QtCore import Qt
-
 from susapad import widget
 
 from . import ui

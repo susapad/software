@@ -4,8 +4,6 @@ from __feature__ import snake_case
 from PySide6 import QtWidgets, QtCore
 from PySide6.QtCore import Qt
 
-from susapad.controller import exception
-
 from . import _group_qss, _slider
 
 class BaseLabeledSlider(QtWidgets.QWidget):
