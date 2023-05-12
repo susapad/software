@@ -7,21 +7,10 @@ from PySide6 import QtCore, QtWidgets
 from PySide6.QtCore import Qt
 
 from susapad import widget
-from .__component import buttons, header
+from . import __component as component
 
 
 README_LINK = "https://github.com/susapad/software#readme"
-
-
-class HelpButton(widget.BaseFloatingButton):
-
-    def __init__(self, window):
-        super().__init__(window, "Ajuda", "F1")
-
-    @QtCore.Slot()
-    def action(self):
-        webbrowser.open_new(README_LINK)
-
 
 class MainUI(widget.BaseFrame):
 
@@ -32,12 +21,12 @@ class MainUI(widget.BaseFrame):
         self.init_help_button()
 
     def init_widgets(self, window):
-        self.app_logo       = header.SusaPadLogo()
-        self.app_title      = header.SusaPadTitle()
-        self.susapad_status = header.StatusLabel(window)
+        self.app_logo       = component.SusaPadLogo()
+        self.app_title      = component.SusaPadTitle()
+        self.susapad_status = component.StatusLabel(window)
 
-        self.main_button  = buttons.ActionButton(window)
-        self.close_button = buttons.CloseButton()
+        self.main_button  = component.Action(window)
+        self.close_button = component.Close()
 
 
     def init_layout(self):
@@ -64,5 +53,5 @@ class MainUI(widget.BaseFrame):
 
 
     def init_help_button(self):
-        self.help_button = HelpButton(self)
+        self.help_button = component.Help(self, README_LINK)
         self.help_button.move(400, 20)

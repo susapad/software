@@ -1,9 +1,21 @@
 from __feature__ import true_property
 from __feature__ import snake_case
 
+import webbrowser
+
 from PySide6 import QtCore
 
 from susapad import widget
+
+class HelpButton(widget.BaseFloatingButton):
+
+    def __init__(self, window, url):
+        super().__init__(window, "Ajuda", "F1")
+        self.url = url
+
+    @QtCore.Slot()
+    def action(self):
+        webbrowser.open_new(self.url)
 
 
 class ActionButton(widget.BaseButton):
