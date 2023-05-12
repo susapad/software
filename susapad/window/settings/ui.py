@@ -46,7 +46,7 @@ class SettingsUI(widget.BaseFrame):
         self.crt_label = QtWidgets.QLabel("Rapid Trigger Contínuo")
         self.crt_button = rt.ContinuousRapidTriggerButton(window, susapad)
 
-        self.actuation_slider = actuation_point.ActuationPointGroup(window, susapad)
+        self.actuation_slider = actuation_point.ActuationPointGroup(susapad)
 
         self.sensibility_slider = sensibility.SensiblitySlidersGroup(window, susapad)
 

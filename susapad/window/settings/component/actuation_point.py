@@ -11,7 +11,7 @@ from susapad.controller import exception
 
 class ActuationPointGroup(widget.BaseSliderGroup):
 
-    def __init__(self, window, susapad):
+    def __init__(self, susapad):
         super().__init__(vertical = True)
 
         self.susapad = susapad
