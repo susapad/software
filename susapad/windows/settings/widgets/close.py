@@ -1,12 +1,10 @@
-from __feature__ import true_property
-from __feature__ import snake_case
 
 from PySide6 import QtCore
 
-from susapad import widget
+from susapad import base_widgets as base
 
 
-class CloseButton(widget.BaseFloatingButton):
+class CloseButton(base.BaseFloatingButton):
 
     def __init__(self, window, main_window):
         super().__init__(window, "Fechar", "Escape")
