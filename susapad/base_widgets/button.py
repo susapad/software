@@ -1,5 +1,3 @@
-from __feature__ import true_property
-from __feature__ import snake_case
 
 from PySide6 import QtWidgets
 from PySide6.QtCore import Qt
@@ -9,7 +7,7 @@ _BUTTON_STYLE = """
     QPushButton {
         background-color: #0e639e;
         border-radius: 15px;
-        height: 30px;
+        min-width: 10em;
         padding: 6px;
         font: bold;
         color: white;
@@ -39,17 +37,13 @@ _BUTTON_STYLE = """
 
 class BaseButton(QtWidgets.QPushButton):
 
-    def __init__(
-            self,
-            text: str = None,
-            shortcut: str = None,
-            parent: QtWidgets.QWidget = None
-        ):
-
+    def __init__(self, text: str, shortcut: str = None, parent: str = None):
         super().__init__(text, parent)
 
-        self.style_sheet: str = _BUTTON_STYLE
-        self.cursor: Qt = Qt.PointingHandCursor
+        self.setFixedSize(100, 40)
+        self.setStyleSheet(_BUTTON_STYLE)
+        self.setCursor(Qt.PointingHandCursor)
 
         if shortcut:
-            self.shortcut = shortcut
+            self.setShortcut(shortcut)
+        

@@ -4,6 +4,7 @@ import time
 
 import serial
 import serial.tools.list_ports
+from PySide6 import QtCore
 
 
 class SusaPad:
@@ -14,7 +15,7 @@ class SusaPad:
         self.sensibility: int = 200
         self.rapid_trigger: bool = True
 
-
+    
     def find(self) -> str:
         """Looks for connected SusaPad device's port"""
         ports = serial.tools.list_ports.comports()
@@ -22,7 +23,7 @@ class SusaPad:
             if "VID:PID=0727:0727" in hwid:
                 print("Susapad encontrado!")
                 print("{}: {} [{}]".format(port, desc, hwid))
-                return port
+                return port 
         return ""
 
     def connect(self, port) -> bool:

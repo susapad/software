@@ -1,28 +1,13 @@
-from __feature__ import true_property
-from __feature__ import snake_case
+from PySide6 import QtCore, QtWidgets
+from PySide6.QtCore import Qt
 
-import webbrowser
-
-from PySide6 import QtCore
-
-from susapad import widget
-
-class HelpButton(widget.BaseFloatingButton):
-
-    def __init__(self, window, url):
-        super().__init__(window, "Ajuda", "F1")
-        self.url = url
-
-    @QtCore.Slot()
-    def action(self):
-        webbrowser.open_new(self.url)
+from susapad import base_widgets as base
 
 
-class ActionButton(widget.BaseButton):
+class ActionButton(base.BaseButton):
 
     def __init__(self, main_window):
         super().__init__("Conectar", "Enter")
-
         self.main_window = main_window
         self.found: bool = False
         self.set_found(main_window.susapad.serial)
@@ -31,10 +16,10 @@ class ActionButton(widget.BaseButton):
     def set_found(self, found: bool = True):
         if found:
             self.found = True
-            self.text = "Configurar"
+            self.setText("Configurar")
         else:
             self.found = False
-            self.text = "Tentar novamente!"
+            self.setText("Tentar novamente!")
 
     @QtCore.Slot()
     def action(self):
@@ -44,12 +29,11 @@ class ActionButton(widget.BaseButton):
             self.main_window.connect_to_susapad()
 
 
-class CloseButton(widget.BaseButton):
+class CloseButton(base.BaseButton):
 
     def __init__(self):
         super().__init__("Fechar", "Escape")
-
-        self.accessible_name = "secondary"
+        self.setAccessibleName("secondary")
         self.clicked.connect(self.close_application)
 
     @QtCore.Slot()

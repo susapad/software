@@ -1,5 +1,5 @@
 
-from susapad.window import alert
+from susapad.windows import alert
 
 
 def susapad_not_found(window):
