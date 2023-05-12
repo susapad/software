@@ -6,100 +6,13 @@ from PySide6 import QtCore
 from susapad import widget
 
 
-class TriggerButton(widget.BaseToggleButton):
+class CloseButton(widget.BaseFloatingButton):
 
-    def __init__(self, window, susapad):
-        super().__init__()
-        self.susapad = susapad
-        self.window = window
+    def __init__(self, window, main_window):
+        super().__init__(window, "Fechar", "Escape")
 
-        self.text_on = "Desativar"
-        self.text_off = "Ativar"
-
-        self.clicked.connect(self.toggle)
-        self.turn_on()
-
-    def turn_on(self):
-        if self.susapad.set_trigger(True):
-            self._turn_on()
-        else:
-            self.error(self.window)
-
-    def turn_off(self):
-        if self.susapad.set_trigger(False):
-            self._turn_off()
-        else:
-            self.error(self.window)
+        self.main_window = main_window
 
     @QtCore.Slot()
-    def toggle(self):
-        if self.on:
-            self.turn_off()
-        else:
-            self.turn_on()
-
-
-class RapidTriggerButton(widget.BaseToggleButton):
-
-    def __init__(self, window, susapad):
-        super().__init__()
-        self.susapad = susapad
-        self.window = window
-
-        self.text_on = "Desativar"
-        self.text_off = "Ativar"
-
-        self.clicked.connect(self.toggle)
-        self.turn_on()
-
-    def turn_on(self):
-        if self.susapad.set_rapid_trigger(True):
-            self._turn_on()
-        else:
-            self.error(self.window)
-
-    def turn_off(self):
-        if self.susapad.set_rapid_trigger(False):
-            self._turn_off()
-        else:
-            self.error(self.window)
-
-    @QtCore.Slot()
-    def toggle(self):
-        if self.on:
-            self.turn_off()
-        else:
-            self.turn_on()
-
-
-class ContinuousRapidTriggerButton(widget.BaseToggleButton):
-
-    def __init__(self, window, susapad):
-        super().__init__()
-        self.susapad = susapad
-        self.window = window
-
-        self.text_on = "Desativar"
-        self.text_off = "Ativar"
-
-        self.clicked.connect(self.toggle)
-        self.turn_on()
-
-    def turn_on(self):
-        if self.susapad.set_continuous_rapid_trigger(True):
-            self._turn_on()
-        else:
-            self.error(self.window)
-
-    def turn_off(self):
-        if self.susapad.set_continuous_rapid_trigger(False):
-            self._turn_off()
-        else:
-            self.error(self.window)
-
-    @QtCore.Slot()
-    def toggle(self):
-        if self.on:
-            self.turn_off()
-        else:
-            self.turn_on()
+    def action(self):
+        self.main_window.close_settings_window()

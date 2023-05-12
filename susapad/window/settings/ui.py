@@ -4,7 +4,8 @@ from __feature__ import snake_case
 from PySide6 import QtWidgets
 
 from susapad import widget
-from .component import sliders, buttons
+
+from . import component
 
 _SETTINGS_STYLE = """
     QLabel {
@@ -35,19 +36,17 @@ class SettingsUI(widget.BaseFrame):
         self.init_layout()
 
     def init_widgets(self, window, susapad):
-        self.input_label = QtWidgets.QLabel("Habilitar Input")
+        self.input_label             = QtWidgets.QLabel("Habilitar Input")
         self.input_label.object_name = "first-h2"
-        self.input_button = buttons.TriggerButton(window, susapad)
+        self.input_button            = component.Trigger(window, susapad)
 
-        self.rt_label = QtWidgets.QLabel("Rapid Trigger")
-        self.rt_button = buttons.RapidTriggerButton(window, susapad)
+        self.rt_label  = QtWidgets.QLabel("Rapid Trigger")
+        self.rt_button = component.RapidTrigger(window, susapad)
+        self.crt_label  = QtWidgets.QLabel("Rapid Trigger Contínuo")
+        self.crt_button = component.ContinuousRapidTrigger(window, susapad)
 
-        self.crt_label = QtWidgets.QLabel("Rapid Trigger Contínuo")
-        self.crt_button = buttons.ContinuousRapidTriggerButton(window, susapad)
-
-        self.actuation_slider = sliders.ActuationPointGroup(susapad)
-
-        self.sensibility_slider = sliders.SensiblitySlidersGroup(window, susapad)
+        self.actuation_slider   = component.ActuationPoint(susapad)
+        self.sensibility_slider = component.Sensiblity(window, susapad)
 
     def init_layout(self):
         layout = QtWidgets.QVBoxLayout(self)

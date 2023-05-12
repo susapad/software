@@ -3,8 +3,7 @@ from __feature__ import snake_case
 
 from susapad import widget
 
-from . import ui
-from .component import close
+from . import ui, component
 
 
 class SettingsWindow(widget.BaseWindow):
@@ -22,5 +21,5 @@ class SettingsWindow(widget.BaseWindow):
         self.__init_close_button(parent)
 
     def __init_close_button(self, parent):
-        self.close_button = close.CloseButton(self, parent)
+        self.close_button = component.Close(self, parent)
         self.close_button.move(420, 20)
