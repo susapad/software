@@ -35,12 +35,10 @@ _TOGGLE_STYLE = """
 
 class BaseToggleButton(base.BaseButton):
 
-    def __init__(self, window, susapad):
+    def __init__(self):
         super().__init__()
         self.set_fixed_size(100, 30)
 
-        self.window = window
-        self.susapad = susapad
         self.text = ""
         self.shortcut = None
 
