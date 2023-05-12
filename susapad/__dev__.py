@@ -1,4 +1,4 @@
-"""SusaPad's main file"""
+"""Module for development purposes"""
 
 import os, sys, pathlib
 
@@ -14,16 +14,13 @@ from PySide6 import QtWidgets
 from susapad import window
 from susapad.controller import keypad
 
+def run_debug():
+    """Start SusaPad Software in debug mode"""
 
-def run():
-    """Start SusaPad's application"""
+    debug = True
 
-    susapad = keypad.SusaPad()
+    susapad = keypad.SusaPad(debug)
     susa_app = QtWidgets.QApplication([])
     susa_window = window.MainWindow(susapad)
     susa_window.show()
     sys.exit(susa_app.exec())
-
-
-if __name__ == "__main__":
-    run()
