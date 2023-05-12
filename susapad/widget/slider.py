@@ -84,48 +84,56 @@ class BaseSliderGroup(QtWidgets.QWidget):
 
         self.window = window
         self.susapad = susapad
+        self.vertical = vertical
 
         self.template: Template = Template("")
 
+        self._init_configuration()
+        self._init_widgets()
+        self._init_layout()
+
+    def _init_widgets(self):
         self.title = QtWidgets.QLabel()
         self.slider = BaseSlider(self, self.window, self.susapad)
         self.min = QtWidgets.QLabel()
         self.max = QtWidgets.QLabel()
+        self.__configure_widgets()
 
-        # Configuring layout
+    def _init_layout(self):
+        layout = QtWidgets.QVBoxLayout(self)
+        layout.add_widget(self.title)
+        layout.add_layout(self.__init_botom_layout())
+        layout.contents_margins = QtCore.QMargins(0, 0, 0, 0)
 
-        self.bottom = QtWidgets.QWidget()
-        self.bottom_layout = QtWidgets.QVBoxLayout(self.bottom) if vertical \
-                            else QtWidgets.QHBoxLayout(self.bottom)
-        self.bottom_layout.add_widget(self.min, alignment = Qt.AlignHCenter)
-        self.bottom_layout.add_widget(self.slider, alignment = Qt.AlignHCenter)
-        self.bottom_layout.add_widget(self.max, alignment = Qt.AlignHCenter)
-        self.bottom_layout.contents_margins = QtCore.QMargins(10, 5, 10, 5)
-        self.bottom_layout.alignment = Qt.AlignHCenter
+    def _init_configuration(self):
+        self.accessible_name  = "group"
+        self.style_sheet = _GROUP_STYLE
 
-        self.layout = QtWidgets.QVBoxLayout(self)
-        self.layout.add_widget(self.title)
-        self.layout.add_widget(self.bottom)
-        self.layout.contents_margins = QtCore.QMargins(0, 0, 0, 0)
+    def __init_botom_layout(self):
+        alignment, bottom_layout = \
+            (Qt.AlignHCenter, QtWidgets.QVBoxLayout()) if self.vertical else  \
+            (Qt.AlignVCenter, QtWidgets.QHBoxLayout())
 
-        # Configuring Sliders
+        bottom_layout.add_widget(self.min,    alignment = alignment)
+        bottom_layout.add_widget(self.slider, alignment = alignment)
+        bottom_layout.add_widget(self.max,    alignment = alignment)
+        bottom_layout.contents_margins = QtCore.QMargins(10, 5, 10, 5)
+        bottom_layout.alignment        = alignment
+        return bottom_layout
+
+    def __configure_widgets(self):
         self.slider.sliderReleased.connect(self._update_susapad)
         self.slider.valueChanged.connect(self._update_label)
 
-        # Configuring Style
-        self.min.accessible_name  = "side"
-        self.max.accessible_name  = "side"
+        self.min.accessible_name, self.max.accessible_name = ("side", "side")
 
-        if vertical:
+        if self.vertical:
             self.slider.orientation = Qt.Vertical
             self.slider.minimum_height = 200
             self.slider.minimum_width = 100
             self.slider.inverted_appearance = True
         else:
             self.slider.minimum_width = 330
-
-        self.accessible_name  = "group"
-        self.style_sheet = _GROUP_STYLE
 
     # Template function
 
@@ -137,10 +145,12 @@ class BaseSliderGroup(QtWidgets.QWidget):
 
     def set_range(self, value: tuple[int, int]):
         assert value[0] < value[1]
-        self.slider.minimum = value[0]
-        self.slider.maximum = value[1]
-        self.min.text = self.__in_mm(value[0])
-        self.max.text = self.__in_mm(value[1])
+
+        self.slider.minimum, self.slider.maximum = \
+                (value[0], value[1])
+        self.min.text, self.max.text = \
+                (self.__in_mm(value[0]), self.__in_mm(value[1]))
+
 
     def set_template(self, template: Template):
         self.template = template
@@ -176,49 +186,54 @@ class BaseDualSliderGroup(QtWidgets.QWidget):
         self.template: Template = Template("")
 
         self.title = QtWidgets.QLabel()
+        self._init_configuration()
+        self._init_widgets()
+        self._init_layout()
+
+    def _init_configuration(self):
+        self.accessible_name  = "group"
+        self.style_sheet = _GROUP_STYLE
+
+    def _init_widgets(self):
         self.slider1 = BaseSlider(self, self.window, self.susapad)
         self.slider2 = BaseSlider(self, self.window, self.susapad)
+
         self.min1 = QtWidgets.QLabel()
         self.max1 = QtWidgets.QLabel()
         self.min2 = QtWidgets.QLabel()
         self.max2 = QtWidgets.QLabel()
 
-        # Configuring layout
+        self.__configure_widgets()
 
-        self.slider1_group = QtWidgets.QWidget()
-        self.slider1_layout = QtWidgets.QHBoxLayout(self.slider1_group)
-        self.slider1_layout.add_widget(self.min1)
-        self.slider1_layout.add_widget(self.slider1)
-        self.slider1_layout.add_widget(self.max1)
-        self.slider1_layout.contents_margins = QtCore.QMargins(10, 5, 10, 5)
-
-        self.slider2_group = QtWidgets.QWidget()
-        self.slider2_layout = QtWidgets.QHBoxLayout(self.slider2_group)
-        self.slider2_layout.add_widget(self.min2)
-        self.slider2_layout.add_widget(self.slider2)
-        self.slider2_layout.add_widget(self.max2)
-        self.slider2_layout.contents_margins = QtCore.QMargins(10, 5, 10, 5)
-
+    def _init_layout(self):
         self.layout = QtWidgets.QVBoxLayout(self)
         self.layout.add_widget(self.title)
-        self.layout.add_widget(self.slider1_group)
-        self.layout.add_widget(self.slider2_group)
+        self.layout.add_layout(self.__init_slider_layout(
+            self.slider1, self.min1, self.max1
+        ))
+        self.layout.add_layout(self.__init_slider_layout(
+            self.slider2, self.min2, self.max2
+        ))
         self.layout.contents_margins = QtCore.QMargins(0, 0, 0, 0)
 
-        # Configuring sliders
+    def __init_slider_layout(self, slider, min_label, max_label):
+        slider_layout = QtWidgets.QHBoxLayout()
+
+        for component in (min_label, slider, max_label):
+            slider_layout.add_widget(component)
+
+        slider_layout.contents_margins = QtCore.QMargins(10, 5, 10, 5)
+
+        return slider_layout
+
+    def __configure_widgets(self):
+        for label in (self.min1, self.min2, self.max1, self.max2):
+            label.accessible_name = "side"
+
         self.slider1.sliderReleased.connect(self._update_susapad_slider1)
         self.slider2.sliderReleased.connect(self._update_susapad_slider2)
         self.slider1.valueChanged.connect(self._update_label)
         self.slider2.valueChanged.connect(self._update_label)
-
-        # Configuring Styles
-        self.min1.accessible_name  = "side"
-        self.min2.accessible_name  = "side"
-        self.max1.accessible_name  = "side"
-        self.max2.accessible_name  = "side"
-
-        self.accessible_name  = "group"
-        self.style_sheet = _GROUP_STYLE
 
     # Template function
 
@@ -244,7 +259,6 @@ class BaseDualSliderGroup(QtWidgets.QWidget):
 
     def set_template(self, template: Template):
         self.template = template
-
 
     # Internal functions
 
