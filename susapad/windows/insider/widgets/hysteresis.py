@@ -11,7 +11,7 @@ class HysteresisGroup(base.BaseSliderGroup):
     def __init__(self, window, susapad):
         super().__init__(window, susapad, vertical = True)
         self.set_range((8, 380))
-        self.set_template(Template("Hysteresis: (${value})"))
+        self.set_template(Template("Ponto de atuação: (${value})\n(com rapid trigger desligado)"))
         self._update_label()
 
     def update_susapad(self, value: int) -> bool:
