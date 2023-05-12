@@ -9,19 +9,24 @@ from PySide6.QtCore import Qt
 from susapad import widget
 from susapad.controller import exception
 
-class ActuationPointGroup(widget.BaseSliderGroup):
+class ActuationPointGroup(widget.SingleSlider):
 
     def __init__(self, susapad):
-        super().__init__(vertical = True)
-
+        super().__init__(
+            template = "Ponto de atuação: (${value})",
+            range = (10, 390),
+            vertical = True)
         self.susapad = susapad
+        self.group.slider.sliderReleased.connect(self.update_susapad)
 
-        self.set_range((10, 390))
-        self.template = Template("Ponto de atuação: (${value})")
-        self._update_label()
+        self.update_label()
 
-    def update_susapad(self, value: int) -> bool:
-        return self.susapad.set_actuation_point(self.reverse(value))
+    def update_susapad(self):
+        if self.susapad.set_actuation_point(
+            self.reverse(self.group.slider.value)):
+            self.update_label()
+        else:
+            self.error()
 
     @staticmethod
     def reverse(value: int) -> int:

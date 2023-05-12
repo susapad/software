@@ -6,26 +6,34 @@ from string import Template
 from PySide6 import QtCore, QtWidgets
 from PySide6.QtCore import Qt
 
-from susapad.controller import exception
 from susapad import widget
 
 
-class SensiblitySlidersGroup(widget.BaseDualSliderGroup):
+class SensiblitySlidersGroup(widget.DoubleSlider):
 
     def __init__(self, window, susapad):
-        super().__init__()
+        super().__init__(
+            template =
+                "Sensibilidade: Pressionar (${value1}) e Soltar (${value2})",
+                range = (10, 400))
 
         self.susapad = susapad
 
-        self.template = Template(
-            "Sensibilidade: Pressionar (${value1}) e Soltar (${value2})")
-        self.set_range((10, 400))
-        self._update_label()
+        self.group1.slider.sliderReleased.connect(self.update_susapad_press)
+        self.group2.slider.sliderReleased.connect(self.update_susapad_release)
 
-    @QtCore.Slot() # press
-    def update_susapad_slider1(self, value: int) -> bool:
-        return self.susapad.set_press_sensibility(value)
+        self.update_label()
 
-    @QtCore.Slot() # release
-    def update_susapad_slider2(self, value: int) -> bool:
-        return self.susapad.set_release_sensibility(value)
+    @QtCore.Slot()
+    def update_susapad_press(self):
+        if self.susapad.set_press_sensibility(self.group1.slider.value):
+            self.update_label()
+        else:
+            self.error()
+
+    @QtCore.Slot()
+    def update_susapad_release(self):
+        if self.susapad.set_release_sensibility(self.group2.slider.value):
+            self.update_label()
+        else:
+            self.error()
