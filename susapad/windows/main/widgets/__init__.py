@@ -7,7 +7,7 @@ from susapad import base_widgets as base
 from . import buttons, header
 
 
-README_LINK = "https://github.com/RickBarretto/SusaPadSoftware#readme"
+README_LINK = "https://github.com/susapad/software#readme"
 
 
 class HeaderGroup(QtWidgets.QWidget):
@@ -57,9 +57,9 @@ class WindowLayout(base.BaseFrame):
         self.group_button = ButtonGroup(main_window)
 
         self.layout = QtWidgets.QVBoxLayout(self)
-        self.layout.addWidget(self.group_header, 
+        self.layout.addWidget(self.group_header,
                 alignment = Qt.AlignCenter | Qt.AlignTop)
-        self.layout.addWidget(self.group_button, 
+        self.layout.addWidget(self.group_button,
                 alignment = Qt.AlignCenter | Qt.AlignBottom)
 
         self.help_button = HelpButton(self)
