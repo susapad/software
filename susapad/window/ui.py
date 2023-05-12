@@ -10,7 +10,7 @@ from susapad import widget
 from .__component import buttons, header
 
 
-README_LINK = "https://github.com/RickBarretto/SusaPadSoftware#readme"
+README_LINK = "https://github.com/susapad/software#readme"
 
 
 class HelpButton(widget.BaseFloatingButton):
