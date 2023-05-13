@@ -31,9 +31,10 @@ TOGGLERS_STYLE = """
 
 class TriggerButton(button.BaseButton):
 
-    def __init__(self, window, susapad):
-        super().__init__("Desativar", None)
+    def __init__(self, window, susapad, language: dict):
+        super().__init__(language["buttons"]["turn-off"], None)
         self.setFixedSize(100, 30)
+        self.language = language
 
         self.susapad = susapad
         self.window = window
@@ -45,7 +46,7 @@ class TriggerButton(button.BaseButton):
 
 
     def __raise_alert(self):
-        alert = alert_dialog.AlertDialog(self.window)
+        alert = alert_dialog.AlertDialog(self.window, self.language["error"]["not-found"])
         alert.show()
         self.window.close()
 
@@ -54,10 +55,9 @@ class TriggerButton(button.BaseButton):
         if self.susapad.set_insider_trigger(True):
             self.on = True
             self.setAccessibleName("on")
-            self.setText("Desligar")
+            self.setText(self.language["buttons"]["turn-off"])
             self.setStyleSheet(TOGGLERS_STYLE)
         else:
-            print("Algum problema ocorreu. Certifique-se que seu Susapad Insider está conectado.")
             self.__raise_alert()
 
 
@@ -65,10 +65,9 @@ class TriggerButton(button.BaseButton):
         if self.susapad.set_insider_trigger(False):
             self.on = False
             self.setAccessibleName("off")
-            self.setText("Ligar")
+            self.setText(self.language["buttons"]["turn-on"])
             self.setStyleSheet(TOGGLERS_STYLE)
         else:
-            print("Algum problema ocorreu. Certifique-se que seu Susapad Insider está conectado.")
             self.__raise_alert()
 
 
@@ -82,9 +81,10 @@ class TriggerButton(button.BaseButton):
 
 class RapidTriggerButton(button.BaseButton):
 
-    def __init__(self, window, susapad):
-        super().__init__("Desativar", None)
+    def __init__(self, window, susapad, language: dict):
+        super().__init__(language["buttons"]["turn-off"], None)
         self.setFixedSize(100, 30)
+        self.language = language
 
         self.susapad = susapad
         self.window = window
@@ -96,7 +96,7 @@ class RapidTriggerButton(button.BaseButton):
 
 
     def __raise_alert(self):
-        alert = alert_dialog.AlertDialog(self.window)
+        alert = alert_dialog.AlertDialog(self.window, self.language["error"]["not-found"])
         alert.show()
         self.window.close()
 
@@ -105,10 +105,9 @@ class RapidTriggerButton(button.BaseButton):
         if self.susapad.set_insider_rapid_trigger(True):
             self.on = True
             self.setAccessibleName("on")
-            self.setText("Desligar")
+            self.setText(self.language["buttons"]["turn-off"])
             self.setStyleSheet(TOGGLERS_STYLE)
         else:
-            print("Algum problema ocorreu. Certifique-se que seu Susapad está conectado.")
             self.__raise_alert()
 
 
@@ -116,10 +115,9 @@ class RapidTriggerButton(button.BaseButton):
         if self.susapad.set_insider_rapid_trigger(False):
             self.on = False
             self.setAccessibleName("off")
-            self.setText("Ligar")
+            self.setText(self.language["buttons"]["turn-on"])
             self.setStyleSheet(TOGGLERS_STYLE)
         else:
-            print("Algum problema ocorreu. Certifique-se que seu Susapad está conectado.")
             self.__raise_alert()
 
 

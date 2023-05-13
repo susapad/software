@@ -74,9 +74,9 @@ class BaseToggleButton(base.BaseButton):
             self.__error()
 
     def __error(self):
-        exception.susapad_not_found(self.window)
+        exception.susapad_not_found(self.window, self.language["error"]["not-found"])
         exception.close_current_window(self.window)
-    
+
 
     @QtCore.Slot()
     def toggle(self):

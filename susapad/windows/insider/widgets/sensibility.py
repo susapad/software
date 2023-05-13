@@ -9,10 +9,10 @@ from susapad import base_widgets as base
 
 class SensiblitySlidersGroup(base.BaseSliderGroup):
 
-    def __init__(self, window, susapad):
+    def __init__(self, window, susapad, language: dict):
         super().__init__(window, susapad)
 
-        self.set_template(Template("Sensibilidade: ${value}"))
+        self.set_template(Template(language["insider-config"]["sensibility"]))
         self.set_range((10, 400))
         self._update_label()
 

@@ -36,15 +36,6 @@ class StatusLabel(QtWidgets.QLabel):
     def __init__(self, main_window):
         super().__init__()
         self.__init_style()
-        
-        self.set_found(main_window.susapad.serial)
-
-
-    def set_found(self, found: bool = True):
-        if found:
-            self.setText("SusaPad encontrado!")
-        else:
-            self.setText("SusaPad não encontrado!")
 
     def __init_style(self):
         self.setStyleSheet("font: 12px; color: white;")

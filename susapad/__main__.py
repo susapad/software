@@ -13,6 +13,7 @@ from PySide6 import QtWidgets
 
 from susapad.windows import main
 from susapad.controller import susapad as susapad_module
+from susapad import translations as ts
 
 
 def run():
@@ -20,7 +21,7 @@ def run():
 
     susapad = susapad_module.SusaPad()
     susa_app = QtWidgets.QApplication([])
-    susa_window = main.MainWindow(susapad)
+    susa_window = main.MainWindow(susapad, ts.get_language())
     susa_window.show()
     sys.exit(susa_app.exec())
 

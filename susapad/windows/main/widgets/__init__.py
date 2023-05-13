@@ -7,7 +7,7 @@ from susapad import base_widgets as base
 from . import buttons, header
 
 
-README_LINK = "https://github.com/RickBarretto/SusaPadSoftware#readme"
+README_LINK = "https://github.com/susapad/software#readme"
 
 
 class HeaderGroup(QtWidgets.QWidget):
@@ -29,10 +29,10 @@ class HeaderGroup(QtWidgets.QWidget):
 
 
 class ButtonGroup(QtWidgets.QWidget):
-    def __init__(self, main_window):
+    def __init__(self, main_window, language: dict):
         super().__init__()
-        self.main  = buttons.ActionButton(main_window)
-        self.close = buttons.CloseButton()
+        self.main  = buttons.ActionButton(main_window, language)
+        self.close = buttons.CloseButton(language)
 
         self.layout = QtWidgets.QHBoxLayout(self)
         self.layout.addWidget(self.main)
@@ -40,8 +40,8 @@ class ButtonGroup(QtWidgets.QWidget):
 
 class HelpButton(base.BaseFloatingButton):
 
-    def __init__(self, window):
-        super().__init__(window, "Ajuda", "F1")
+    def __init__(self, window, language: dict):
+        super().__init__(window, language["buttons"]["help"], "F1")
 
     @QtCore.Slot()
     def action(self):
@@ -50,17 +50,17 @@ class HelpButton(base.BaseFloatingButton):
 
 class WindowLayout(base.BaseFrame):
 
-    def __init__(self, main_window):
+    def __init__(self, main_window, language: dict):
         super().__init__()
 
         self.group_header = HeaderGroup(main_window)
-        self.group_button = ButtonGroup(main_window)
+        self.group_button = ButtonGroup(main_window, language)
 
         self.layout = QtWidgets.QVBoxLayout(self)
-        self.layout.addWidget(self.group_header, 
+        self.layout.addWidget(self.group_header,
                 alignment = Qt.AlignCenter | Qt.AlignTop)
-        self.layout.addWidget(self.group_button, 
+        self.layout.addWidget(self.group_button,
                 alignment = Qt.AlignCenter | Qt.AlignBottom)
 
-        self.help_button = HelpButton(self)
+        self.help_button = HelpButton(self, language)
         self.help_button.move(400, 20)

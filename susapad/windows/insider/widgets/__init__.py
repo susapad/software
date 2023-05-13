@@ -28,7 +28,7 @@ _SETTINGS_STYLE = """
 
 class WindowLayout(base.BaseFrame):
 
-    def __init__(self, window, main_window, susapad):
+    def __init__(self, window, main_window, susapad, language: dict):
         super().__init__()
 
         # Configure Style
@@ -36,13 +36,13 @@ class WindowLayout(base.BaseFrame):
 
         # Configure Layout
 
-        self.rt_label = QtWidgets.QLabel("Rapid Trigger")
+        self.rt_label = QtWidgets.QLabel(language["default-config"]["rapid-trigger"])
         self.rt_label.setObjectName("first-h2")
-        self.rt_button = RapidTriggerButton(window, susapad)
+        self.rt_button = RapidTriggerButton(window, susapad, language)
 
-        self.sensibility_slider = SensiblitySlidersGroup(window, susapad)
-        self.hysteresis_slider = HysteresisGroup(window, susapad)
-        self.save_button = SaveButton(window, main_window, susapad)
+        self.sensibility_slider = SensiblitySlidersGroup(window, susapad, language)
+        self.hysteresis_slider = HysteresisGroup(window, susapad, language)
+        self.save_button = SaveButton(window, main_window, susapad, language)
 
         self.layout = QtWidgets.QVBoxLayout(self)
         self.layout.addWidget(self.rt_label)

@@ -6,18 +6,38 @@
 
 ![gpl-3.0](./susapad/media/gplv3-with-text-136x68.png)
 
-*SusaPad Software* es el software usado para configurar *SusaPad*/[*MiniPad*][minipad].
+*SusaPad Software* es el software usado para configurar [*SusaPad*][susapad]/[*MiniPad*][minipad].
 
 > **Note**: *SusaPad Software* hace referencia al proyecto en si mismo,
 > el no es el mismo que *SusaPad*, cuyo es un *keypad* (hardware).
 
+[susapad]: https://github.com/susapad/susapad
 [minipad]: https://github.com/minipadKB
 
 ## Guía del usuario
 
 ### Instalación
 
-> **Warning**: En produción...
+*SusaPad Software* es una aplicación portátil, entonces sin instalación requerida.
+
+Puedes descargarlo pelos [*Release del Github*][releases].
+Tenga cuidado y seleccione el archivo correcto para su sistema.
+
+![releases](./susapad/media/releases.png)
+
+Entonces descomprimas el paquete en algun directorio que no vás a borrar o cambiar,
+y fija en la pantalla de inicio.
+
+![pin susapad](./susapad/media/pin-susapad-software.png)
+
+
+[releases]: https://github.com/susapad/software/releases
+
+### Desisntalación
+
+Como ya se ha dicho antes, *SusaPad Software* es portátil,
+entonces para desisntalarlo,
+sólo necesitarás borrar el directorio del *SusaPad Software*.
 
 ### Issues
 

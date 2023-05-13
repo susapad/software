@@ -8,10 +8,10 @@ from susapad.controller import exception
 
 class HysteresisGroup(base.BaseSliderGroup):
 
-    def __init__(self, window, susapad):
+    def __init__(self, window, susapad, language: dict):
         super().__init__(window, susapad, vertical = True)
         self.set_range((8, 380))
-        self.set_template(Template("Hysteresis: (${value})"))
+        self.set_template(Template(language["insider-config"]["hysteresis"]))
         self._update_label()
 
     def update_susapad(self, value: int) -> bool:

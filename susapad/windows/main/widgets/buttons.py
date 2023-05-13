@@ -6,8 +6,9 @@ from susapad import base_widgets as base
 
 class ActionButton(base.BaseButton):
 
-    def __init__(self, main_window):
-        super().__init__("Conectar", "Enter")
+    def __init__(self, main_window, language: dict):
+        super().__init__(language["buttons"]["connect"], "Enter")
+        self.language = language
         self.main_window = main_window
         self.found: bool = False
         self.set_found(main_window.susapad.serial)
@@ -16,10 +17,10 @@ class ActionButton(base.BaseButton):
     def set_found(self, found: bool = True):
         if found:
             self.found = True
-            self.setText("Configurar")
+            self.setText(self.language["buttons"]["settings"])
         else:
             self.found = False
-            self.setText("Tentar novamente!")
+            self.setText(self.language["buttons"]["try-again"])
 
     @QtCore.Slot()
     def action(self):
@@ -31,8 +32,8 @@ class ActionButton(base.BaseButton):
 
 class CloseButton(base.BaseButton):
 
-    def __init__(self):
-        super().__init__("Fechar", "Escape")
+    def __init__(self, language):
+        super().__init__(language["buttons"]["close"], "Escape")
         self.setAccessibleName("secondary")
         self.clicked.connect(self.close_application)
 

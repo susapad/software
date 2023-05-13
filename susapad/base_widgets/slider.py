@@ -33,13 +33,13 @@ _SLIDER_STYLE = """
 _GROUP_STYLE = """
 
     QWidget {
-        margin-top: 0px; 
-        margin-bottom: 0px; 
+        margin-top: 0px;
+        margin-bottom: 0px;
     }
 
     QWidget[accessibleName="group"] {
-        margin-left: 0px; 
-        margin-right: 0px; 
+        margin-left: 0px;
+        margin-right: 0px;
     }
 
     QLabel {
@@ -47,16 +47,16 @@ _GROUP_STYLE = """
         font: 16px;
         margin-top: 20px;
         margin-bottom: 10px;
-    } 
+    }
 
     QLabel[accessibleName="side"] {
         color: white;
         font: 12px;
         margin: 10px, 0, 10px, 0;
-    } 
+    }
 
-    QSlider { 
-        margin-top: 10px; 
+    QSlider {
+        margin-top: 10px;
     }
 """
 
@@ -78,7 +78,7 @@ class BaseSliderGroup(QtWidgets.QWidget):
 
     def __init__(self, window, susapad, vertical: bool = False):
         super().__init__()
-        
+
         self.window = window
         self.susapad = susapad
 
@@ -158,7 +158,7 @@ class BaseSliderGroup(QtWidgets.QWidget):
     @QtCore.Slot()
     def _update_susapad(self):
         if not self.update_susapad(self.slider.value()):
-            exception.susapad_not_found(self.window)
+            exception.susapad_not_found(self.window, self.language["error"]["not-found"])
             exception.close_current_window(self.window)
 
 
@@ -205,8 +205,8 @@ class BaseDualSliderGroup(QtWidgets.QWidget):
         # Configuring sliders
         self.slider1.sliderReleased.connect(self._update_susapad_slider1)
         self.slider2.sliderReleased.connect(self._update_susapad_slider2)
-        self.slider1.valueChanged.connect(self._update_label) 
-        self.slider2.valueChanged.connect(self._update_label) 
+        self.slider1.valueChanged.connect(self._update_label)
+        self.slider2.valueChanged.connect(self._update_label)
 
         # Configuring Styles
         self.min1.setAccessibleName("side")
@@ -259,11 +259,11 @@ class BaseDualSliderGroup(QtWidgets.QWidget):
     @QtCore.Slot()
     def _update_susapad_slider1(self):
         if not self.update_susapad_slider1(self.slider1.value()):
-            exception.susapad_not_found(self.window)
+            exception.susapad_not_found(self.window, self.language["error"]["not-found"])
             exception.close_current_window(self.window)
 
     @QtCore.Slot()
     def _update_susapad_slider2(self):
         if not self.update_susapad_slider2(self.slider2.value()):
-            exception.susapad_not_found(self.window)
+            exception.susapad_not_found(self.window, self.language["error"]["not-found"])
             exception.close_current_window(self.window)
