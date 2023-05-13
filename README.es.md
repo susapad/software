@@ -17,7 +17,26 @@
 
 ### Instalación
 
-> **Warning**: En produción...
+*SusaPad Software* es una aplicación portátil, entonces sin instalación requerida.
+
+Puedes descargarlo pelos [*Release del Github*][releases].
+Tenga cuidado y seleccione el archivo correcto para su sistema.
+
+![releases](./susapad/media/releases.png)
+
+Entonces descomprimas el paquete en algun directorio que no vás a borrar o cambiar,
+y fija en la pantalla de inicio.
+
+![pin susapad](./susapad/media/pin-susapad-software.png)
+
+
+[releases]: https://github.com/susapad/software/releases
+
+### Desisntalación
+
+Como ya se ha dicho antes, *SusaPad Software* es portátil,
+entonces para desisntalarlo,
+sólo necesitarás borrar el directorio del *SusaPad Software*.
 
 ### Issues
 
