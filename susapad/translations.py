@@ -99,7 +99,7 @@ ES = {
     "insider-config": {
         "save": "Save",
         "hysteresis": "Punto de Activación: (${value})\n(con rapid trigger desactivado)",
-        "sensibility": "Punto: ${value}"
+        "sensibility": "Sensibilidad: ${value}"
     }
 }
 
