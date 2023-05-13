@@ -115,17 +115,57 @@ jobs:
           cp README.pt-br.md ${{ env.main-folder }}/README.pt-br.md
           cp README.es.md    ${{ env.main-folder }}/README.es.md
 
+      - name: Add English Translation
+        run: |
+          "EN" > ${{ env.main-folder }}/LANG
 
-      - name: Upload Artifact (Windows only)
+      - name: Upload Artifact (Windows only) (English)
         if: matrix.os == 'windows-latest'
         uses: actions/upload-artifact@v3
         with:
           name: ${{ env.application }}-${{ github.ref_name }}-x64-win
           path: "${{ env.main-folder }}"
 
-      - name: Upload Artifact (Linux only)
+      - name: Upload Artifact (Linux only) (English)
         if: matrix.os == 'ubuntu-latest'
         uses: actions/upload-artifact@v3
         with:
           name: ${{ env.application }}-${{ github.ref_name }}-x64-linux
+          path: "${{ env.main-folder }}"
+
+      - name: Add Portuguese Translation
+        run: |
+          "PT" > ${{ env.main-folder }}/LANG
+
+      - name: Upload Artifact (Windows only) (Portuguese)
+        if: matrix.os == 'windows-latest'
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ env.application }}-${{ github.ref_name }}-x64-win-pt
+          path: "${{ env.main-folder }}"
+
+      - name: Upload Artifact (Linux only) (Portuguese)
+        if: matrix.os == 'ubuntu-latest'
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ env.application }}-${{ github.ref_name }}-x64-linux-pt
+          path: "${{ env.main-folder }}"
+
+
+      - name: Add Spanish Translation
+        run: |
+          "ES" > ${{ env.main-folder }}/LANG
+
+      - name: Upload Artifact (Windows only) (Spanish)
+        if: matrix.os == 'windows-latest'
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ env.application }}-${{ github.ref_name }}-x64-win-es
+          path: "${{ env.main-folder }}"
+
+      - name: Upload Artifact (Linux only) (Spanish)
+        if: matrix.os == 'ubuntu-latest'
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ env.application }}-${{ github.ref_name }}-x64-linux-es
           path: "${{ env.main-folder }}"
