@@ -21,7 +21,7 @@ EN = {
     "default-config": {
         "input": "Input",
         "rapid-trigger": "Rapid Trigger",
-        "continuous-rapid-trigger": "Continuous Rapid Trigger",
+        "continuous-rapid-trigger": "Ignore Actuation Point",
         "actuation-point": "Actuation Point: (${value})",
         "sensibility": "Sensibility: Press (${value1}) and Release (${value2})"
     },
@@ -56,7 +56,7 @@ PT = {
     "default-config": {
         "input": "Input",
         "rapid-trigger": "Rapid Trigger",
-        "continuous-rapid-trigger": "Rapid Trigger Contínuo",
+        "continuous-rapid-trigger": "Ignorar Ponto de Atuação",
         "actuation-point": "Ponto de Atuação: (${value})",
         "sensibility": "Sensibilidade: Pressionar (${value1}) e Soltar (${value2})"
     },
@@ -91,7 +91,7 @@ ES = {
     "default-config": {
         "input": "Input",
         "rapid-trigger": "Rapid Trigger",
-        "continuous-rapid-trigger": "Rapid Trigger Continuo",
+        "continuous-rapid-trigger": "Ignorar Punto de Activación",
         "actuation-point": "Punto de Activación: (${value})",
         "sensibility": "Sensibilidad: Presionar (${value1}) y Soltar (${value2})"
     },
