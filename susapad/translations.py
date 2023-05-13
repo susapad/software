@@ -112,9 +112,9 @@ def get_language():
     except:
         return EN
 
-    if lang == "PT":
+    if lang == "pt":
         return PT
-    elif lang == "ES":
+    elif lang == "es":
         return ES
     else:
         return EN
