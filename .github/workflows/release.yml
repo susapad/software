@@ -3,6 +3,7 @@ on:
     branches:
         - "main"
         - "ci-builds"
+        - "prepare-to-release"
     tags:
         - "v*.*.*"
 
