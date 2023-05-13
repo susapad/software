@@ -2,8 +2,8 @@
 from susapad.windows import alert
 
 
-def susapad_not_found(window):
-    dialog = alert.AlertDialog(window)
+def susapad_not_found(window, message: str):
+    dialog = alert.AlertDialog(window, message)
     dialog.show()
 
 

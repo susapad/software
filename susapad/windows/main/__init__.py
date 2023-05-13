@@ -37,7 +37,7 @@ class MainWindow(base.BaseWindow):
             self.main_widget.group_button.main.set_found(False)
             self.main_widget.group_header.status.setText(
                 self.language["status"]["not-found"])
-            exception.susapad_not_found(self)
+            exception.susapad_not_found(self, self.language["error"]["not-found"])
         else:
             if not self.susapad.debug:
                 self.susapad.connect(port)

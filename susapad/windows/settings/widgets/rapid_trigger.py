@@ -47,7 +47,7 @@ class TriggerButton(button.BaseButton):
 
 
     def __raise_alert(self):
-        alert = alert_dialog.AlertDialog(self.window)
+        alert = alert_dialog.AlertDialog(self.window, self.language["error"]["not-found"])
         alert.show()
         self.window.close()
 
@@ -97,7 +97,7 @@ class RapidTriggerButton(button.BaseButton):
 
 
     def __raise_alert(self):
-        alert = alert_dialog.AlertDialog(self.window)
+        alert = alert_dialog.AlertDialog(self.window, self.language["error"]["not-found"])
         alert.show()
         self.window.close()
 
@@ -147,7 +147,7 @@ class ContinuousRapidTriggerButton(button.BaseButton):
 
 
     def __raise_alert(self):
-        alert = alert_dialog.AlertDialog(self.window)
+        alert = alert_dialog.AlertDialog(self.window, self.language["error"]["not-found"])
         alert.show()
         self.window.close()
 
