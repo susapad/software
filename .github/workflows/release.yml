@@ -125,14 +125,14 @@ jobs:
         run: |
           echo ${{ matrix.lang }} > ${{ env.main-folder }}/${{ env.main-folder }}/${{ env.application }}/LANG
 
-      - name: Upload Artifact (Windows only) (English)
+      - name: Upload Artifact (Windows only)
         if: matrix.os == 'windows-latest'
         uses: actions/upload-artifact@v3
         with:
           name: ${{ env.application }}-${{ github.ref_name }}-x64-win-${{ matrix.lang }}
           path: "${{ env.main-folder }}"
 
-      - name: Upload Artifact (Linux only) (English)
+      - name: Upload Artifact (Linux only)
         if: matrix.os == 'ubuntu-latest'
         uses: actions/upload-artifact@v3
         with:
