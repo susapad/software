@@ -13,16 +13,17 @@ from susapad import base_widgets as base
 
 class MainWindow(base.BaseWindow):
 
-    def __init__(self, susapad):
+    def __init__(self, susapad, language: dict):
 
         ## Configuration
         super().__init__(susapad)
 
         self.settings_window = None
         self.susapad = susapad
+        self.language = language
 
         ## Configure Layout
-        self.main_widget = widgets.WindowLayout(self)
+        self.main_widget = widgets.WindowLayout(self, self.language)
         self.layout.addWidget(self.main_widget)
 
         ## Startup
@@ -34,7 +35,8 @@ class MainWindow(base.BaseWindow):
         port = "COM5" if self.susapad.debug else self.susapad.find()
         if "" == port:
             self.main_widget.group_button.main.set_found(False)
-            self.main_widget.group_header.status.setText("SusaPad não encontrado!")
+            self.main_widget.group_header.status.setText(
+                self.language["status"]["not-found"])
             exception.susapad_not_found(self)
         else:
             if not self.susapad.debug:
@@ -43,10 +45,10 @@ class MainWindow(base.BaseWindow):
             self.main_widget.group_button.main.set_found(True)
             if self.susapad.insider:
                 self.main_widget.group_header.status.setText(
-                    f"SusaPad Insider encontrado na porta {port}")
+                    self.language["status"]["insider-connected"].format(port = port))
             else:
                 self.main_widget.group_header.status.setText(
-                    f"SusaPad encontrado na porta {port}")
+                    self.language["status"]["connected"].format(port = port))
 
     @QtCore.Slot()
     def open_settings_window(self):
@@ -54,7 +56,7 @@ class MainWindow(base.BaseWindow):
             self.settings_window = insider.SettingsWindow(self)
             self.settings_window.show()
         elif not self.settings_window:
-            self.settings_window = settings.SettingsWindow(self)
+            self.settings_window = settings.SettingsWindow(self, self.language)
             self.settings_window.show()
 
     @QtCore.Slot()
