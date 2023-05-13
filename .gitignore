@@ -2,6 +2,7 @@ exp*.py
 .vscode/
 **/__pycache__/
 build/
+susapad/LANG
 susapad.*/
 susapad*.zip
 SusapadSoftware
