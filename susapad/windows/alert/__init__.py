@@ -5,10 +5,6 @@ from PySide6.QtCore import Qt
 from susapad import base_widgets as base
 
 
-_DEFAULT_MESSAGE = """SusaPad não encontrado. 
-Certifique-se que ele está conectado corretamente
-"""
-
 class CloseButton(base.BaseButton):
 
     def __init__(self, dialog, parent):
@@ -44,13 +40,13 @@ class AlertFrame(base.BaseFrame):
 
 class AlertDialog(base.BaseWindow):
 
-    def __init__(self, parent, message: str = None, susapad = None):
+    def __init__(self, parent, message: str, susapad = None):
         super().__init__(susapad)
 
         self.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint)
 
         self.parent = parent
-        self.message = message if message else _DEFAULT_MESSAGE
+        self.message = message
 
         ## Configure Layout
         self.main_widget = AlertFrame(self, self.parent, self.message)
