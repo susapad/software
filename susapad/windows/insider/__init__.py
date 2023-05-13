@@ -10,11 +10,11 @@ from . import widgets
 
 class SettingsWindow(base.BaseWindow):
 
-    def __init__(self, parent):
+    def __init__(self, parent, language: dict):
         super().__init__(parent.susapad, parent)
 
-        self.settings_widget = widgets.WindowLayout(self, parent, self.susapad)
+        self.settings_widget = widgets.WindowLayout(self, parent, self.susapad, language)
         self.layout.addWidget(self.settings_widget)
 
-        self.close_button = widgets.CloseButton(self, parent)
+        self.close_button = widgets.CloseButton(self, parent, language)
         self.close_button.move(420, 20)

@@ -53,7 +53,7 @@ class MainWindow(base.BaseWindow):
     @QtCore.Slot()
     def open_settings_window(self):
         if self.susapad.insider and not self.settings_window:
-            self.settings_window = insider.SettingsWindow(self)
+            self.settings_window = insider.SettingsWindow(self, self.language)
             self.settings_window.show()
         elif not self.settings_window:
             self.settings_window = settings.SettingsWindow(self, self.language)

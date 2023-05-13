@@ -6,8 +6,8 @@ from susapad import base_widgets as base
 
 class CloseButton(base.BaseFloatingButton):
 
-    def __init__(self, window, main_window):
-        super().__init__(window, "Fechar", "Escape")
+    def __init__(self, window, main_window, language: dict):
+        super().__init__(window, language["buttons"]["close"], "Escape")
 
         self.main_window = main_window
 
@@ -17,8 +17,8 @@ class CloseButton(base.BaseFloatingButton):
 
 class SaveButton(base.BaseButton):
 
-    def __init__(self, window, main_window, susapad):
-        super().__init__("Salvar", "Enter", window)
+    def __init__(self, window, main_window, susapad, language: dict):
+        super().__init__(language["insider-config"]["save"], "Enter", window)
         self.susapad = susapad
         self.main_window = main_window
         self.clicked.connect(self.action)
@@ -28,5 +28,4 @@ class SaveButton(base.BaseButton):
         if self.susapad.insider_save():
             self.main_window.close_settings_window()
         else:
-            print("Algum problema ocorreu. Certifique-se que seu Susapad Insider está conectado.")
             self.__raise_alert()
