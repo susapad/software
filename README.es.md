@@ -6,11 +6,12 @@
 
 ![gpl-3.0](./susapad/media/gplv3-with-text-136x68.png)
 
-*SusaPad Software* es el software usado para configurar *SusaPad*/[*MiniPad*][minipad].
+*SusaPad Software* es el software usado para configurar [*SusaPad*][susapad]/[*MiniPad*][minipad].
 
 > **Note**: *SusaPad Software* hace referencia al proyecto en si mismo,
 > el no es el mismo que *SusaPad*, cuyo es un *keypad* (hardware).
 
+[susapad]: https://github.com/susapad/susapad
 [minipad]: https://github.com/minipadKB
 
 ## Guía del usuario
