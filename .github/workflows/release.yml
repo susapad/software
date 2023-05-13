@@ -13,7 +13,7 @@ permissions:
 
 env:
   application: "susapad"
-  main-folder: "SusaPadSoftware"
+  main-folder: "susapad_software"
   app-icon: "susapad/media/logo.ico"
 
 
