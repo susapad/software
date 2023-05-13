@@ -109,20 +109,21 @@ jobs:
       - name: Create Artifact's Folder
         run: |
           mkdir ${{ env.main-folder }}
-          mkdir ${{ env.main-folder }}/${{ env.application }}
-          mkdir ${{ env.main-folder }}/${{ env.application }}/media
+          mkdir ${{ env.main-folder }}/${{ env.main-folder }}
+          mkdir ${{ env.main-folder }}/${{ env.main-folder }}/${{ env.application }}
+          mkdir ${{ env.main-folder }}/${{ env.main-folder }}/${{ env.application }}/media
 
-          cp -r ${{ env.application }}.dist/**  ${{ env.main-folder }}/
-          cp -r ${{ env.application }}/media/** ${{ env.main-folder }}/${{ env.application }}/media/
+          cp -r ${{ env.application }}.dist/**  ${{ env.main-folder }}/${{ env.main-folder }}/
+          cp -r ${{ env.application }}/media/** ${{ env.main-folder }}/${{ env.main-folder }}/${{ env.application }}/media/
 
-          cp LICENSE         ${{ env.main-folder }}/LICENSE
-          cp README.md       ${{ env.main-folder }}/README.md
-          cp README.pt-br.md ${{ env.main-folder }}/README.pt-br.md
-          cp README.es.md    ${{ env.main-folder }}/README.es.md
+          cp LICENSE         ${{ env.main-folder }}/${{ env.main-folder }}/LICENSE
+          cp README.md       ${{ env.main-folder }}/${{ env.main-folder }}/README.md
+          cp README.pt-br.md ${{ env.main-folder }}/${{ env.main-folder }}/README.pt-br.md
+          cp README.es.md    ${{ env.main-folder }}/${{ env.main-folder }}/README.es.md
 
       - name: Add English Translation
         run: |
-          echo ${{ matrix.lang }} > ${{ env.main-folder }}/${{ env.application }}/LANG
+          echo ${{ matrix.lang }} > ${{ env.main-folder }}/${{ env.main-folder }}/${{ env.application }}/LANG
 
       - name: Upload Artifact (Windows only) (English)
         if: matrix.os == 'windows-latest'
