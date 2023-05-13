@@ -8,10 +8,10 @@ from susapad.controller import exception
 
 class ActuationPointGroup(base.BaseSliderGroup):
 
-    def __init__(self, window, susapad):
+    def __init__(self, window, susapad, language: dict):
         super().__init__(window, susapad, vertical = True)
         self.set_range((10, 390))
-        self.set_template(Template("Ponto de atuação: (${value})"))
+        self.set_template(Template(language["default-config"]["actuation-point"]))
         self._update_label()
 
     def update_susapad(self, value: int) -> bool:
